@@ -3,7 +3,7 @@ import { SocialLink } from "@/types";
 export const personalInfo = {
   name: "Nang Devit",
   preferredName: "Devit",
-  title: "System Analyst | Data Analytics | Software Developer",
+  title: "MIS (Management Information Systems)",
   shortTagline: "Bridging business requirements with scalable software architectures and data-driven insights.",
   bio: "A disciplined and detail-oriented System Analyst, Data Analytics enthusiast, and Software Developer with a strong academic foundation in Management Information Systems (MIS) from SETEC Institute. Passionate about designing robust enterprise database architectures, translating complex operational workflows into functional system specifications, and building high-performance web and mobile applications.",
   

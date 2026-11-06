@@ -39,7 +39,7 @@ export function Footer() {
                   {personalInfo.name}
                 </h3>
                 <p className="text-xs text-slate-400 font-medium">
-                  System Analyst &bull; MIS Senior
+                  MIS &bull; SETEC Institute
                 </p>
               </div>
             </div>

@@ -76,7 +76,7 @@ export function Navbar() {
                 NANG DEVIT
               </span>
               <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400 tracking-wider uppercase mt-1">
-                System Analyst &bull; MIS
+                MIS &bull; SETEC Institute
               </span>
             </div>
           </Link>

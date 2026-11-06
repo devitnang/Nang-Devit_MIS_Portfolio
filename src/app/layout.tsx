@@ -27,11 +27,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.nangdevit.xyz"),
   title: {
-    default: "Nang Devit | System Analyst | Data Analytics | Software Developer",
+    default: "Nang Devit | MIS (Management Information Systems)",
     template: "%s | Nang Devit",
   },
   description:
-    "Professional portfolio of Nang Devit - System Analyst, Data Analytics specialist, and Software Developer based in Cambodia. Experienced in enterprise system design, database architecture, C#, Next.js, Flutter, and multi-relational SQL.",
+    "Professional portfolio of Nang Devit - Management Information Systems (MIS) senior at SETEC Institute. Experienced in enterprise system design, database architecture, C#, Next.js, Flutter, and multi-relational SQL.",
   keywords: [
     "Nang Devit",
     "Devit Nang",

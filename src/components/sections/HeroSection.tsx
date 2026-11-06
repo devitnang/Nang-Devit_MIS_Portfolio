@@ -61,12 +61,12 @@ export function HeroSection() {
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-extrabold tracking-tight text-[#0B2046] dark:text-white leading-[1.15]">
                 {personalInfo.name}
               </h1>
-              <div className="mt-3 flex flex-wrap items-center gap-2 text-base sm:text-lg font-bold text-slate-700 dark:text-slate-300">
-                <span className="text-[#0B2046] dark:text-blue-400">System Analyst</span>
+              <div className="mt-3 flex items-center gap-2 text-lg sm:text-xl font-bold text-[#0B2046] dark:text-blue-400 tracking-wide">
+                <span>MIS</span>
                 <span className="text-[#D32F2F]">&bull;</span>
-                <span className="text-slate-800 dark:text-slate-200">Data Analytics</span>
-                <span className="text-[#D32F2F]">&bull;</span>
-                <span className="text-[#0B2046] dark:text-blue-400">Software Developer</span>
+                <span className="text-slate-600 dark:text-slate-300 font-medium text-base sm:text-lg">
+                  Management Information Systems
+                </span>
               </div>
             </div>
 
