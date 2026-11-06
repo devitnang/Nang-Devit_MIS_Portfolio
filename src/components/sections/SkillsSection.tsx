@@ -20,6 +20,9 @@ import {
   CheckCircle2,
   Search,
   Filter,
+  ChevronDown,
+  X,
+  RotateCcw,
 } from "lucide-react";
 
 export function SkillsSection() {
@@ -66,7 +69,7 @@ export function SkillsSection() {
   const filteredCategories = skillCategories
     .map((category) => {
       const filteredSkills = category.skills.filter((skill) =>
-        skill.name.toLowerCase().includes(searchQuery.toLowerCase())
+        skill.name.toLowerCase().includes(searchQuery.toLowerCase().trim())
       );
       return {
         ...category,
@@ -80,6 +83,18 @@ export function SkillsSection() {
       return category.skills.length > 0;
     });
 
+  const totalFilteredSkills = filteredCategories.reduce(
+    (acc, cat) => acc + cat.skills.length,
+    0
+  );
+
+  const isFiltered = selectedCategory !== "all" || searchQuery.trim().length > 0;
+
+  const handleReset = () => {
+    setSelectedCategory("all");
+    setSearchQuery("");
+  };
+
   return (
     <section
       id="skills"
@@ -92,45 +107,104 @@ export function SkillsSection() {
           subtitle="A comprehensive inventory of programming languages, enterprise database systems, frameworks, analytics tools, and deployment environments."
         />
 
-        {/* Filter and Search Bar */}
-        <div className="mb-10 flex flex-col md:flex-row items-center justify-between gap-4 p-4 rounded-xl bg-white dark:bg-[#0D182E] border border-slate-200 dark:border-slate-800 shadow-2xs">
-          {/* Category Tabs */}
-          <div className="flex flex-wrap items-center gap-1.5 w-full md:w-auto">
-            <button
-              onClick={() => setSelectedCategory("all")}
-              className={`px-3 py-1.5 rounded-md text-xs font-semibold tracking-wider transition-all cursor-pointer ${
-                selectedCategory === "all"
-                  ? "bg-[#0B2046] text-white dark:bg-blue-600"
-                  : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700"
-              }`}
-            >
-              All Skills
-            </button>
-            {skillCategories.map((c) => (
-              <button
-                key={c.id}
-                onClick={() => setSelectedCategory(c.id)}
-                className={`px-3 py-1.5 rounded-md text-xs font-semibold tracking-wider transition-all cursor-pointer ${
-                  selectedCategory === c.id
-                    ? "bg-[#0B2046] text-white dark:bg-blue-600 shadow-xs"
-                    : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700"
-                }`}
+        {/* Filter and Search Bar: Dropdown + Search Input */}
+        <div className="mb-10 p-4 sm:p-5 rounded-xl bg-white dark:bg-[#0D182E] border border-slate-200 dark:border-slate-800 shadow-2xs">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4">
+            {/* Dropdown Filter for Category */}
+            <div className="relative w-full sm:w-72 md:w-80">
+              <label
+                htmlFor="categoryFilter"
+                className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1 sm:hidden"
               >
-                {c.title.split(" ")[0]}
+                Filter by Category
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                  <Filter className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />
+                </div>
+                <select
+                  id="categoryFilter"
+                  value={selectedCategory}
+                  onChange={(e) => setSelectedCategory(e.target.value)}
+                  className="w-full pl-9 pr-10 py-2.5 text-xs sm:text-sm font-semibold rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-100 hover:border-[#0B2046] dark:hover:border-blue-400 focus:outline-none focus:ring-2 focus:ring-[#0B2046] dark:focus:ring-blue-400 transition-colors cursor-pointer appearance-none shadow-2xs"
+                >
+                  <option value="all">All Skill Categories</option>
+                  {skillCategories.map((c) => (
+                    <option key={c.id} value={c.id}>
+                      {c.title}
+                    </option>
+                  ))}
+                </select>
+                <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-slate-400">
+                  <ChevronDown className="w-4 h-4 text-slate-500 dark:text-slate-400" />
+                </div>
+              </div>
+            </div>
+
+            {/* Search Input */}
+            <div className="relative flex-1 max-w-md">
+              <label
+                htmlFor="skillSearch"
+                className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1 sm:hidden"
+              >
+                Search Skills
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                  <Search className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />
+                </div>
+                <input
+                  id="skillSearch"
+                  type="text"
+                  placeholder="Search by skill name (e.g. C#, Flutter, SQL, Oracle)..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-9 pr-10 py-2.5 text-xs sm:text-sm rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100 placeholder-slate-400 hover:border-[#0B2046] dark:hover:border-blue-400 focus:outline-none focus:ring-2 focus:ring-[#0B2046] dark:focus:ring-blue-400 transition-colors shadow-2xs"
+                />
+                {searchQuery && (
+                  <button
+                    onClick={() => setSearchQuery("")}
+                    className="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 cursor-pointer"
+                    aria-label="Clear search"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                )}
+              </div>
+            </div>
+
+            {/* Reset Button (only shown when filtered) */}
+            {isFiltered && (
+              <button
+                onClick={handleReset}
+                className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-colors cursor-pointer border border-slate-200 dark:border-slate-700 shrink-0"
+                title="Reset filters"
+              >
+                <RotateCcw className="w-3.5 h-3.5 text-[#0B2046] dark:text-blue-400" />
+                <span>Reset</span>
               </button>
-            ))}
+            )}
           </div>
 
-          {/* Search Input */}
-          <div className="relative w-full md:w-72">
-            <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
-            <input
-              type="text"
-              placeholder="Search skill (e.g. C#, Oracle)..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-4 py-1.5 text-xs rounded-md bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-[#0B2046] dark:focus:ring-blue-400"
-            />
+          {/* Active Status Info Bar */}
+          <div className="mt-3 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+            <span>
+              Showing{" "}
+              <strong className="text-[#0B2046] dark:text-blue-300">
+                {totalFilteredSkills}
+              </strong>{" "}
+              technical skills across{" "}
+              <strong className="text-[#0B2046] dark:text-blue-300">
+                {filteredCategories.length}
+              </strong>{" "}
+              categories
+            </span>
+            {selectedCategory !== "all" && (
+              <span className="hidden sm:inline font-mono text-[11px] bg-blue-50 dark:bg-blue-950/60 text-[#0B2046] dark:text-blue-300 px-2 py-0.5 rounded border border-blue-200 dark:border-blue-900/40">
+                Filtered:{" "}
+                {skillCategories.find((c) => c.id === selectedCategory)?.title}
+              </span>
+            )}
           </div>
         </div>
 
@@ -139,7 +213,7 @@ export function SkillsSection() {
           {filteredCategories.map((cat) => (
             <div
               key={cat.id}
-              className="p-6 rounded-xl bg-white dark:bg-[#0D182E] border border-slate-200 dark:border-slate-800 shadow-2xs hover:border-slate-300 dark:hover:border-slate-700 transition-all flex flex-col justify-between"
+              className="p-6 rounded-xl bg-white dark:bg-[#0D182E] border border-slate-200 dark:border-slate-800 shadow-2xs hover:border-[#0B2046]/40 dark:hover:border-blue-500/40 transition-all flex flex-col justify-between"
             >
               <div>
                 {/* Header */}
@@ -198,11 +272,8 @@ export function SkillsSection() {
               No skills found matching &ldquo;{searchQuery}&rdquo;
             </p>
             <button
-              onClick={() => {
-                setSearchQuery("");
-                setSelectedCategory("all");
-              }}
-              className="mt-3 text-xs font-bold text-[#0B2046] dark:text-blue-400 hover:underline"
+              onClick={handleReset}
+              className="mt-3 text-xs font-bold text-[#0B2046] dark:text-blue-400 hover:underline cursor-pointer"
             >
               Reset filters
             </button>
