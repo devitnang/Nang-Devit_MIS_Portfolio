@@ -13,6 +13,7 @@ import {
   Maximize2,
   Calendar,
   Code2,
+  FileText,
 } from "lucide-react";
 
 export function ProjectsSection() {
@@ -169,6 +170,17 @@ export function ProjectsSection() {
                   </button>
 
                   <div className="flex items-center gap-2">
+                    {project.documentationUrl && (
+                      <a
+                        href={project.documentationUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-1.5 rounded-md text-[#0B2046] dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/40 transition-colors"
+                        title="Read Architecture Documentation (PDF)"
+                      >
+                        <FileText className="w-4 h-4" />
+                      </a>
+                    )}
                     {project.githubUrl && (
                       <a
                         href={project.githubUrl}

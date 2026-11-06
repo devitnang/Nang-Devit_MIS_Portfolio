@@ -13,6 +13,8 @@ import {
   Calendar,
   Layers,
   Building,
+  FileText,
+  Users,
 } from "lucide-react";
 
 interface ProjectModalProps {
@@ -159,7 +161,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
           {/* Project Details Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 text-xs sm:text-sm">
             <div className="flex items-center gap-2">
-              <Layers className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />
+              <Layers className="w-4 h-4 text-[#0B2046] dark:text-blue-400 shrink-0" />
               <span className="text-slate-500 dark:text-slate-400">Role:</span>
               <span className="font-semibold text-slate-800 dark:text-slate-200">
                 {project.role}
@@ -167,10 +169,19 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
             </div>
             {project.clientOrOrg && (
               <div className="flex items-center gap-2">
-                <Building className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />
+                <Building className="w-4 h-4 text-[#0B2046] dark:text-blue-400 shrink-0" />
                 <span className="text-slate-500 dark:text-slate-400">Context:</span>
                 <span className="font-semibold text-slate-800 dark:text-slate-200">
                   {project.clientOrOrg}
+                </span>
+              </div>
+            )}
+            {project.teamMembers && project.teamMembers.length > 0 && (
+              <div className="flex items-center gap-2 sm:col-span-2">
+                <Users className="w-4 h-4 text-[#0B2046] dark:text-blue-400 shrink-0" />
+                <span className="text-slate-500 dark:text-slate-400">Project Team:</span>
+                <span className="font-semibold text-slate-800 dark:text-slate-200">
+                  {project.teamMembers.join(" • ")}
                 </span>
               </div>
             )}
@@ -226,7 +237,18 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
 
         {/* Modal Footer / Actions */}
         <div className="p-4 border-t border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-900/60 flex flex-wrap items-center justify-between gap-3 sticky bottom-0">
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
+            {project.documentationUrl && (
+              <a
+                href={project.documentationUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-md text-xs sm:text-sm font-semibold bg-blue-50 dark:bg-blue-950/70 text-[#0B2046] dark:text-blue-300 hover:bg-blue-100 dark:hover:bg-blue-900/50 border border-blue-200 dark:border-blue-900/50 transition-colors"
+              >
+                <FileText className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />
+                <span>PDF Documentation</span>
+              </a>
+            )}
             {project.githubUrl && (
               <a
                 href={project.githubUrl}

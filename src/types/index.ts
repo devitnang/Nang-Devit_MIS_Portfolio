@@ -42,6 +42,8 @@ export interface Project {
   images: ProjectImage[];
   githubUrl?: string;
   demoUrl?: string;
+  documentationUrl?: string;
+  teamMembers?: string[];
   year: string;
   clientOrOrg?: string;
 }
