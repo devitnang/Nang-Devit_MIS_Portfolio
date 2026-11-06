@@ -3,209 +3,164 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { personalInfo } from "@/data/portfolioData";
-import { GithubIcon, LinkedinIcon, TelegramIcon } from "@/components/ui/Icons";
+import { Grid2X2Plus } from "lucide-react";
 import {
-  Mail,
-  Phone,
-  Globe,
-  ArrowUp,
-  MapPin,
-  FileText,
-  ShieldCheck,
-} from "lucide-react";
+  GithubIcon,
+  LinkedinIcon,
+  TelegramIcon,
+  FacebookIcon,
+} from "@/components/ui/Icons";
+import { personalInfo } from "@/data/portfolioData";
 
-export function Footer() {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+export function MinimalFooter() {
+  const year = 2026;
+
+  const navigation = [
+    { title: "Home", href: "#home" },
+    { title: "About Devit", href: "#about" },
+    { title: "Technical Skills", href: "#skills" },
+    { title: "Featured Projects", href: "#projects" },
+    { title: "Work Experience", href: "#experience" },
+    { title: "Education", href: "#education" },
+  ];
+
+  const resources = [
+    { title: "Download CV (PDF)", href: personalInfo.assets.cv },
+    { title: "SETEC Institute", href: "#education" },
+    {
+      title: "Flutter Ecommerce Doc",
+      href: "/assets/projects/flutter_ecommerce/The-D3V-Ecommerce_Frontend_Documentation.pdf",
+    },
+    { title: "Telegram Channel", href: personalInfo.contact.telegramUrl },
+    { title: "Contact Support / Inquiries", href: "#contact" },
+  ];
+
+  const socialLinks = [
+    {
+      name: "GitHub",
+      icon: <GithubIcon className="size-4" />,
+      link: personalInfo.contact.githubUrl,
+    },
+    {
+      name: "LinkedIn",
+      icon: <LinkedinIcon className="size-4" />,
+      link: personalInfo.contact.linkedinUrl,
+    },
+    {
+      name: "Telegram",
+      icon: <TelegramIcon className="size-4" />,
+      link: personalInfo.contact.telegramUrl,
+    },
+    {
+      name: "Facebook",
+      icon: <FacebookIcon className="size-4" />,
+      link: personalInfo.contact.facebookUrl || "https://facebook.com/devitnang",
+    },
+  ];
 
   return (
-    <footer className="bg-slate-950 text-slate-300 border-t border-slate-800 transition-colors">
-      {/* Top Banner Accent - Signature Dark Blue */}
-      <div className="h-1 bg-linear-to-r from-[#07152E] via-[#16366E] to-[#07152E]" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-          {/* Column 1: Identity & Professional Tag */}
-          <div className="space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="relative w-10 h-10 rounded-lg bg-[#0B2046] p-1 border border-slate-700 shadow-xs flex items-center justify-center overflow-hidden shrink-0">
+    <footer className="relative border-t border-border bg-background transition-colors">
+      <div className="bg-[radial-gradient(35%_80%_at_30%_0%,--theme(--color-foreground/.1),transparent)] mx-auto max-w-4xl md:border-x border-border">
+        <div className="bg-border absolute inset-x-0 h-px w-full" />
+        <div className="grid max-w-4xl grid-cols-6 gap-6 p-6 sm:p-8">
+          <div className="col-span-6 flex flex-col gap-4 md:col-span-4">
+            <Link href="#home" className="flex items-center gap-2.5 w-max group">
+              <div className="relative w-8 h-8 rounded-md bg-[#0B2046] dark:bg-blue-600 p-0.5 flex items-center justify-center overflow-hidden">
                 <Image
                   src="/assets/images/logo/mylogo_1.png"
                   alt="Nang Devit Logo"
                   fill
                   className="object-contain p-0.5"
-                  sizes="40px"
+                  sizes="32px"
                 />
               </div>
-              <div>
-                <h3 className="text-white font-bold text-lg tracking-tight">
-                  {personalInfo.name}
-                </h3>
-                <p className="text-xs text-slate-400 font-medium">
+              <div className="flex flex-col">
+                <span className="font-bold text-sm tracking-tight text-[#0B2046] dark:text-white leading-none">
+                  NANG DEVIT
+                </span>
+                <span className="text-[10px] font-semibold text-muted-foreground uppercase tracking-wider mt-0.5">
                   MIS &bull; SETEC Institute
-                </p>
+                </span>
               </div>
-            </div>
-            <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
-              Bridging business operational logic with scalable software systems, enterprise database architectures, and data-driven analytical decision support.
+            </Link>
+
+            <p className="text-muted-foreground max-w-sm font-sans text-xs sm:text-sm leading-relaxed text-balance">
+              Management Information Systems (MIS) Senior at SETEC Institute.
+              Specializing in enterprise systems analysis, relational database
+              architectures, data analytics, and modern full-stack development.
             </p>
-            <div className="flex items-center gap-2 pt-1 text-xs text-slate-400">
-              <MapPin className="w-3.5 h-3.5 text-blue-400 shrink-0" />
-              <span>Phnom Penh, Cambodia</span>
-            </div>
-            <div className="flex items-center gap-2 text-xs text-slate-400">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-              <span>Available for Technical Positions & Roles</span>
-            </div>
-          </div>
 
-          {/* Column 2: Quick Navigation */}
-          <div>
-            <h4 className="text-white font-bold text-sm tracking-wider uppercase mb-4 border-b border-slate-800 pb-2">
-              Navigation
-            </h4>
-            <ul className="space-y-2 text-xs sm:text-sm">
-              {[
-                { name: "Home", href: "#home" },
-                { name: "About Me", href: "#about" },
-                { name: "Technical Skills", href: "#skills" },
-                { name: "Featured Projects", href: "#projects" },
-                { name: "Professional Experience", href: "#experience" },
-                { name: "Academic Education", href: "#education" },
-                { name: "Contact & Inquiries", href: "#contact" },
-              ].map((item) => (
-                <li key={item.name}>
-                  <Link
-                    href={item.href}
-                    className="hover:text-white hover:translate-x-1 inline-block transition-all text-slate-400"
-                  >
-                    &rsaquo; {item.name}
-                  </Link>
-                </li>
+            <div className="flex gap-2 pt-1">
+              {socialLinks.map((item, i) => (
+                <a
+                  key={i}
+                  className="hover:bg-accent rounded-md border border-border p-2 text-slate-700 dark:text-slate-300 hover:text-[#0B2046] dark:hover:text-white transition-colors cursor-pointer"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={item.link}
+                  aria-label={item.name}
+                  title={item.name}
+                >
+                  {item.icon}
+                </a>
               ))}
-            </ul>
+            </div>
           </div>
 
-          {/* Column 3: Direct Contact Information */}
-          <div>
-            <h4 className="text-white font-bold text-sm tracking-wider uppercase mb-4 border-b border-slate-800 pb-2">
-              Contact Channels
-            </h4>
-            <ul className="space-y-3 text-xs sm:text-sm text-slate-400">
-              <li>
+          <div className="col-span-3 w-full md:col-span-1">
+            <span className="text-muted-foreground mb-2 block text-xs font-semibold uppercase tracking-wider">
+              Navigation
+            </span>
+            <div className="flex flex-col gap-1">
+              {navigation.map(({ href, title }, i) => (
                 <a
-                  href={`mailto:${personalInfo.contact.email}`}
-                  className="flex items-center gap-2.5 hover:text-white transition-colors group"
+                  key={i}
+                  className="w-max py-1 text-xs sm:text-sm text-slate-700 dark:text-slate-300 duration-200 hover:text-[#0B2046] dark:hover:text-blue-400 hover:underline"
+                  href={href}
                 >
-                  <Mail className="w-4 h-4 text-blue-400 group-hover:scale-110 transition-transform" />
-                  <span className="truncate">{personalInfo.contact.email}</span>
+                  {title}
                 </a>
-              </li>
-              <li>
-                <a
-                  href={`tel:${personalInfo.contact.phone.replace(/\s+/g, "")}`}
-                  className="flex items-center gap-2.5 hover:text-white transition-colors group"
-                >
-                  <Phone className="w-4 h-4 text-blue-400 group-hover:scale-110 transition-transform" />
-                  <span>{personalInfo.contact.displayPhone}</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href={personalInfo.contact.telegramUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2.5 hover:text-white transition-colors group"
-                >
-                  <TelegramIcon className="w-4 h-4 text-blue-400 group-hover:scale-110 transition-transform" />
-                  <span>Telegram (@{personalInfo.contact.telegramUsername})</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href={personalInfo.contact.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2.5 hover:text-white transition-colors group"
-                >
-                  <Globe className="w-4 h-4 text-blue-400 group-hover:scale-110 transition-transform" />
-                  <span>{personalInfo.contact.displayWebsite}</span>
-                </a>
-              </li>
-            </ul>
+              ))}
+            </div>
           </div>
 
-          {/* Column 4: Professional Profiles & CV */}
-          <div>
-            <h4 className="text-white font-bold text-sm tracking-wider uppercase mb-4 border-b border-slate-800 pb-2">
-              Professional Networks
-            </h4>
-            <div className="space-y-3">
-              <a
-                href={personalInfo.contact.linkedinUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2.5 p-2 rounded-md bg-slate-900 hover:bg-slate-800 hover:text-white transition-all text-xs border border-slate-800"
-              >
-                <LinkedinIcon className="w-4 h-4 text-blue-400" />
-                <span>LinkedIn / devitnang</span>
-              </a>
-
-              <a
-                href={personalInfo.contact.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2.5 p-2 rounded-md bg-slate-900 hover:bg-slate-800 hover:text-white transition-all text-xs border border-slate-800"
-              >
-                <GithubIcon className="w-4 h-4 text-slate-200" />
-                <span>GitHub / devitnang</span>
-              </a>
-
-              <a
-                href={personalInfo.assets.cv}
-                download={personalInfo.assets.cvFileName}
-                className="flex items-center justify-between p-2 rounded-md bg-[#0B2046]/40 border border-[#0B2046] hover:bg-[#0B2046]/70 text-white transition-all text-xs font-semibold"
-              >
-                <span className="flex items-center gap-2">
-                  <FileText className="w-4 h-4 text-blue-400" />
-                  Curriculum Vitae (PDF)
-                </span>
-                <span className="text-[10px] uppercase tracking-wider bg-[#0B2046] px-1.5 py-0.5 rounded text-white border border-blue-400/30">
-                  Download
-                </span>
-              </a>
+          <div className="col-span-3 w-full md:col-span-1">
+            <span className="text-muted-foreground mb-2 block text-xs font-semibold uppercase tracking-wider">
+              Resources
+            </span>
+            <div className="flex flex-col gap-1">
+              {resources.map(({ href, title }, i) => (
+                <a
+                  key={i}
+                  className="w-max py-1 text-xs sm:text-sm text-slate-700 dark:text-slate-300 duration-200 hover:text-[#0B2046] dark:hover:text-blue-400 hover:underline"
+                  href={href}
+                  target={href.endsWith(".pdf") ? "_blank" : undefined}
+                  rel={href.endsWith(".pdf") ? "noopener noreferrer" : undefined}
+                >
+                  {title}
+                </a>
+              ))}
             </div>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="mt-12 pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <p>
-            &copy; 2026 Nang Devit. All rights reserved.
-          </p>
-
-          <p className="text-center sm:text-right">
-            Custom Domain:{" "}
-            <a
+        <div className="bg-border absolute inset-x-0 h-px w-full" />
+        <div className="flex max-w-4xl flex-col justify-between gap-2 pt-4 pb-6 px-4">
+          <p className="text-muted-foreground text-center font-normal text-xs">
+            &copy; {year}{" "}
+            <Link
               href="https://www.nangdevit.xyz"
-              className="text-slate-400 hover:text-blue-400 transition-colors underline underline-offset-2"
+              className="font-semibold text-[#0B2046] dark:text-blue-400 hover:underline"
             >
-              www.nangdevit.xyz
-            </a>
+              Nang Devit
+            </Link>
+            . All rights reserved. Built with Next.js &amp; Tailwind CSS.
           </p>
-
-          <button
-            onClick={scrollToTop}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-colors cursor-pointer text-xs"
-            aria-label="Back to top of page"
-          >
-            <span>Back to top</span>
-            <ArrowUp className="w-3.5 h-3.5" />
-          </button>
         </div>
       </div>
     </footer>
   );
 }
+
+// Export both Footer and MinimalFooter for seamless compatibility
+export const Footer = MinimalFooter;

@@ -21,6 +21,7 @@ export const personalInfo = {
     telegramUrl: "https://t.me/nangdevit",
     linkedinUrl: "https://linkedin.com/in/devitnang",
     githubUrl: "https://github.com/devitnang",
+    facebookUrl: "https://facebook.com/devitnang",
   },
   
   assets: {
