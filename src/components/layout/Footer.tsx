@@ -8,7 +8,6 @@ import { GithubIcon, LinkedinIcon, TelegramIcon } from "@/components/ui/Icons";
 import {
   Mail,
   Phone,
-  Send,
   Globe,
   ArrowUp,
   MapPin,
@@ -22,17 +21,23 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-slate-900 dark:bg-[#060B14] text-slate-300 border-t border-slate-800 transition-colors">
-      {/* Top Banner Accent */}
-      <div className="h-1 bg-linear-to-r from-[#0B2046] via-[#D32F2F] to-[#0B2046]" />
+    <footer className="bg-slate-950 text-slate-300 border-t border-slate-800 transition-colors">
+      {/* Top Banner Accent - Signature Dark Blue */}
+      <div className="h-1 bg-linear-to-r from-[#07152E] via-[#16366E] to-[#07152E]" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Column 1: Identity & Professional Tag */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded bg-[#D32F2F] text-white flex items-center justify-center font-bold text-base shadow-xs">
-                ND
+              <div className="relative w-10 h-10 rounded-lg bg-[#0B2046] p-1 border border-slate-700 shadow-xs flex items-center justify-center overflow-hidden shrink-0">
+                <Image
+                  src="/assets/images/logo/mylogo_1.png"
+                  alt="Nang Devit Logo"
+                  fill
+                  className="object-contain p-0.5"
+                  sizes="40px"
+                />
               </div>
               <div>
                 <h3 className="text-white font-bold text-lg tracking-tight">
@@ -47,7 +52,7 @@ export function Footer() {
               Bridging business operational logic with scalable software systems, enterprise database architectures, and data-driven analytical decision support.
             </p>
             <div className="flex items-center gap-2 pt-1 text-xs text-slate-400">
-              <MapPin className="w-3.5 h-3.5 text-[#D32F2F] shrink-0" />
+              <MapPin className="w-3.5 h-3.5 text-blue-400 shrink-0" />
               <span>Phnom Penh, Cambodia</span>
             </div>
             <div className="flex items-center gap-2 text-xs text-slate-400">
@@ -94,7 +99,7 @@ export function Footer() {
                   href={`mailto:${personalInfo.contact.email}`}
                   className="flex items-center gap-2.5 hover:text-white transition-colors group"
                 >
-                  <Mail className="w-4 h-4 text-[#D32F2F] group-hover:scale-110 transition-transform" />
+                  <Mail className="w-4 h-4 text-blue-400 group-hover:scale-110 transition-transform" />
                   <span className="truncate">{personalInfo.contact.email}</span>
                 </a>
               </li>
@@ -103,7 +108,7 @@ export function Footer() {
                   href={`tel:${personalInfo.contact.phone.replace(/\s+/g, "")}`}
                   className="flex items-center gap-2.5 hover:text-white transition-colors group"
                 >
-                  <Phone className="w-4 h-4 text-[#D32F2F] group-hover:scale-110 transition-transform" />
+                  <Phone className="w-4 h-4 text-blue-400 group-hover:scale-110 transition-transform" />
                   <span>{personalInfo.contact.displayPhone}</span>
                 </a>
               </li>
@@ -114,7 +119,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                   className="flex items-center gap-2.5 hover:text-white transition-colors group"
                 >
-                  <TelegramIcon className="w-4 h-4 text-[#D32F2F] group-hover:scale-110 transition-transform" />
+                  <TelegramIcon className="w-4 h-4 text-blue-400 group-hover:scale-110 transition-transform" />
                   <span>Telegram (@{personalInfo.contact.telegramUsername})</span>
                 </a>
               </li>
@@ -125,7 +130,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                   className="flex items-center gap-2.5 hover:text-white transition-colors group"
                 >
-                  <Globe className="w-4 h-4 text-[#D32F2F] group-hover:scale-110 transition-transform" />
+                  <Globe className="w-4 h-4 text-blue-400 group-hover:scale-110 transition-transform" />
                   <span>{personalInfo.contact.displayWebsite}</span>
                 </a>
               </li>
@@ -142,7 +147,7 @@ export function Footer() {
                 href={personalInfo.contact.linkedinUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2.5 p-2 rounded-md bg-slate-800/80 hover:bg-slate-800 hover:text-white transition-all text-xs"
+                className="flex items-center gap-2.5 p-2 rounded-md bg-slate-900 hover:bg-slate-800 hover:text-white transition-all text-xs border border-slate-800"
               >
                 <LinkedinIcon className="w-4 h-4 text-blue-400" />
                 <span>LinkedIn / devitnang</span>
@@ -152,7 +157,7 @@ export function Footer() {
                 href={personalInfo.contact.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2.5 p-2 rounded-md bg-slate-800/80 hover:bg-slate-800 hover:text-white transition-all text-xs"
+                className="flex items-center gap-2.5 p-2 rounded-md bg-slate-900 hover:bg-slate-800 hover:text-white transition-all text-xs border border-slate-800"
               >
                 <GithubIcon className="w-4 h-4 text-slate-200" />
                 <span>GitHub / devitnang</span>
@@ -161,13 +166,13 @@ export function Footer() {
               <a
                 href={personalInfo.assets.cv}
                 download={personalInfo.assets.cvFileName}
-                className="flex items-center justify-between p-2 rounded-md bg-[#D32F2F]/15 border border-[#D32F2F]/30 hover:bg-[#D32F2F]/25 text-white transition-all text-xs font-semibold"
+                className="flex items-center justify-between p-2 rounded-md bg-[#0B2046]/40 border border-[#0B2046] hover:bg-[#0B2046]/70 text-white transition-all text-xs font-semibold"
               >
                 <span className="flex items-center gap-2">
-                  <FileText className="w-4 h-4 text-[#D32F2F]" />
+                  <FileText className="w-4 h-4 text-blue-400" />
                   Curriculum Vitae (PDF)
                 </span>
-                <span className="text-[10px] uppercase tracking-wider bg-[#D32F2F] px-1.5 py-0.5 rounded text-white">
+                <span className="text-[10px] uppercase tracking-wider bg-[#0B2046] px-1.5 py-0.5 rounded text-white border border-blue-400/30">
                   Download
                 </span>
               </a>
@@ -185,7 +190,7 @@ export function Footer() {
             Custom Domain:{" "}
             <a
               href="https://www.nangdevit.xyz"
-              className="text-slate-400 hover:text-[#D32F2F] transition-colors underline underline-offset-2"
+              className="text-slate-400 hover:text-blue-400 transition-colors underline underline-offset-2"
             >
               www.nangdevit.xyz
             </a>

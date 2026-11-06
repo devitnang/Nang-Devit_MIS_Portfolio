@@ -35,7 +35,7 @@ export function HeroSection() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         {/* Profile Photo */}
         <div className="flex justify-center mb-6">
-          <div className="relative w-44 h-44 sm:w-52 sm:h-52 md:w-60 md:h-60 rounded-full p-1.5 bg-gradient-to-b from-[#0B2046] via-slate-200 to-[#D32F2F] dark:from-[#0F2756] dark:via-slate-700 dark:to-[#D32F2F] shadow-xl">
+          <div className="relative w-44 h-44 sm:w-52 sm:h-52 md:w-60 md:h-60 rounded-full p-1.5 bg-gradient-to-b from-[#0B2046] via-[#16366E] to-[#07152E] dark:from-[#0F2756] dark:via-[#1D4ED8] dark:to-[#07152E] shadow-xl">
             <div className="relative w-full h-full rounded-full overflow-hidden bg-slate-100 dark:bg-slate-900 border-2 border-white dark:border-[#080F1E]">
               <Image
                 src={personalInfo.assets.avatar}
@@ -56,7 +56,7 @@ export function HeroSection() {
 
         {/* Major Only */}
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-[#0B2046] dark:text-blue-300 font-bold text-sm sm:text-base md:text-lg mb-8 shadow-2xs">
-          <span className="w-2 h-2 rounded-full bg-[#D32F2F]" />
+          <span className="w-2 h-2 rounded-full bg-[#0B2046] dark:bg-blue-400" />
           <span>Major: Management Information Systems (MIS)</span>
         </div>
 
@@ -68,7 +68,7 @@ export function HeroSection() {
               href={s.url}
               target={s.url.startsWith("http") ? "_blank" : undefined}
               rel={s.url.startsWith("http") ? "noopener noreferrer" : undefined}
-              className="p-3 sm:p-3.5 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:text-white hover:bg-[#D32F2F] dark:hover:bg-[#D32F2F] hover:border-[#D32F2F] dark:hover:border-[#D32F2F] transition-all duration-200 shadow-xs hover:shadow-md hover:-translate-y-0.5 cursor-pointer"
+              className="p-3 sm:p-3.5 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:text-white hover:bg-[#0B2046] dark:hover:bg-blue-600 hover:border-[#0B2046] dark:hover:border-blue-600 transition-all duration-200 shadow-xs hover:shadow-md hover:-translate-y-0.5 cursor-pointer"
               title={`${s.name}: ${s.label}`}
               aria-label={s.name}
             >

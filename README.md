@@ -4,21 +4,21 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=flat&logo=typescript)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-06B6D4?style=flat&logo=tailwindcss)
 ![Telegram Bot](https://img.shields.io/badge/Telegram_Bot_API-Enabled-26A5E4?style=flat&logo=telegram)
-![Domain](https://img.shields.io/badge/Domain-www.nangdevit.xyz-D32F2F?style=flat)
+![Domain](https://img.shields.io/badge/Domain-www.nangdevit.xyz-0B2046?style=flat)
 
-Official personal portfolio website for **Nang Devit**, presenting a clean, corporate enterprise identity inspired by financial institutional portals such as the ABA Bank Careers Portal. Built to showcase professional background, technical competencies, enterprise projects, organizational experience, and academic achievements for recruiters, hiring managers, and prospective employers.
+Official personal portfolio website for **Nang Devit**, presenting a clean, corporate enterprise identity. Built to showcase professional background, technical competencies, enterprise projects, organizational experience, and academic achievements for recruiters, hiring managers, and prospective employers.
 
 🌐 **Production Domain:** [www.nangdevit.xyz](https://www.nangdevit.xyz)  
-👤 **Professional Title:** System Analyst | Data Analytics | Software Developer  
+👤 **Professional Title:** MIS (Management Information Systems)  
 🏛️ **Institution:** SETEC Institute — Management Information Systems (MIS)
 
 ---
 
 ## 🏛️ Corporate UI/UX Design System
 
-- **Clean Corporate Palette**:
+- **Signature Dark Blue Palette**:
   - **Navy Blue Primary (`#0B2046`)**: Authoritative, stable enterprise corporate tone.
-  - **Red Accent (`#D32F2F`)**: Professional, vibrant accent for critical call-to-action buttons and status indicators.
+  - **Dark Blue Accents (`#07152E` / `#16366E`)**: Clean corporate styling for buttons, active indicators, and cards.
   - **Clean White & Crisp Grays**: High legibility, subtle borders (`#E2E8F0`), flat UI, minimal shadows.
 - **Dual Theme Support**:
   - **Light Mode**: Traditional corporate enterprise aesthetic.

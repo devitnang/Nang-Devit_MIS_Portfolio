@@ -142,7 +142,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-screen bg-white text-slate-900 dark:bg-[#080F1E] dark:text-slate-100 font-sans selection:bg-red-600 selection:text-white transition-colors duration-200">
+      <body className="min-h-screen bg-white text-slate-900 dark:bg-[#080F1E] dark:text-slate-100 font-sans selection:bg-[#0B2046] selection:text-white transition-colors duration-200">
         <ThemeProvider
           attribute="class"
           defaultTheme="light"

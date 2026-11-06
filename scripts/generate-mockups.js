@@ -103,22 +103,22 @@ function createSvg(title, subtitle, badge, accentColor) {
 }
 
 const files = [
-  { name: 'banking-core-dashboard.svg', title: 'Enterprise Banking Core & CIS Platform', subtitle: 'Customer Information System, Account Balances & Audit Ledger', badge: 'C# / SQL SERVER', color: '#D32F2F' },
+  { name: 'banking-core-dashboard.svg', title: 'Enterprise Banking Core & CIS Platform', subtitle: 'Customer Information System, Account Balances & Audit Ledger', badge: 'C# / SQL SERVER', color: '#0052CC' },
   { name: 'banking-core-erd.svg', title: 'Relational Database Schema Architecture', subtitle: 'Third Normal Form (3NF) Entity-Relationship Design with Strict Foreign Constraints', badge: 'SYSTEM ANALYSIS', color: '#0284C7' },
   { name: 'banking-core-ledger.svg', title: 'Audit Trail & Financial Ledger Engine', subtitle: 'Immutable Double-Entry Ledger System with Automated Reconciliation', badge: 'BACKEND ARCHITECTURE', color: '#10B981' },
 
-  { name: 'setec-academic-portal.svg', title: 'SETEC Academic & Student Management System', subtitle: 'Comprehensive Student Lifecycle, Course Registration & Exam Grading', badge: 'ORACLE / NEXT.JS', color: '#D32F2F' },
+  { name: 'setec-academic-portal.svg', title: 'SETEC Academic & Student Management System', subtitle: 'Comprehensive Student Lifecycle, Course Registration & Exam Grading', badge: 'ORACLE / NEXT.JS', color: '#1E40AF' },
   { name: 'setec-analytics-bi.svg', title: 'Academic Progression & GPA Analytics', subtitle: 'Student Performance Prediction & Departmental Grade Distribution', badge: 'DATA ANALYTICS', color: '#8B5CF6' },
   { name: 'setec-enrollment-flow.svg', title: 'Course Enrollment Workflow Engine', subtitle: 'Prerequisite Verification, Capacity Checks & Real-Time Scheduling', badge: 'BPMN WORKFLOW', color: '#0EA5E9' },
 
-  { name: 'smartpay-mobile-home.svg', title: 'SmartPay - Digital Wallet & QR Payment App', subtitle: 'Cross-Platform Banking Experience with Biometric Authentication', badge: 'FLUTTER / DART', color: '#D32F2F' },
+  { name: 'smartpay-mobile-home.svg', title: 'SmartPay - Digital Wallet & QR Payment App', subtitle: 'Cross-Platform Banking Experience with Biometric Authentication', badge: 'FLUTTER / DART', color: '#2563EB' },
   { name: 'smartpay-mobile-qr.svg', title: 'KHQR Compatible Payment Processing', subtitle: 'Standardized Merchant & Peer-to-Peer QR Code Scanner and Generator', badge: 'MOBILE API', color: '#10B981' },
-  { name: 'smartpay-analytics.svg', title: 'Personal Spending Trends & Category Breakdown', subtitle: 'Monthly Budget Health Analysis with Interactive Visual Charts', badge: 'FINTECH ANALYTICS', color: '#F59E0B' },
+  { name: 'smartpay-analytics.svg', title: 'Personal Spending Trends & Category Breakdown', subtitle: 'Monthly Budget Health Analysis with Interactive Visual Charts', badge: 'FINTECH ANALYTICS', color: '#0284C7' },
 
-  { name: 'inventory-erp-overview.svg', title: 'Supply Chain & Inventory Management ERP', subtitle: 'Multi-Warehouse Inventory Tracking, Automated Reordering & PO Generation', badge: 'C# .NET / MYSQL', color: '#D32F2F' },
+  { name: 'inventory-erp-overview.svg', title: 'Supply Chain & Inventory Management ERP', subtitle: 'Multi-Warehouse Inventory Tracking, Automated Reordering & PO Generation', badge: 'C# .NET / MYSQL', color: '#1E3A8A' },
   { name: 'inventory-erp-analytics.svg', title: 'Stock Turnover & Demand Forecasting Dashboard', subtitle: 'Predictive Stockout Alerts & Supplier Reliability Scorecards', badge: 'BUSINESS INTELLIGENCE', color: '#0284C7' },
 
-  { name: 'electoral-logistics-map.svg', title: 'Electoral Logistics & Precinct Tally System', subtitle: 'Voter Verification Audit, Ballot Custody Logs & Real-Time Tally Aggregation', badge: 'DATA VERIFICATION', color: '#D32F2F' },
+  { name: 'electoral-logistics-map.svg', title: 'Electoral Logistics & Precinct Tally System', subtitle: 'Voter Verification Audit, Ballot Custody Logs & Real-Time Tally Aggregation', badge: 'DATA VERIFICATION', color: '#1D4ED8' },
   { name: 'electoral-turnout-stats.svg', title: 'Voter Turnout & Statistical Reporting Suite', subtitle: 'Comprehensive Provincial Demographic Breakdown and Participation Telemetry', badge: 'STATISTICAL MODELING', color: '#10B981' }
 ];
 

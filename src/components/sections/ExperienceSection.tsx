@@ -8,7 +8,6 @@ import {
   MapPin,
   Calendar,
   CheckCircle2,
-  Briefcase,
   ShieldCheck,
   Building2,
 } from "lucide-react";
@@ -33,7 +32,7 @@ export function ExperienceSection() {
               className="relative p-6 sm:p-8 rounded-xl bg-white dark:bg-[#0D182E] border border-slate-200 dark:border-slate-800 shadow-2xs hover:shadow-md transition-shadow"
             >
               {/* Top Accent Strip */}
-              <div className="absolute top-0 left-8 right-8 h-1 bg-[#D32F2F] rounded-b" />
+              <div className="absolute top-0 left-8 right-8 h-1 bg-[#0B2046] dark:bg-blue-600 rounded-b" />
 
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 mb-6 border-b border-slate-100 dark:border-slate-800">
                 <div className="flex items-center gap-4">
@@ -49,7 +48,7 @@ export function ExperienceSection() {
 
                   <div>
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="px-2 py-0.5 rounded text-[11px] font-bold uppercase tracking-wider bg-red-100 dark:bg-red-950/60 text-[#D32F2F] dark:text-red-400">
+                      <span className="px-2 py-0.5 rounded text-[11px] font-bold uppercase tracking-wider bg-blue-100 dark:bg-blue-950/60 text-[#0B2046] dark:text-blue-300">
                         {exp.type}
                       </span>
                       <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">
@@ -71,7 +70,7 @@ export function ExperienceSection() {
                 {/* Metadata Badge */}
                 <div className="sm:text-right space-y-1 text-xs text-slate-500 dark:text-slate-400">
                   <div className="flex sm:justify-end items-center gap-1.5 font-medium">
-                    <Calendar className="w-3.5 h-3.5 text-[#D32F2F]" />
+                    <Calendar className="w-3.5 h-3.5 text-[#0B2046] dark:text-blue-400" />
                     <span>{exp.period}</span>
                   </div>
                   <div className="flex sm:justify-end items-center gap-1.5">
@@ -84,7 +83,7 @@ export function ExperienceSection() {
               {/* Responsibilities List */}
               <div className="space-y-4">
                 <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#0B2046] dark:text-slate-200 flex items-center gap-2">
-                  <ShieldCheck className="w-4 h-4 text-[#D32F2F]" />
+                  <ShieldCheck className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />
                   <span>Key Responsibilities & Operational Contributions</span>
                 </h4>
 
@@ -94,7 +93,7 @@ export function ExperienceSection() {
                       key={idx}
                       className="flex items-start gap-3 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed"
                     >
-                      <CheckCircle2 className="w-4 h-4 text-[#D32F2F] shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-4 h-4 text-[#0B2046] dark:text-blue-400 shrink-0 mt-0.5" />
                       <span>{resp}</span>
                     </li>
                   ))}
@@ -124,4 +123,3 @@ export function ExperienceSection() {
     </section>
   );
 }
-

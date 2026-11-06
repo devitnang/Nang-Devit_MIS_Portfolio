@@ -65,7 +65,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
         <div className="px-6 py-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between bg-slate-50/70 dark:bg-slate-900/60 sticky top-0 z-10">
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <span className="px-2.5 py-0.5 rounded text-xs font-semibold bg-red-100 dark:bg-red-950/60 text-[#D32F2F] dark:text-red-400 border border-red-200 dark:border-red-900/40">
+              <span className="px-2.5 py-0.5 rounded text-xs font-semibold bg-blue-100 dark:bg-blue-950/60 text-[#0B2046] dark:text-blue-300 border border-blue-200 dark:border-blue-900/40">
                 {project.category}
               </span>
               <span className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1">
@@ -104,14 +104,14 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                   <>
                     <button
                       onClick={handlePrev}
-                      className="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-slate-900/80 text-white hover:bg-red-600 transition-colors cursor-pointer border border-white/10"
+                      className="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-slate-900/80 text-white hover:bg-[#0B2046] transition-colors cursor-pointer border border-white/10"
                       aria-label="Previous image"
                     >
                       <ChevronLeft className="w-5 h-5" />
                     </button>
                     <button
                       onClick={handleNext}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-slate-900/80 text-white hover:bg-red-600 transition-colors cursor-pointer border border-white/10"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-slate-900/80 text-white hover:bg-[#0B2046] transition-colors cursor-pointer border border-white/10"
                       aria-label="Next image"
                     >
                       <ChevronRight className="w-5 h-5" />
@@ -139,7 +139,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                       onClick={() => setCurrentImageIndex(idx)}
                       className={`relative w-20 h-12 rounded-md overflow-hidden border-2 transition-all cursor-pointer ${
                         idx === currentImageIndex
-                          ? "border-[#D32F2F] shadow-sm scale-105"
+                          ? "border-[#0B2046] dark:border-blue-400 shadow-sm scale-105"
                           : "border-slate-300 dark:border-slate-700 opacity-60 hover:opacity-100"
                       }`}
                     >
@@ -159,7 +159,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
           {/* Project Details Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 text-xs sm:text-sm">
             <div className="flex items-center gap-2">
-              <Layers className="w-4 h-4 text-[#D32F2F]" />
+              <Layers className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />
               <span className="text-slate-500 dark:text-slate-400">Role:</span>
               <span className="font-semibold text-slate-800 dark:text-slate-200">
                 {project.role}
@@ -167,7 +167,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
             </div>
             {project.clientOrOrg && (
               <div className="flex items-center gap-2">
-                <Building className="w-4 h-4 text-[#D32F2F]" />
+                <Building className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />
                 <span className="text-slate-500 dark:text-slate-400">Context:</span>
                 <span className="font-semibold text-slate-800 dark:text-slate-200">
                   {project.clientOrOrg}
@@ -198,7 +198,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                     key={idx}
                     className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300"
                   >
-                    <CheckCircle2 className="w-4 h-4 text-[#D32F2F] shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-[#0B2046] dark:text-blue-400 shrink-0 mt-0.5" />
                     <span>{feature}</span>
                   </li>
                 ))}
@@ -243,7 +243,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                 href={project.demoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-md text-xs sm:text-sm font-semibold bg-[#D32F2F] hover:bg-[#B71C1C] text-white transition-colors"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-md text-xs sm:text-sm font-semibold bg-[#0B2046] hover:bg-[#07152E] dark:bg-blue-600 dark:hover:bg-blue-700 text-white transition-colors"
               >
                 <ExternalLink className="w-4 h-4" />
                 <span>Live System Demo</span>
@@ -252,7 +252,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
           </div>
           <button
             onClick={onClose}
-            className="px-4 py-2 rounded-md text-xs sm:text-sm font-medium border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+            className="px-4 py-2 rounded-md text-xs sm:text-sm font-medium border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
           >
             Close
           </button>

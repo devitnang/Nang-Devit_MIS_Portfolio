@@ -171,7 +171,7 @@ export function ContactSection() {
                     <span className="text-xs text-slate-500 dark:text-slate-400 block font-medium">
                       Official Website
                     </span>
-                    <span className="text-sm font-bold text-[#0B2046] dark:text-white group-hover:text-[#D32F2F] dark:group-hover:text-red-400 transition-colors">
+                    <span className="text-sm font-bold text-[#0B2046] dark:text-white group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors">
                       {personalInfo.contact.displayWebsite}
                     </span>
                   </div>
@@ -182,14 +182,14 @@ export function ContactSection() {
                   href={`mailto:${personalInfo.contact.email}`}
                   className="flex items-start gap-3.5 p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800/60 border border-transparent hover:border-slate-200 dark:hover:border-slate-700 transition-all group"
                 >
-                  <div className="p-2.5 rounded-lg bg-red-50 dark:bg-red-950/40 text-[#D32F2F] dark:text-red-400 group-hover:scale-110 transition-transform">
+                  <div className="p-2.5 rounded-lg bg-blue-50 dark:bg-blue-950/40 text-[#0B2046] dark:text-blue-400 group-hover:scale-110 transition-transform">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
                     <span className="text-xs text-slate-500 dark:text-slate-400 block font-medium">
                       Email Address
                     </span>
-                    <span className="text-sm font-bold text-[#0B2046] dark:text-white group-hover:text-[#D32F2F] dark:group-hover:text-red-400 transition-colors">
+                    <span className="text-sm font-bold text-[#0B2046] dark:text-white group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors">
                       {personalInfo.contact.email}
                     </span>
                   </div>
@@ -207,7 +207,7 @@ export function ContactSection() {
                     <span className="text-xs text-slate-500 dark:text-slate-400 block font-medium">
                       Phone Number
                     </span>
-                    <span className="text-sm font-bold text-[#0B2046] dark:text-white group-hover:text-[#D32F2F] dark:group-hover:text-red-400 transition-colors">
+                    <span className="text-sm font-bold text-[#0B2046] dark:text-white group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors">
                       {personalInfo.contact.displayPhone}
                     </span>
                   </div>
@@ -227,7 +227,7 @@ export function ContactSection() {
                     <span className="text-xs text-slate-500 dark:text-slate-400 block font-medium">
                       Telegram Contact
                     </span>
-                    <span className="text-sm font-bold text-[#0B2046] dark:text-white group-hover:text-[#D32F2F] dark:group-hover:text-red-400 transition-colors">
+                    <span className="text-sm font-bold text-[#0B2046] dark:text-white group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors">
                       @{personalInfo.contact.telegramUsername}
                     </span>
                   </div>
@@ -274,7 +274,7 @@ export function ContactSection() {
 
             {/* Telegram Notification Notice Box */}
             <div className="p-4 rounded-xl bg-blue-50/70 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-900/40 text-xs text-slate-700 dark:text-slate-300 flex items-start gap-3">
-              <Send className="w-4 h-4 text-[#D32F2F] shrink-0 mt-0.5" />
+              <Send className="w-4 h-4 text-[#0B2046] dark:text-blue-400 shrink-0 mt-0.5" />
               <div>
                 <p className="font-bold text-[#0B2046] dark:text-white mb-0.5">
                   Real-Time Telegram Notification Active
@@ -311,8 +311,8 @@ export function ContactSection() {
 
               {/* Error Notification Alert */}
               {submitError && (
-                <div className="mb-6 p-4 rounded-lg bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-800 text-red-800 dark:text-red-200 flex items-start gap-3 text-xs sm:text-sm">
-                  <AlertCircle className="w-5 h-5 text-[#D32F2F] shrink-0 mt-0.5" />
+                <div className="mb-6 p-4 rounded-lg bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800 text-blue-900 dark:text-blue-200 flex items-start gap-3 text-xs sm:text-sm">
+                  <AlertCircle className="w-5 h-5 text-[#0B2046] dark:text-blue-400 shrink-0 mt-0.5" />
                   <div>
                     <p className="font-bold">Submission Notice</p>
                     <p className="mt-0.5">{submitError}</p>
@@ -342,7 +342,7 @@ export function ContactSection() {
                       htmlFor="fullName"
                       className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5"
                     >
-                      Full Name <span className="text-[#D32F2F]">*</span>
+                      Full Name <span className="text-[#0B2046] dark:text-blue-400">*</span>
                     </label>
                     <input
                       type="text"
@@ -355,7 +355,7 @@ export function ContactSection() {
                       className={`w-full px-3.5 py-2.5 text-xs sm:text-sm rounded-md bg-slate-50 dark:bg-slate-900 border text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-1 transition-colors ${
                         errors.fullName
                           ? "border-red-500 focus:ring-red-500"
-                          : "border-slate-300 dark:border-slate-700 focus:ring-[#D32F2F]"
+                          : "border-slate-300 dark:border-slate-700 focus:ring-[#0B2046] dark:focus:ring-blue-400"
                       }`}
                     />
                     {errors.fullName && (
@@ -371,7 +371,7 @@ export function ContactSection() {
                       htmlFor="email"
                       className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5"
                     >
-                      Email Address <span className="text-[#D32F2F]">*</span>
+                      Email Address <span className="text-[#0B2046] dark:text-blue-400">*</span>
                     </label>
                     <input
                       type="email"
@@ -384,7 +384,7 @@ export function ContactSection() {
                       className={`w-full px-3.5 py-2.5 text-xs sm:text-sm rounded-md bg-slate-50 dark:bg-slate-900 border text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-1 transition-colors ${
                         errors.email
                           ? "border-red-500 focus:ring-red-500"
-                          : "border-slate-300 dark:border-slate-700 focus:ring-[#D32F2F]"
+                          : "border-slate-300 dark:border-slate-700 focus:ring-[#0B2046] dark:focus:ring-blue-400"
                       }`}
                     />
                     {errors.email && (
@@ -401,20 +401,20 @@ export function ContactSection() {
                     htmlFor="subject"
                     className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5"
                   >
-                    Subject <span className="text-[#D32F2F]">*</span>
+                    Subject <span className="text-[#0B2046] dark:text-blue-400">*</span>
                   </label>
                   <input
                     type="text"
                     id="subject"
                     name="subject"
-                    placeholder="e.g. System Analyst Opportunity / Project Inquiry"
+                    placeholder="e.g. Project Inquiry / Collaboration"
                     value={formData.subject}
                     onChange={handleChange}
                     disabled={isSubmitting}
                     className={`w-full px-3.5 py-2.5 text-xs sm:text-sm rounded-md bg-slate-50 dark:bg-slate-900 border text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-1 transition-colors ${
                       errors.subject
                         ? "border-red-500 focus:ring-red-500"
-                        : "border-slate-300 dark:border-slate-700 focus:ring-[#D32F2F]"
+                        : "border-slate-300 dark:border-slate-700 focus:ring-[#0B2046] dark:focus:ring-blue-400"
                     }`}
                   />
                   {errors.subject && (
@@ -430,20 +430,20 @@ export function ContactSection() {
                     htmlFor="message"
                     className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5"
                   >
-                    Description / Message <span className="text-[#D32F2F]">*</span>
+                    Description / Message <span className="text-[#0B2046] dark:text-blue-400">*</span>
                   </label>
                   <textarea
                     id="message"
                     name="message"
                     rows={5}
-                    placeholder="Please describe your project, inquiry, or job opportunity in detail..."
+                    placeholder="Please describe your project, inquiry, or discussion topic in detail..."
                     value={formData.message}
                     onChange={handleChange}
                     disabled={isSubmitting}
                     className={`w-full px-3.5 py-2.5 text-xs sm:text-sm rounded-md bg-slate-50 dark:bg-slate-900 border text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-1 transition-colors resize-y ${
                       errors.message
                         ? "border-red-500 focus:ring-red-500"
-                        : "border-slate-300 dark:border-slate-700 focus:ring-[#D32F2F]"
+                        : "border-slate-300 dark:border-slate-700 focus:ring-[#0B2046] dark:focus:ring-blue-400"
                     }`}
                   />
                   <div className="flex items-center justify-between mt-1 text-[11px] text-slate-500">
@@ -465,7 +465,7 @@ export function ContactSection() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3 rounded-md text-xs sm:text-sm font-bold uppercase tracking-wider bg-[#D32F2F] hover:bg-[#B71C1C] text-white shadow-xs hover:shadow transition-all disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3 rounded-md text-xs sm:text-sm font-bold uppercase tracking-wider bg-[#0B2046] hover:bg-[#07152E] dark:bg-blue-600 dark:hover:bg-blue-700 text-white shadow-xs hover:shadow transition-all disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer"
                   >
                     {isSubmitting ? (
                       <>

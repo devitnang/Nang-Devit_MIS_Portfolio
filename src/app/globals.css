@@ -7,8 +7,7 @@
   --foreground: #0f172a;
   --corporate-navy: #0b2046;
   --corporate-navy-dark: #07152e;
-  --corporate-red: #d32f2f;
-  --corporate-red-hover: #b71c1c;
+  --corporate-blue-accent: #16366e;
   --corporate-border: #e2e8f0;
   --card-bg: #ffffff;
   --card-subtle: #f8fafc;
@@ -19,8 +18,7 @@
   --foreground: #f1f5f9;
   --corporate-navy: #0f2756;
   --corporate-navy-dark: #071228;
-  --corporate-red: #e53935;
-  --corporate-red-hover: #d32f2f;
+  --corporate-blue-accent: #2563eb;
   --corporate-border: #1e293b;
   --card-bg: #0d182e;
   --card-subtle: #13223f;
@@ -63,6 +61,11 @@ body {
 
 /* Corporate Focus Rings */
 :focus-visible {
-  outline: 2px solid #d32f2f;
+  outline: 2px solid #0b2046;
+  outline-offset: 2px;
+}
+
+.dark :focus-visible {
+  outline: 2px solid #38bdf8;
   outline-offset: 2px;
 }

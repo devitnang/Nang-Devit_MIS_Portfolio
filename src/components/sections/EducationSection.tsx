@@ -5,7 +5,6 @@ import Image from "next/image";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { educationList } from "@/data/educationData";
 import {
-  GraduationCap,
   Calendar,
   MapPin,
   CheckCircle2,
@@ -61,7 +60,7 @@ export function EducationSection() {
                       {edu.institution}
                     </h3>
 
-                    <p className="text-xs sm:text-sm font-semibold text-[#D32F2F] dark:text-red-400 mt-0.5">
+                    <p className="text-xs sm:text-sm font-semibold text-[#0B2046] dark:text-blue-300 mt-0.5">
                       {edu.degree}
                     </p>
                   </div>
@@ -88,7 +87,7 @@ export function EducationSection() {
               {/* Core Coursework Grid */}
               <div className="mb-6">
                 <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#0B2046] dark:text-slate-200 flex items-center gap-2 mb-3">
-                  <BookOpen className="w-4 h-4 text-[#D32F2F]" />
+                  <BookOpen className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />
                   <span>Key Coursework & Technical Specializations</span>
                 </h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
@@ -97,7 +96,7 @@ export function EducationSection() {
                       key={idx}
                       className="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 flex items-center gap-2.5"
                     >
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#D32F2F] shrink-0" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#0B2046] dark:bg-blue-400 shrink-0" />
                       <span>{course}</span>
                     </div>
                   ))}
@@ -126,4 +125,3 @@ export function EducationSection() {
     </section>
   );
 }
-

@@ -21,13 +21,13 @@ export function AboutSection() {
   const getPillarIcon = (iconName: string) => {
     switch (iconName) {
       case "Workflow":
-        return <Workflow className="w-6 h-6 text-[#D32F2F]" />;
+        return <Workflow className="w-6 h-6 text-[#0B2046] dark:text-blue-400" />;
       case "BarChart3":
         return <BarChart3 className="w-6 h-6 text-[#0B2046] dark:text-blue-400" />;
       case "Code2":
-        return <Code2 className="w-6 h-6 text-[#D32F2F]" />;
+        return <Code2 className="w-6 h-6 text-[#0B2046] dark:text-blue-400" />;
       default:
-        return <Layers className="w-6 h-6 text-[#D32F2F]" />;
+        return <Layers className="w-6 h-6 text-[#0B2046] dark:text-blue-400" />;
     }
   };
 
@@ -50,7 +50,7 @@ export function AboutSection() {
             <div>
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-lg bg-[#0B2046] dark:bg-[#0F2756] text-white flex items-center justify-center">
-                  <UserCheck className="w-5 h-5 text-red-400" />
+                  <UserCheck className="w-5 h-5 text-blue-300" />
                 </div>
                 <div>
                   <h3 className="text-base font-bold text-[#0B2046] dark:text-white">
@@ -69,7 +69,7 @@ export function AboutSection() {
               </p>
             </div>
             <div className="mt-6 pt-4 border-t border-slate-200 dark:border-slate-800">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-[#D32F2F]">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-[#0B2046] dark:text-blue-400">
                 Core Mindset: Precision &bull; Integrity &bull; Adaptability
               </span>
             </div>
@@ -80,7 +80,7 @@ export function AboutSection() {
             <div>
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-lg bg-[#0B2046] dark:bg-[#0F2756] text-white flex items-center justify-center">
-                  <GraduationCap className="w-5 h-5 text-red-400" />
+                  <GraduationCap className="w-5 h-5 text-blue-300" />
                 </div>
                 <div>
                   <h3 className="text-base font-bold text-[#0B2046] dark:text-white">
@@ -96,15 +96,15 @@ export function AboutSection() {
               </p>
               <ul className="space-y-1.5 text-xs text-slate-600 dark:text-slate-300">
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#D32F2F] shrink-0" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#0B2046] dark:text-blue-400 shrink-0" />
                   <span>Systems Analysis & Structured Design (SAD)</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#D32F2F] shrink-0" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#0B2046] dark:text-blue-400 shrink-0" />
                   <span>Enterprise Database Architecture (Oracle, MSSQL)</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#D32F2F] shrink-0" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#0B2046] dark:text-blue-400 shrink-0" />
                   <span>ERP Frameworks & Decision Support Systems</span>
                 </li>
               </ul>
@@ -112,7 +112,7 @@ export function AboutSection() {
             <div className="mt-6 pt-4 border-t border-slate-200 dark:border-slate-800">
               <Link
                 href="#education"
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0B2046] dark:text-blue-400 hover:text-[#D32F2F] dark:hover:text-red-400 transition-colors"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0B2046] dark:text-blue-400 hover:underline transition-colors"
               >
                 <span>View Academic Timeline</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -125,7 +125,7 @@ export function AboutSection() {
             <div>
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-lg bg-[#0B2046] dark:bg-[#0F2756] text-white flex items-center justify-center">
-                  <Target className="w-5 h-5 text-red-400" />
+                  <Target className="w-5 h-5 text-blue-300" />
                 </div>
                 <div>
                   <h3 className="text-base font-bold text-[#0B2046] dark:text-white">
@@ -137,7 +137,7 @@ export function AboutSection() {
                 </div>
               </div>
               <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
-                To contribute to high-integrity enterprises, financial institutions, and innovative technology companies as a <strong>System Analyst</strong> or <strong>Software Developer</strong>.
+                To contribute to high-integrity enterprises, financial institutions, and innovative technology companies with an analytical mindset.
               </p>
               <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                 Committed to architecting secure systems, elevating data quality, designing seamless interfaces, and collaborating effectively across business and engineering units.
@@ -146,7 +146,7 @@ export function AboutSection() {
             <div className="mt-6 pt-4 border-t border-slate-200 dark:border-slate-800">
               <Link
                 href="#contact"
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#D32F2F] hover:underline"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0B2046] dark:text-blue-400 hover:underline"
               >
                 <span>Discuss Opportunities</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -155,7 +155,7 @@ export function AboutSection() {
           </div>
         </div>
 
-        {/* The 3 Core Pillars: System Analysis, Data Analytics, Software Development */}
+        {/* The 3 Core Pillars */}
         <div className="mt-12">
           <div className="mb-6 flex items-center justify-between">
             <div>
@@ -173,7 +173,7 @@ export function AboutSection() {
             {personalInfo.corePillars.map((pillar) => (
               <div
                 key={pillar.id}
-                className="p-6 rounded-xl bg-white dark:bg-[#0B1528] border border-slate-200 dark:border-slate-800 hover:border-[#D32F2F]/40 dark:hover:border-red-500/40 transition-all shadow-xs hover:shadow-md"
+                className="p-6 rounded-xl bg-white dark:bg-[#0B1528] border border-slate-200 dark:border-slate-800 hover:border-[#0B2046]/40 dark:hover:border-blue-500/40 transition-all shadow-xs hover:shadow-md"
               >
                 <div className="flex items-center justify-between mb-4">
                   <div className="p-2.5 rounded-lg bg-slate-100 dark:bg-slate-800">
@@ -199,7 +199,7 @@ export function AboutSection() {
                   <ul className="space-y-1.5 text-xs text-slate-600 dark:text-slate-300">
                     {pillar.competencies.map((comp, idx) => (
                       <li key={idx} className="flex items-start gap-2">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#D32F2F] shrink-0 mt-0.5" />
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#0B2046] dark:text-blue-400 shrink-0 mt-0.5" />
                         <span>{comp}</span>
                       </li>
                     ))}
@@ -213,4 +213,3 @@ export function AboutSection() {
     </section>
   );
 }
-

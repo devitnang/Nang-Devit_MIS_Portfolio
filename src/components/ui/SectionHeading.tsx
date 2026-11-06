@@ -22,9 +22,9 @@ export function SectionHeading({
       <div
         className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-3.5 border ${
           center ? "mx-auto" : ""
-        } bg-slate-50 border-slate-200 text-[#0B2046] dark:bg-slate-900/80 dark:border-slate-800 dark:text-red-400`}
+        } bg-slate-50 border-slate-200 text-[#0B2046] dark:bg-slate-900/80 dark:border-slate-800 dark:text-blue-300`}
       >
-        <span className="w-1.5 h-1.5 rounded-full bg-[#D32F2F]" />
+        <span className="w-1.5 h-1.5 rounded-full bg-[#0B2046] dark:bg-blue-400" />
         {badge}
       </div>
       <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[#0B2046] dark:text-white mb-3">
@@ -36,11 +36,10 @@ export function SectionHeading({
         </p>
       )}
       <div
-        className={`mt-4 h-0.5 w-16 bg-[#D32F2F] ${
+        className={`mt-4 h-0.5 w-16 bg-[#0B2046] dark:bg-blue-500 ${
           center ? "mx-auto" : ""
         }`}
       />
     </div>
   );
 }
-

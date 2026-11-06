@@ -25,7 +25,7 @@
   <rect x="170" y="60" width="360" height="30" rx="6" fill="rgba(255,255,255,0.06)"/>
   <text x="185" y="80" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" font-size="12">https://portal.nangdevit.xyz/enterprise-system</text>
   
-  <rect x="940" y="60" width="170" height="30" rx="6" fill="#D32F2F"/>
+  <rect x="940" y="60" width="170" height="30" rx="6" fill="#1E40AF"/>
   <text x="1025" y="80" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" font-size="11" font-weight="bold" text-anchor="middle" letter-spacing="0.5">ORACLE / NEXT.JS</text>
 
   <!-- Main Showcase Container -->
@@ -33,8 +33,8 @@
 
   <!-- Left Sidebar Mock -->
   <rect x="60" y="125" width="230" height="575" rx="12" fill="#0D1D3A" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-  <rect x="85" y="160" width="180" height="28" rx="6" fill="#D32F2F" opacity="0.25"/>
-  <text x="100" y="179" fill="#D32F2F" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" font-size="12" font-weight="bold">SYSTEM MODULE</text>
+  <rect x="85" y="160" width="180" height="28" rx="6" fill="#1E40AF" opacity="0.25"/>
+  <text x="100" y="179" fill="#1E40AF" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" font-size="12" font-weight="bold">SYSTEM MODULE</text>
   
   <rect x="85" y="215" width="150" height="12" rx="4" fill="rgba(255,255,255,0.4)"/>
   <rect x="85" y="245" width="120" height="12" rx="4" fill="rgba(255,255,255,0.18)"/>
@@ -56,7 +56,7 @@
   <rect x="580" y="240" width="235" height="105" rx="8" fill="#152A52" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
   <text x="600" y="270" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" font-size="11" font-weight="bold">DATABASE QUERY LATENCY</text>
   <text x="600" y="305" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" font-size="26" font-weight="bold">&lt; 18 ms</text>
-  <text x="600" y="330" fill="#D32F2F" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" font-size="12">Indexed Schema</text>
+  <text x="600" y="330" fill="#1E40AF" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" font-size="12">Indexed Schema</text>
 
   <rect x="835" y="240" width="275" height="105" rx="8" fill="#152A52" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
   <text x="855" y="270" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" font-size="11" font-weight="bold">AUDIT SECURITY STATUS</text>
@@ -73,12 +73,12 @@
   <line x1="350" y1="610" x2="1080" y2="610" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
 
   <!-- Waveform / Chart Path -->
-  <path d="M 370 600 Q 480 480, 560 520 T 730 430 T 910 470 T 1060 410" fill="none" stroke="#D32F2F" stroke-width="4"/>
-  <circle cx="370" cy="600" r="5" fill="#D32F2F"/>
-  <circle cx="560" cy="520" r="5" fill="#D32F2F"/>
-  <circle cx="730" cy="430" r="5" fill="#D32F2F"/>
-  <circle cx="910" cy="470" r="5" fill="#D32F2F"/>
-  <circle cx="1060" cy="410" r="5" fill="#D32F2F"/>
+  <path d="M 370 600 Q 480 480, 560 520 T 730 430 T 910 470 T 1060 410" fill="none" stroke="#1E40AF" stroke-width="4"/>
+  <circle cx="370" cy="600" r="5" fill="#1E40AF"/>
+  <circle cx="560" cy="520" r="5" fill="#1E40AF"/>
+  <circle cx="730" cy="430" r="5" fill="#1E40AF"/>
+  <circle cx="910" cy="470" r="5" fill="#1E40AF"/>
+  <circle cx="1060" cy="410" r="5" fill="#1E40AF"/>
 
   <!-- Mock Table Rows on bottom -->
   <rect x="370" y="390" width="180" height="20" rx="4" fill="rgba(255,255,255,0.15)"/>

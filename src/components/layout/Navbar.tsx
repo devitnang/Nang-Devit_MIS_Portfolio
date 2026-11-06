@@ -62,7 +62,7 @@ export function Navbar() {
             className="flex items-center gap-3 group focus:outline-none"
             aria-label="Nang Devit - Home"
           >
-            <div className="relative w-10 h-10 rounded-lg bg-white dark:bg-[#0F2756] p-1 border border-slate-200 dark:border-slate-700 shadow-2xs group-hover:border-[#D32F2F] dark:group-hover:border-[#D32F2F] transition-colors duration-200 flex items-center justify-center overflow-hidden">
+            <div className="relative w-10 h-10 rounded-lg bg-white dark:bg-[#0F2756] p-1 border border-slate-200 dark:border-slate-700 shadow-2xs group-hover:border-[#0B2046] dark:group-hover:border-blue-400 transition-colors duration-200 flex items-center justify-center overflow-hidden">
               <Image
                 src="/assets/images/logo/mylogo_1.png"
                 alt="Nang Devit Logo"
@@ -72,7 +72,7 @@ export function Navbar() {
               />
             </div>
             <div className="flex flex-col">
-              <span className="text-lg font-bold tracking-tight text-[#0B2046] dark:text-white leading-none group-hover:text-[#D32F2F] dark:group-hover:text-red-400 transition-colors">
+              <span className="text-lg font-bold tracking-tight text-[#0B2046] dark:text-white leading-none group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors">
                 NANG DEVIT
               </span>
               <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400 tracking-wider uppercase mt-1">
@@ -91,13 +91,13 @@ export function Navbar() {
                   href={link.href}
                   className={`px-3 py-1.5 rounded-md text-sm font-semibold tracking-wide transition-all duration-150 relative ${
                     isActive
-                      ? "text-[#D32F2F] dark:text-red-400 font-bold"
+                      ? "text-[#0B2046] dark:text-blue-400 font-bold"
                       : "text-slate-700 dark:text-slate-300 hover:text-[#0B2046] dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/60"
                   }`}
                 >
                   {link.name}
                   {isActive && (
-                    <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-[#D32F2F] dark:bg-red-500 rounded-full" />
+                    <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-[#0B2046] dark:bg-blue-400 rounded-full" />
                   )}
                 </Link>
               );
@@ -114,13 +114,13 @@ export function Navbar() {
               className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-md text-xs font-semibold uppercase tracking-wider border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
               title="Download Curriculum Vitae (PDF)"
             >
-              <FileText className="w-3.5 h-3.5 text-[#D32F2F]" />
+              <FileText className="w-3.5 h-3.5 text-[#0B2046] dark:text-blue-400" />
               <span>CV</span>
             </a>
 
             <Link
               href="#contact"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-md text-xs font-bold uppercase tracking-wider bg-[#D32F2F] hover:bg-[#B71C1C] text-white shadow-xs hover:shadow transition-all duration-150 cursor-pointer"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-md text-xs font-bold uppercase tracking-wider bg-[#0B2046] hover:bg-[#07152E] dark:bg-blue-600 dark:hover:bg-blue-700 text-white shadow-xs hover:shadow transition-all duration-150 cursor-pointer"
             >
               <Send className="w-3.5 h-3.5" />
               <span>Contact Me</span>
@@ -137,7 +137,7 @@ export function Navbar() {
               aria-expanded={mobileMenuOpen}
             >
               {mobileMenuOpen ? (
-                <X className="w-6 h-6 text-[#D32F2F]" />
+                <X className="w-6 h-6 text-[#0B2046] dark:text-blue-400" />
               ) : (
                 <Menu className="w-6 h-6 text-[#0B2046] dark:text-white" />
               )}
@@ -159,14 +159,14 @@ export function Navbar() {
                   onClick={() => setMobileMenuOpen(false)}
                   className={`flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors ${
                     isActive
-                      ? "bg-red-50 dark:bg-red-950/40 text-[#D32F2F] dark:text-red-400 font-bold"
+                      ? "bg-blue-50 dark:bg-blue-950/40 text-[#0B2046] dark:text-blue-400 font-bold"
                       : "text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
                   }`}
                 >
                   <span>{link.name}</span>
                   <ChevronRight
                     className={`w-4 h-4 ${
-                      isActive ? "text-[#D32F2F]" : "text-slate-400"
+                      isActive ? "text-[#0B2046] dark:text-blue-400" : "text-slate-400"
                     }`}
                   />
                 </Link>
@@ -181,13 +181,13 @@ export function Navbar() {
               onClick={() => setMobileMenuOpen(false)}
               className="w-full flex items-center justify-center gap-2 py-2.5 rounded-md text-xs font-bold uppercase tracking-wider border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
             >
-              <FileText className="w-4 h-4 text-[#D32F2F]" />
+              <FileText className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />
               <span>Download Full CV (PDF)</span>
             </a>
             <Link
               href="#contact"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full flex items-center justify-center gap-2 py-2.5 rounded-md text-xs font-bold uppercase tracking-wider bg-[#D32F2F] text-white hover:bg-[#B71C1C]"
+              className="w-full flex items-center justify-center gap-2 py-2.5 rounded-md text-xs font-bold uppercase tracking-wider bg-[#0B2046] dark:bg-blue-600 text-white hover:bg-[#07152E] dark:hover:bg-blue-700"
             >
               <Send className="w-4 h-4" />
               <span>Send Message</span>
@@ -198,4 +198,3 @@ export function Navbar() {
     </header>
   );
 }
-

@@ -7,22 +7,16 @@ import {
   Code,
   Database,
   Terminal,
-  Cpu,
   Layers,
   Globe,
-  Boxes,
   Smartphone,
   Palette,
   Server,
-  HardDrive,
-  Table,
   BarChart3,
-  PieChart,
   GitBranch,
   Cloud,
   Box,
   Send,
-  Code2,
   CheckCircle2,
   Search,
   Filter,
@@ -36,36 +30,36 @@ export function SkillsSection() {
     switch (iconName) {
       case "Code":
       case "Code2":
-        return <Code className="w-4 h-4 text-[#D32F2F]" />;
+        return <Code className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />;
       case "Database":
       case "Table":
         return <Database className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />;
       case "Smartphone":
-        return <Smartphone className="w-4 h-4 text-[#D32F2F]" />;
+        return <Smartphone className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />;
       case "Globe":
       case "Boxes":
         return <Globe className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />;
       case "Palette":
-        return <Palette className="w-4 h-4 text-[#D32F2F]" />;
+        return <Palette className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />;
       case "Server":
       case "HardDrive":
         return <Server className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />;
       case "BarChart3":
       case "PieChart":
-        return <BarChart3 className="w-4 h-4 text-[#D32F2F]" />;
+        return <BarChart3 className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />;
       case "GitBranch":
         return <GitBranch className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />;
       case "Cloud":
         return <Cloud className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />;
       case "Box":
-        return <Box className="w-4 h-4 text-[#D32F2F]" />;
+        return <Box className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />;
       case "Send":
-        return <Send className="w-4 h-4 text-[#D32F2F]" />;
+        return <Send className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />;
       case "Terminal":
       case "Cpu":
         return <Terminal className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />;
       default:
-        return <Layers className="w-4 h-4 text-[#D32F2F]" />;
+        return <Layers className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />;
     }
   };
 
@@ -106,7 +100,7 @@ export function SkillsSection() {
               onClick={() => setSelectedCategory("all")}
               className={`px-3 py-1.5 rounded-md text-xs font-semibold tracking-wider transition-all cursor-pointer ${
                 selectedCategory === "all"
-                  ? "bg-[#0B2046] text-white dark:bg-white dark:text-slate-900"
+                  ? "bg-[#0B2046] text-white dark:bg-blue-600"
                   : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700"
               }`}
             >
@@ -118,7 +112,7 @@ export function SkillsSection() {
                 onClick={() => setSelectedCategory(c.id)}
                 className={`px-3 py-1.5 rounded-md text-xs font-semibold tracking-wider transition-all cursor-pointer ${
                   selectedCategory === c.id
-                    ? "bg-[#D32F2F] text-white"
+                    ? "bg-[#0B2046] text-white dark:bg-blue-600 shadow-xs"
                     : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700"
                 }`}
               >
@@ -135,7 +129,7 @@ export function SkillsSection() {
               placeholder="Search skill (e.g. C#, Oracle)..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-4 py-1.5 text-xs rounded-md bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-[#D32F2F]"
+              className="w-full pl-9 pr-4 py-1.5 text-xs rounded-md bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-[#0B2046] dark:focus:ring-blue-400"
             />
           </div>
         </div>
@@ -169,7 +163,7 @@ export function SkillsSection() {
                       key={skill.name}
                       className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-md text-xs font-medium border transition-colors ${
                         skill.highlight
-                          ? "bg-slate-50 dark:bg-slate-800/80 border-[#D32F2F]/30 text-slate-900 dark:text-white"
+                          ? "bg-slate-50 dark:bg-slate-800/80 border-[#0B2046]/30 dark:border-blue-500/40 text-slate-900 dark:text-white"
                           : "bg-slate-50/60 dark:bg-slate-800/40 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300"
                       }`}
                     >
@@ -188,7 +182,7 @@ export function SkillsSection() {
               {/* Bottom Quick Tag */}
               <div className="mt-5 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-[11px] text-slate-400">
                 <span className="flex items-center gap-1">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
                   Verified in Projects
                 </span>
                 <span className="font-mono text-[10px]">MIS Verified</span>
@@ -208,7 +202,7 @@ export function SkillsSection() {
                 setSearchQuery("");
                 setSelectedCategory("all");
               }}
-              className="mt-3 text-xs font-bold text-[#D32F2F] hover:underline"
+              className="mt-3 text-xs font-bold text-[#0B2046] dark:text-blue-400 hover:underline"
             >
               Reset filters
             </button>
@@ -218,4 +212,3 @@ export function SkillsSection() {
     </section>
   );
 }
-
