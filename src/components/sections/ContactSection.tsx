@@ -148,27 +148,30 @@ export function ContactSection() {
           subtitle="Reach out directly for career opportunities, consulting inquiries, technical collaboration, or general discussions regarding systems analysis and software engineering."
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
-          {/* Left Column: Contact Cards */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+          {/* Left Column: Contact Channels (Line-based, no bulky card box) */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="p-6 sm:p-7 rounded-xl bg-white dark:bg-[#0D182E] border border-slate-200 dark:border-slate-800 shadow-2xs">
-              <h3 className="text-base font-bold text-[#0B2046] dark:text-white uppercase tracking-wider mb-4 pb-3 border-b border-slate-100 dark:border-slate-800">
+            <div>
+              <h3 className="text-base font-bold text-[#0B2046] dark:text-white uppercase tracking-wider mb-2">
                 Contact Channels
               </h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mb-4">
+                Reach out directly through official communication channels.
+              </p>
 
-              <div className="space-y-4">
+              <div className="divide-y divide-slate-200 dark:divide-slate-800 border-t border-b border-slate-200 dark:border-slate-800">
                 {/* Website */}
                 <a
                   href={personalInfo.contact.website}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-start gap-3.5 p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800/60 border border-transparent hover:border-slate-200 dark:hover:border-slate-700 transition-all group"
+                  className="flex items-start gap-3.5 py-3.5 hover:translate-x-1 transition-transform group"
                 >
-                  <div className="p-2.5 rounded-lg bg-blue-50 dark:bg-blue-950/40 text-[#0B2046] dark:text-blue-400 group-hover:scale-110 transition-transform">
-                    <Globe className="w-5 h-5" />
+                  <div className="p-2 rounded bg-slate-100 dark:bg-slate-800 text-[#0B2046] dark:text-blue-400">
+                    <Globe className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="text-xs text-slate-500 dark:text-slate-400 block font-medium">
+                    <span className="text-[11px] text-slate-500 dark:text-slate-400 block font-medium">
                       Official Website
                     </span>
                     <span className="text-sm font-bold text-[#0B2046] dark:text-white group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors">
@@ -180,13 +183,13 @@ export function ContactSection() {
                 {/* Email */}
                 <a
                   href={`mailto:${personalInfo.contact.email}`}
-                  className="flex items-start gap-3.5 p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800/60 border border-transparent hover:border-slate-200 dark:hover:border-slate-700 transition-all group"
+                  className="flex items-start gap-3.5 py-3.5 hover:translate-x-1 transition-transform group"
                 >
-                  <div className="p-2.5 rounded-lg bg-blue-50 dark:bg-blue-950/40 text-[#0B2046] dark:text-blue-400 group-hover:scale-110 transition-transform">
-                    <Mail className="w-5 h-5" />
+                  <div className="p-2 rounded bg-slate-100 dark:bg-slate-800 text-[#0B2046] dark:text-blue-400">
+                    <Mail className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="text-xs text-slate-500 dark:text-slate-400 block font-medium">
+                    <span className="text-[11px] text-slate-500 dark:text-slate-400 block font-medium">
                       Email Address
                     </span>
                     <span className="text-sm font-bold text-[#0B2046] dark:text-white group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors">
@@ -198,13 +201,13 @@ export function ContactSection() {
                 {/* Phone */}
                 <a
                   href={`tel:${personalInfo.contact.phone.replace(/\s+/g, "")}`}
-                  className="flex items-start gap-3.5 p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800/60 border border-transparent hover:border-slate-200 dark:hover:border-slate-700 transition-all group"
+                  className="flex items-start gap-3.5 py-3.5 hover:translate-x-1 transition-transform group"
                 >
-                  <div className="p-2.5 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition-transform">
-                    <Phone className="w-5 h-5" />
+                  <div className="p-2 rounded bg-slate-100 dark:bg-slate-800 text-emerald-600 dark:text-emerald-400">
+                    <Phone className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="text-xs text-slate-500 dark:text-slate-400 block font-medium">
+                    <span className="text-[11px] text-slate-500 dark:text-slate-400 block font-medium">
                       Phone Number
                     </span>
                     <span className="text-sm font-bold text-[#0B2046] dark:text-white group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors">
@@ -218,13 +221,13 @@ export function ContactSection() {
                   href={personalInfo.contact.telegramUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-start gap-3.5 p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800/60 border border-transparent hover:border-slate-200 dark:hover:border-slate-700 transition-all group"
+                  className="flex items-start gap-3.5 py-3.5 hover:translate-x-1 transition-transform group"
                 >
-                  <div className="p-2.5 rounded-lg bg-sky-50 dark:bg-sky-950/40 text-sky-600 dark:text-sky-400 group-hover:scale-110 transition-transform">
-                    <TelegramIcon className="w-5 h-5" />
+                  <div className="p-2 rounded bg-slate-100 dark:bg-slate-800 text-sky-600 dark:text-sky-400">
+                    <TelegramIcon className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="text-xs text-slate-500 dark:text-slate-400 block font-medium">
+                    <span className="text-[11px] text-slate-500 dark:text-slate-400 block font-medium">
                       Telegram Contact
                     </span>
                     <span className="text-sm font-bold text-[#0B2046] dark:text-white group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors">
@@ -234,12 +237,12 @@ export function ContactSection() {
                 </a>
 
                 {/* Location */}
-                <div className="flex items-start gap-3.5 p-3 rounded-lg border border-slate-100 dark:border-slate-800">
-                  <div className="p-2.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
-                    <MapPin className="w-5 h-5" />
+                <div className="flex items-start gap-3.5 py-3.5">
+                  <div className="p-2 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
+                    <MapPin className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="text-xs text-slate-500 dark:text-slate-400 block font-medium">
+                    <span className="text-[11px] text-slate-500 dark:text-slate-400 block font-medium">
                       Location
                     </span>
                     <span className="text-sm font-bold text-[#0B2046] dark:text-white">
@@ -250,12 +253,12 @@ export function ContactSection() {
               </div>
 
               {/* Social Buttons */}
-              <div className="mt-6 pt-5 border-t border-slate-100 dark:border-slate-800 flex items-center gap-3">
+              <div className="pt-4 flex items-center gap-3">
                 <a
                   href={personalInfo.contact.linkedinUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 py-2 px-3 rounded-md text-xs font-semibold text-center bg-blue-50 hover:bg-blue-100 dark:bg-blue-950/60 dark:hover:bg-blue-900/60 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-900/60 flex items-center justify-center gap-1.5 transition-colors"
+                  className="flex-1 py-2 px-3 rounded text-xs font-semibold text-center bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-[#0B2046] dark:text-blue-300 border border-slate-200 dark:border-slate-700 flex items-center justify-center gap-1.5 transition-colors"
                 >
                   <LinkedinIcon className="w-3.5 h-3.5" />
                   <span>LinkedIn</span>
@@ -264,7 +267,7 @@ export function ContactSection() {
                   href={personalInfo.contact.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 py-2 px-3 rounded-md text-xs font-semibold text-center bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 flex items-center justify-center gap-1.5 transition-colors"
+                  className="flex-1 py-2 px-3 rounded text-xs font-semibold text-center bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 flex items-center justify-center gap-1.5 transition-colors"
                 >
                   <GithubIcon className="w-3.5 h-3.5" />
                   <span>GitHub</span>
@@ -273,23 +276,23 @@ export function ContactSection() {
             </div>
 
             {/* Telegram Notification Notice Box */}
-            <div className="p-4 rounded-xl bg-blue-50/70 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-900/40 text-xs text-slate-700 dark:text-slate-300 flex items-start gap-3">
+            <div className="py-3 px-4 rounded border-l-2 border-[#0B2046] dark:border-blue-400 bg-slate-50 dark:bg-slate-900/60 text-xs text-slate-700 dark:text-slate-300 flex items-start gap-3">
               <Send className="w-4 h-4 text-[#0B2046] dark:text-blue-400 shrink-0 mt-0.5" />
               <div>
                 <p className="font-bold text-[#0B2046] dark:text-white mb-0.5">
-                  Real-Time Telegram Notification Active
+                  Telegram Bot Notification Active
                 </p>
                 <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-[11px]">
-                  Messages submitted through this form are instantly verified by the backend and dispatched directly to Nang Devit&apos;s secured Telegram group channel via the Telegram Bot API.
+                  Messages submitted through this form are instantly verified and dispatched directly to your Telegram Group topic via the Telegram Bot API.
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Contact Form */}
+          {/* Right Column: Contact Form (No outer card outline) */}
           <div className="lg:col-span-7">
-            <div className="p-6 sm:p-8 rounded-xl bg-white dark:bg-[#0D182E] border border-slate-200 dark:border-slate-800 shadow-2xs">
-              <div className="mb-6 pb-4 border-b border-slate-100 dark:border-slate-800">
+            <div>
+              <div className="mb-6 pb-3 border-b border-slate-200 dark:border-slate-800">
                 <h3 className="text-lg font-bold text-[#0B2046] dark:text-white">
                   Send a Direct Message
                 </h3>

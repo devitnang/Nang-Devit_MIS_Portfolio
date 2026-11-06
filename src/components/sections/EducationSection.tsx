@@ -25,98 +25,89 @@ export function EducationSection() {
           subtitle="Formal higher education in Management Information Systems (MIS) integrating enterprise technology management with advanced computer science disciplines."
         />
 
-        <div className="max-w-4xl mx-auto space-y-8">
+        {/* Clean Line-Based Academic Timeline (No outer box, clean dividing lines only) */}
+        <div className="divide-y divide-slate-200 dark:divide-slate-800 border-t border-b border-slate-200 dark:border-slate-800">
           {educationList.map((edu) => (
             <div
               key={edu.id}
-              className="relative p-6 sm:p-8 rounded-xl bg-white dark:bg-[#0D182E] border border-slate-200 dark:border-slate-800 shadow-2xs hover:shadow-md transition-shadow"
+              className="py-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start"
             >
-              {/* Top Accent Strip */}
-              <div className="absolute top-0 left-8 right-8 h-1 bg-[#0B2046] dark:bg-blue-600 rounded-b" />
-
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 mb-6 border-b border-slate-100 dark:border-slate-800">
+              {/* Institution Details Column (Left 4 cols) */}
+              <div className="lg:col-span-4 space-y-4">
                 <div className="flex items-center gap-4">
-                  {/* SETEC Logo */}
-                  <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden bg-white p-2 border border-slate-200 dark:border-slate-700 shrink-0 shadow-2xs">
+                  <div className="relative w-16 h-16 rounded-lg overflow-hidden bg-white p-1 border border-slate-200 dark:border-slate-700 shrink-0 shadow-2xs">
                     <Image
                       src={edu.logo}
-                      alt={`${edu.institution} Official Seal`}
+                      alt={`${edu.institution} Logo`}
                       fill
                       className="object-contain p-1"
                     />
                   </div>
-
                   <div>
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="px-2 py-0.5 rounded text-[11px] font-bold uppercase tracking-wider bg-blue-100 dark:bg-blue-950/60 text-[#0B2046] dark:text-blue-300">
-                        {edu.year}
-                      </span>
-                      <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">
-                        Undergraduate Degree
-                      </span>
-                    </div>
-
-                    <h3 className="text-lg sm:text-xl font-bold text-[#0B2046] dark:text-white">
+                    <span className="text-[11px] font-mono font-bold text-[#0B2046] dark:text-blue-300 block mb-0.5">
+                      {edu.year}
+                    </span>
+                    <h3 className="text-base sm:text-lg font-bold text-[#0B2046] dark:text-white leading-tight">
                       {edu.institution}
                     </h3>
-
-                    <p className="text-xs sm:text-sm font-semibold text-[#0B2046] dark:text-blue-300 mt-0.5">
-                      {edu.degree}
-                    </p>
                   </div>
                 </div>
 
-                {/* Metadata */}
-                <div className="sm:text-right space-y-1 text-xs text-slate-500 dark:text-slate-400">
-                  <div className="flex sm:justify-end items-center gap-1.5 font-medium">
+                <div className="space-y-1.5 text-xs text-slate-600 dark:text-slate-400 pl-1">
+                  <p className="font-semibold text-slate-900 dark:text-slate-100 text-sm">
+                    {edu.degree}
+                  </p>
+                  <p className="flex items-center gap-1.5">
                     <Calendar className="w-3.5 h-3.5 text-[#0B2046] dark:text-blue-400" />
                     <span>{edu.period}</span>
-                  </div>
-                  <div className="flex sm:justify-end items-center gap-1.5">
+                  </p>
+                  <p className="flex items-center gap-1.5">
                     <MapPin className="w-3.5 h-3.5 text-slate-400" />
                     <span>{edu.location}</span>
+                  </p>
+                </div>
+              </div>
+
+              {/* Coursework & Achievements Column (Right 8 cols) */}
+              <div className="lg:col-span-8 space-y-6">
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                  {edu.description}
+                </p>
+
+                {/* Coursework */}
+                <div>
+                  <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#0B2046] dark:text-slate-200 flex items-center gap-2 mb-3">
+                    <BookOpen className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />
+                    <span>Key Coursework & Technical Specializations</span>
+                  </h4>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                    {edu.coreCourses.map((course, idx) => (
+                      <div
+                        key={idx}
+                        className="py-1.5 border-b border-slate-100 dark:border-slate-800/80 flex items-center gap-2.5"
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#0B2046] dark:bg-blue-400 shrink-0" />
+                        <span>{course}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
-              </div>
 
-              {/* Description */}
-              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
-                {edu.description}
-              </p>
-
-              {/* Core Coursework Grid */}
-              <div className="mb-6">
-                <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#0B2046] dark:text-slate-200 flex items-center gap-2 mb-3">
-                  <BookOpen className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />
-                  <span>Key Coursework & Technical Specializations</span>
-                </h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
-                  {edu.coreCourses.map((course, idx) => (
-                    <div
-                      key={idx}
-                      className="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 flex items-center gap-2.5"
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#0B2046] dark:bg-blue-400 shrink-0" />
-                      <span>{course}</span>
-                    </div>
-                  ))}
+                {/* Highlights */}
+                <div className="pt-3 border-t border-slate-100 dark:border-slate-800/80">
+                  <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#0B2046] dark:text-slate-200 flex items-center gap-2 mb-3">
+                    <Award className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />
+                    <span>Academic Highlights & Leadership</span>
+                  </h4>
+                  <ul className="space-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+                    {edu.highlights.map((h, idx) => (
+                      <li key={idx} className="flex items-start gap-2.5">
+                        <CheckCircle2 className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
+                        <span>{h}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              </div>
-
-              {/* Highlights */}
-              <div className="pt-4 border-t border-slate-100 dark:border-slate-800/80">
-                <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#0B2046] dark:text-slate-200 flex items-center gap-2 mb-3">
-                  <Award className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />
-                  <span>Academic Standing & Project Leadership</span>
-                </h4>
-                <ul className="space-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
-                  {edu.highlights.map((h, idx) => (
-                    <li key={idx} className="flex items-start gap-2.5">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-                      <span>{h}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
             </div>
           ))}

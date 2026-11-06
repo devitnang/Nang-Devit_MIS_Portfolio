@@ -21,13 +21,13 @@ export function AboutSection() {
   const getPillarIcon = (iconName: string) => {
     switch (iconName) {
       case "Workflow":
-        return <Workflow className="w-6 h-6 text-[#0B2046] dark:text-blue-400" />;
+        return <Workflow className="w-5 h-5 text-[#0B2046] dark:text-blue-400" />;
       case "BarChart3":
-        return <BarChart3 className="w-6 h-6 text-[#0B2046] dark:text-blue-400" />;
+        return <BarChart3 className="w-5 h-5 text-[#0B2046] dark:text-blue-400" />;
       case "Code2":
-        return <Code2 className="w-6 h-6 text-[#0B2046] dark:text-blue-400" />;
+        return <Code2 className="w-5 h-5 text-[#0B2046] dark:text-blue-400" />;
       default:
-        return <Layers className="w-6 h-6 text-[#0B2046] dark:text-blue-400" />;
+        return <Layers className="w-5 h-5 text-[#0B2046] dark:text-blue-400" />;
     }
   };
 
@@ -43,14 +43,14 @@ export function AboutSection() {
           subtitle="A dedicated technologist bridging business operational needs with robust system architecture, database engineering, and analytical data intelligence."
         />
 
-        {/* Narrative Grid: Background, Objectives, Educational Context */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
-          {/* Card 1: Professional Background & Personal Introduction */}
-          <div className="p-6 sm:p-7 rounded-xl bg-slate-50 dark:bg-[#0D182E] border border-slate-200 dark:border-slate-800 flex flex-col justify-between">
+        {/* Narrative Grid: Line-Based Clean Columns (No outer box outline, clean dividers only) */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 divide-y lg:divide-y-0 lg:divide-x divide-slate-200 dark:divide-slate-800 border-t border-b border-slate-200 dark:border-slate-800 mb-16">
+          {/* Column 1: Personal Introduction */}
+          <div className="py-6 lg:py-8 lg:px-6 first:lg:pl-0 flex flex-col justify-between">
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-lg bg-[#0B2046] dark:bg-[#0F2756] text-white flex items-center justify-center">
-                  <UserCheck className="w-5 h-5 text-blue-300" />
+                <div className="w-9 h-9 rounded bg-slate-100 dark:bg-slate-800 text-[#0B2046] dark:text-blue-300 flex items-center justify-center">
+                  <UserCheck className="w-5 h-5" />
                 </div>
                 <div>
                   <h3 className="text-base font-bold text-[#0B2046] dark:text-white">
@@ -68,19 +68,19 @@ export function AboutSection() {
                 Whether modeling complex database relationships in third normal form or writing full-stack code, I maintain a methodical, quality-first standard.
               </p>
             </div>
-            <div className="mt-6 pt-4 border-t border-slate-200 dark:border-slate-800">
+            <div className="mt-6 pt-3 border-t border-slate-100 dark:border-slate-800">
               <span className="text-[11px] font-bold uppercase tracking-wider text-[#0B2046] dark:text-blue-400">
                 Core Mindset: Precision &bull; Integrity &bull; Adaptability
               </span>
             </div>
           </div>
 
-          {/* Card 2: Educational Foundation (SETEC MIS) */}
-          <div className="p-6 sm:p-7 rounded-xl bg-slate-50 dark:bg-[#0D182E] border border-slate-200 dark:border-slate-800 flex flex-col justify-between">
+          {/* Column 2: Academic Foundation */}
+          <div className="py-6 lg:py-8 lg:px-6 flex flex-col justify-between">
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-lg bg-[#0B2046] dark:bg-[#0F2756] text-white flex items-center justify-center">
-                  <GraduationCap className="w-5 h-5 text-blue-300" />
+                <div className="w-9 h-9 rounded bg-slate-100 dark:bg-slate-800 text-[#0B2046] dark:text-blue-300 flex items-center justify-center">
+                  <GraduationCap className="w-5 h-5" />
                 </div>
                 <div>
                   <h3 className="text-base font-bold text-[#0B2046] dark:text-white">
@@ -109,7 +109,7 @@ export function AboutSection() {
                 </li>
               </ul>
             </div>
-            <div className="mt-6 pt-4 border-t border-slate-200 dark:border-slate-800">
+            <div className="mt-6 pt-3 border-t border-slate-100 dark:border-slate-800">
               <Link
                 href="#education"
                 className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0B2046] dark:text-blue-400 hover:underline transition-colors"
@@ -120,12 +120,12 @@ export function AboutSection() {
             </div>
           </div>
 
-          {/* Card 3: Career Objectives & Goals */}
-          <div className="p-6 sm:p-7 rounded-xl bg-slate-50 dark:bg-[#0D182E] border border-slate-200 dark:border-slate-800 flex flex-col justify-between">
+          {/* Column 3: Career Objectives */}
+          <div className="py-6 lg:py-8 lg:px-6 last:lg:pr-0 flex flex-col justify-between">
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-lg bg-[#0B2046] dark:bg-[#0F2756] text-white flex items-center justify-center">
-                  <Target className="w-5 h-5 text-blue-300" />
+                <div className="w-9 h-9 rounded bg-slate-100 dark:bg-slate-800 text-[#0B2046] dark:text-blue-300 flex items-center justify-center">
+                  <Target className="w-5 h-5" />
                 </div>
                 <div>
                   <h3 className="text-base font-bold text-[#0B2046] dark:text-white">
@@ -143,7 +143,7 @@ export function AboutSection() {
                 Committed to architecting secure systems, elevating data quality, designing seamless interfaces, and collaborating effectively across business and engineering units.
               </p>
             </div>
-            <div className="mt-6 pt-4 border-t border-slate-200 dark:border-slate-800">
+            <div className="mt-6 pt-3 border-t border-slate-100 dark:border-slate-800">
               <Link
                 href="#contact"
                 className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0B2046] dark:text-blue-400 hover:underline"
@@ -155,48 +155,48 @@ export function AboutSection() {
           </div>
         </div>
 
-        {/* The 3 Core Pillars */}
-        <div className="mt-12">
-          <div className="mb-6 flex items-center justify-between">
+        {/* The 3 Core Pillars: Clean Line-Divided Layout */}
+        <div>
+          <div className="mb-6 flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
             <div>
-              <h3 className="text-xl font-bold text-[#0B2046] dark:text-white">
+              <h3 className="text-lg font-bold text-[#0B2046] dark:text-white">
                 Core Competency Pillars
               </h3>
-              <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+              <p className="text-xs text-slate-500 dark:text-slate-400">
                 Detailed breakdown of primary technical and analytical specializations.
               </p>
             </div>
             <Shield className="w-5 h-5 text-slate-400 hidden sm:block" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-200 dark:divide-slate-800 border-b border-slate-200 dark:border-slate-800 pb-6">
             {personalInfo.corePillars.map((pillar) => (
               <div
                 key={pillar.id}
-                className="p-6 rounded-xl bg-white dark:bg-[#0B1528] border border-slate-200 dark:border-slate-800 hover:border-[#0B2046]/40 dark:hover:border-blue-500/40 transition-all shadow-xs hover:shadow-md"
+                className="py-6 md:py-0 md:px-6 first:md:pl-0 last:md:pr-0 space-y-3"
               >
-                <div className="flex items-center justify-between mb-4">
-                  <div className="p-2.5 rounded-lg bg-slate-100 dark:bg-slate-800">
+                <div className="flex items-center justify-between">
+                  <div className="p-2 rounded bg-slate-100 dark:bg-slate-800">
                     {getPillarIcon(pillar.icon)}
                   </div>
-                  <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#0B2046] dark:text-blue-300">
                     {pillar.badge}
                   </span>
                 </div>
 
-                <h4 className="text-base font-bold text-[#0B2046] dark:text-white mb-2">
+                <h4 className="text-base font-bold text-[#0B2046] dark:text-white">
                   {pillar.title}
                 </h4>
 
-                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+                <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
                   {pillar.description}
                 </p>
 
-                <div className="space-y-2 border-t border-slate-100 dark:border-slate-800/80 pt-3">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                <div className="pt-2 border-t border-slate-100 dark:border-slate-800/80 space-y-1.5">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
                     Key Strengths:
                   </span>
-                  <ul className="space-y-1.5 text-xs text-slate-600 dark:text-slate-300">
+                  <ul className="space-y-1 text-xs text-slate-600 dark:text-slate-300">
                     {pillar.competencies.map((comp, idx) => (
                       <li key={idx} className="flex items-start gap-2">
                         <CheckCircle2 className="w-3.5 h-3.5 text-[#0B2046] dark:text-blue-400 shrink-0 mt-0.5" />
