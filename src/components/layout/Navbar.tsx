@@ -3,31 +3,45 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { MenuToggleIcon } from "@/components/ui/menu-toggle-icon";
+import { useScroll } from "@/components/ui/use-scroll";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { personalInfo } from "@/data/portfolioData";
-import { Menu, X, FileText, Send, ChevronRight } from "lucide-react";
+import { FileText, Send } from "lucide-react";
 
-const NAV_LINKS = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Skills", href: "#skills" },
-  { name: "Projects", href: "#projects" },
-  { name: "Experience", href: "#experience" },
-  { name: "Education", href: "#education" },
-  { name: "Contact", href: "#contact" },
-];
-
-export function Navbar() {
+export function Header() {
+  const [open, setOpen] = useState(false);
+  const scrolled = useScroll(10);
   const [activeSection, setActiveSection] = useState("home");
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+
+  const links = [
+    { label: "Home", href: "#home" },
+    { label: "About", href: "#about" },
+    { label: "Skills", href: "#skills" },
+    { label: "Projects", href: "#projects" },
+    { label: "Experience", href: "#experience" },
+    { label: "Education", href: "#education" },
+    { label: "Contact", href: "#contact" },
+  ];
+
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-
-      const sections = NAV_LINKS.map((link) => link.href.substring(1));
-      const scrollPosition = window.scrollY + 120;
+      const sections = links.map((link) => link.href.substring(1));
+      const scrollPosition = window.scrollY + 140;
 
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = document.getElementById(sections[i]);
@@ -44,157 +58,194 @@ export function Navbar() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [links]);
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-200 ${
-        scrolled
-          ? "bg-white/95 dark:bg-[#080F1E]/95 backdrop-blur-md shadow-xs border-b border-slate-200/80 dark:border-slate-800/80"
-          : "bg-white dark:bg-[#080F1E] border-b border-slate-200 dark:border-slate-800"
-      }`}
+      className={cn(
+        "sticky top-0 z-50 mx-auto w-full max-w-5xl border-b border-transparent md:rounded-md md:border md:transition-all md:ease-out",
+        {
+          "bg-background/95 supports-[backdrop-filter]:bg-background/50 border-border backdrop-blur-lg md:top-4 md:max-w-4xl md:shadow":
+            scrolled && !open,
+          "bg-background/90": open,
+        }
+      )}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Brand Logo / Monogram */}
-          <Link
-            href="#home"
-            className="flex items-center gap-3 group focus:outline-none"
-            aria-label="Nang Devit - Home"
-          >
-            <div className="relative w-10 h-10 rounded-lg bg-white dark:bg-[#0F2756] p-1 border border-slate-200 dark:border-slate-700 shadow-2xs group-hover:border-[#0B2046] dark:group-hover:border-blue-400 transition-colors duration-200 flex items-center justify-center overflow-hidden">
-              <Image
-                src="/assets/images/logo/mylogo_1.png"
-                alt="Nang Devit Logo"
-                fill
-                className="object-contain p-0.5"
-                sizes="40px"
-              />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-lg font-bold tracking-tight text-[#0B2046] dark:text-white leading-none group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors">
-                NANG DEVIT
-              </span>
-              <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400 tracking-wider uppercase mt-1">
-                MIS &bull; SETEC Institute
-              </span>
-            </div>
-          </Link>
+      <nav
+        className={cn(
+          "flex h-14 w-full items-center justify-between px-4 md:h-12 md:transition-all md:ease-out",
+          {
+            "md:px-2": scrolled,
+          }
+        )}
+      >
+        {/* Brand Logo & Name */}
+        <Link
+          href="#home"
+          className="flex items-center gap-2.5 group focus:outline-none"
+          aria-label="Nang Devit - Home"
+          onClick={() => setOpen(false)}
+        >
+          <div className="relative w-8 h-8 rounded-md bg-white dark:bg-[#0F2756] p-0.5 border border-slate-200 dark:border-slate-700 shadow-2xs group-hover:border-[#0B2046] dark:group-hover:border-blue-400 transition-colors flex items-center justify-center overflow-hidden">
+            <Image
+              src="/assets/images/logo/mylogo_1.png"
+              alt="Nang Devit Logo"
+              fill
+              className="object-contain p-0.5"
+              sizes="32px"
+            />
+          </div>
+          <div className="flex flex-col">
+            <span className="text-xs sm:text-sm font-bold tracking-tight text-[#0B2046] dark:text-white leading-none">
+              NANG DEVIT
+            </span>
+            <span className="text-[10px] font-semibold text-slate-500 dark:text-slate-400 tracking-wider uppercase mt-0.5">
+              MIS
+            </span>
+          </div>
+        </Link>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-1 xl:gap-2" aria-label="Main Navigation">
-            {NAV_LINKS.map((link) => {
-              const isActive = activeSection === link.href.substring(1);
-              return (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className={`px-3 py-1.5 rounded-md text-sm font-semibold tracking-wide transition-all duration-150 relative ${
-                    isActive
-                      ? "text-[#0B2046] dark:text-blue-400 font-bold"
-                      : "text-slate-700 dark:text-slate-300 hover:text-[#0B2046] dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/60"
-                  }`}
-                >
-                  {link.name}
-                  {isActive && (
-                    <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-[#0B2046] dark:bg-blue-400 rounded-full" />
-                  )}
-                </Link>
-              );
-            })}
-          </nav>
+        {/* Desktop Navigation Links */}
+        <div className="hidden items-center gap-1 md:flex">
+          {links.map((link) => {
+            const isActive = activeSection === link.href.substring(1);
+            return (
+              <a
+                key={link.label}
+                className={cn(
+                  buttonVariants({ variant: "ghost", size: "sm" }),
+                  "text-xs font-semibold px-2.5 py-1 transition-colors relative",
+                  isActive &&
+                    "text-[#0B2046] dark:text-blue-400 font-bold bg-slate-100/80 dark:bg-slate-800/80"
+                )}
+                href={link.href}
+              >
+                {link.label}
+                {isActive && (
+                  <span className="absolute bottom-0 left-2 right-2 h-0.5 bg-[#0B2046] dark:bg-blue-400 rounded-full" />
+                )}
+              </a>
+            );
+          })}
 
-          {/* Desktop Right Actions */}
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="flex items-center gap-1.5 ml-1 border-l border-slate-200 dark:border-slate-800 pl-2">
             <ThemeToggle />
 
             <a
               href={personalInfo.assets.cv}
               download={personalInfo.assets.cvFileName}
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-md text-xs font-semibold uppercase tracking-wider border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-              title="Download Curriculum Vitae (PDF)"
+              className={buttonVariants({
+                variant: "outline",
+                size: "sm",
+                className: "text-xs font-semibold h-8 px-2.5 gap-1.5",
+              })}
+              title="Download CV (PDF)"
             >
               <FileText className="w-3.5 h-3.5 text-[#0B2046] dark:text-blue-400" />
               <span>CV</span>
             </a>
 
-            <Link
+            <a
               href="#contact"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-md text-xs font-bold uppercase tracking-wider bg-[#0B2046] hover:bg-[#07152E] dark:bg-blue-600 dark:hover:bg-blue-700 text-white shadow-xs hover:shadow transition-all duration-150 cursor-pointer"
+              className={buttonVariants({
+                variant: "default",
+                size: "sm",
+                className: "text-xs font-bold h-8 px-3 gap-1.5",
+              })}
             >
               <Send className="w-3.5 h-3.5" />
-              <span>Contact Me</span>
-            </Link>
-          </div>
-
-          {/* Mobile Right Controls */}
-          <div className="flex lg:hidden items-center gap-2">
-            <ThemeToggle />
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-md text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800"
-              aria-label="Toggle navigation menu"
-              aria-expanded={mobileMenuOpen}
-            >
-              {mobileMenuOpen ? (
-                <X className="w-6 h-6 text-[#0B2046] dark:text-blue-400" />
-              ) : (
-                <Menu className="w-6 h-6 text-[#0B2046] dark:text-white" />
-              )}
-            </button>
+              <span>Contact</span>
+            </a>
           </div>
         </div>
-      </div>
 
-      {/* Mobile Navigation Dropdown Menu */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0B1528] px-4 pt-3 pb-6 shadow-xl animate-in slide-in-from-top-2 duration-150">
-          <div className="flex flex-col space-y-1">
-            {NAV_LINKS.map((link) => {
+        {/* Mobile Controls */}
+        <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle />
+          <Button
+            size="icon"
+            variant="outline"
+            onClick={() => setOpen(!open)}
+            aria-label="Toggle navigation menu"
+          >
+            <MenuToggleIcon open={open} className="size-5" duration={300} />
+          </Button>
+        </div>
+      </nav>
+
+      {/* Mobile Drawer */}
+      <div
+        className={cn(
+          "bg-background/95 fixed top-14 right-0 bottom-0 left-0 z-50 flex flex-col overflow-hidden border-y border-border backdrop-blur-xl md:hidden",
+          open ? "block" : "hidden"
+        )}
+      >
+        <div
+          data-slot={open ? "open" : "closed"}
+          className={cn(
+            "data-[slot=open]:animate-in data-[slot=open]:zoom-in-95 data-[slot=closed]:animate-out data-[slot=closed]:zoom-out-95 ease-out",
+            "flex h-full w-full flex-col justify-between gap-y-2 p-4"
+          )}
+        >
+          <div className="grid gap-y-1">
+            {links.map((link) => {
               const isActive = activeSection === link.href.substring(1);
               return (
-                <Link
-                  key={link.name}
+                <a
+                  key={link.label}
+                  className={cn(
+                    buttonVariants({
+                      variant: "ghost",
+                      className: "justify-start text-sm py-2 px-3 font-semibold",
+                    }),
+                    isActive &&
+                      "bg-blue-50 dark:bg-blue-950/40 text-[#0B2046] dark:text-blue-400 font-bold"
+                  )}
                   href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={`flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors ${
-                    isActive
-                      ? "bg-blue-50 dark:bg-blue-950/40 text-[#0B2046] dark:text-blue-400 font-bold"
-                      : "text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
-                  }`}
+                  onClick={() => setOpen(false)}
                 >
-                  <span>{link.name}</span>
-                  <ChevronRight
-                    className={`w-4 h-4 ${
-                      isActive ? "text-[#0B2046] dark:text-blue-400" : "text-slate-400"
-                    }`}
-                  />
-                </Link>
+                  {link.label}
+                </a>
               );
             })}
           </div>
 
-          <div className="mt-5 pt-4 border-t border-slate-200 dark:border-slate-800 flex flex-col gap-2.5">
+          <div className="flex flex-col gap-2 pt-4 border-t border-border">
             <a
               href={personalInfo.assets.cv}
               download={personalInfo.assets.cvFileName}
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full flex items-center justify-center gap-2 py-2.5 rounded-md text-xs font-bold uppercase tracking-wider border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
+              onClick={() => setOpen(false)}
+              className={buttonVariants({
+                variant: "outline",
+                className: "w-full justify-center gap-2 py-2.5 text-xs font-bold uppercase tracking-wider",
+              })}
             >
               <FileText className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />
-              <span>Download Full CV (PDF)</span>
+              <span>Download CV (PDF)</span>
             </a>
-            <Link
+            <a
               href="#contact"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full flex items-center justify-center gap-2 py-2.5 rounded-md text-xs font-bold uppercase tracking-wider bg-[#0B2046] dark:bg-blue-600 text-white hover:bg-[#07152E] dark:hover:bg-blue-700"
+              onClick={() => setOpen(false)}
+              className={buttonVariants({
+                variant: "default",
+                className: "w-full justify-center gap-2 py-2.5 text-xs font-bold uppercase tracking-wider",
+              })}
             >
               <Send className="w-4 h-4" />
-              <span>Send Message</span>
-            </Link>
+              <span>Contact Nang Devit</span>
+            </a>
           </div>
         </div>
-      )}
+      </div>
     </header>
   );
 }
+
+// Export both Navbar and Header for seamless backward compatibility
+export const Navbar = Header;
+
+export const WordmarkIcon = (props: React.ComponentProps<"svg">) => (
+  <svg viewBox="0 0 84 24" fill="currentColor" {...props}>
+    <path d="M45.035 23.984c-1.34-.062-2.566-.441-3.777-1.16-1.938-1.152-3.465-3.187-4.02-5.36-.199-.784-.238-1.128-.234-2.058 0-.691.008-.87.062-1.207.23-1.5.852-2.883 1.852-4.144.297-.371 1.023-1.09 1.41-1.387 1.399-1.082 2.84-1.68 4.406-1.816.536-.047 1.528-.02 2.047.054 1.227.184 2.227.543 3.106 1.121 1.277.84 2.5 2.184 3.367 3.7.098.168.172.308.172.312-.004 0-1.047.723-2.32 1.598l-2.711 1.867c-.61.422-2.91 2.008-2.993 2.062l-.074.047-1-1.574c-.55-.867-1.008-1.594-1.012-1.61-.007-.019.922-.648 2.188-1.476 1.215-.793 2.2-1.453 2.191-1.46-.02-.032-.508-.27-.691-.34a5 5 0 0 0-.465-.13c-.371-.09-1.105-.125-1.426-.07-1.285.219-2.336 1.3-2.777 2.852-.215.761-.242 1.636-.074 2.355.129.527.383 1.102.691 1.543.234.332.727.82 1.047 1.031.664.434 1.195.586 1.969.555.613-.023 1.027-.129 1.64-.426 1.184-.574 2.16-1.554 2.828-2.843.122-.235.208-.372.227-.368.082.032 3.77 1.938 3.79 1.961.034.032-.407.93-.696 1.414a12 12 0 0 1-1.051 1.477c-.36.422-1.102 1.14-1.492 1.445a9.9 9.9 0 0 1-3.23 1.684 9.2 9.2 0 0 1-2.95.351M74.441 23.996c-1.488-.043-2.8-.363-4.066-.992-1.687-.848-2.992-2.14-3.793-3.774-.605-1.234-.863-2.402-.863-3.894.004-1.149.176-2.156.527-3.11.14-.378.531-1.171.75-1.515 1.078-1.703 2.758-2.934 4.805-3.524.847-.242 1.465-.332 2.433-.351 1.032-.024 1.743.055 2.48.277l.31.09.007 2.48c.004 1.364 0 2.481-.008 2.481a1 1 0 0 1-.12-.055c-.688-.347-2.09-.488-2.962-.296-.754.167-1.296.453-1.785.945a3.7 3.7 0 0 0-1.043 2.11c-.047.382-.02 1.109.055 1.437a3.4 3.4 0 0 0 .941 1.738c.75.75 1.715 1.102 2.875 1.05.645-.03 1.118-.14 1.563-.366q1.721-.864 2.02-3.145c.035-.293.042-1.266.042-7.957V0H84l-.012 8.434c-.008 7.851-.011 8.457-.054 8.757-.196 1.274-.586 2.25-1.301 3.243-1.293 1.808-3.555 3.07-6.145 3.437-.664.098-1.43.14-2.047.125M9.848 23.574a14 14 0 0 1-1.137-.152c-2.352-.426-4.555-1.781-6.117-3.774-.27-.335-.75-1.05-.95-1.406-1.156-2.047-1.695-4.27-1.64-6.77.047-1.995.43-3.66 1.23-5.316.524-1.086 1.04-1.87 1.793-2.715C4.567 1.72 6.652.535 8.793.171 9.68.02 10.093 0 12.297 0h1.789v5.441l-.961.016c-2.36.04-3.441.215-4.441.719-.836.414-1.278.879-1.895 1.976-.219.399-.535 1.02-.535 1.063 0 .02 1.285.027 3.918.027h3.914v5.113h-3.914c-2.54 0-3.918.008-3.918.028 0 .05.254.597.441.953.344.656.649 1.086 1.051 1.48.668.657 1.356.985 2.445 1.16.645.106 1.274.145 2.61.16l1.285.016v5.442l-2.055-.004a120 120 0 0 1-2.183-.016M16.469 14.715c0-5.504.011-9.04.031-9.29a5.54 5.54 0 0 1 1.527-3.48c.778-.82 1.922-1.457 3.118-1.734C21.915.035 22.422 0 24.39 0h1.652v4.914h-1.426c-1.324 0-1.445.004-1.644.055-.739.191-1.059.699-1.106 1.754l-.015.355h4.191v4.914h-4.184v11.602h-5.39ZM27.023 14.727c0-5.223.012-9.04.028-9.278.129-1.98 1.234-3.68 3.012-4.62.87-.462 1.777-.716 2.851-.802A61 61 0 0 1 34.945 0h1.649v4.914h-1.426c-1.32 0-1.441.004-1.64.055-.739.191-1.063.699-1.106 1.754l-.02.355h4.192v4.914H32.41v11.602h-5.387ZM55.48 15.406V7.22h4.66v1.363c0 1.3.005 1.363.051 1.363.04 0 .075-.054.133-.203.38-.98.969-1.68 1.711-2.031.563-.266 1.422-.43 2.492-.48l.414-.02v4.914l-.414.035c-.738.063-1.597.195-2.058.313-.297.082-.688.28-.875.449-.324.289-.532.703-.625 1.254-.094.547-.098.879-.098 5.144v4.274h-5.39Zm0 0" />
+  </svg>
+);
