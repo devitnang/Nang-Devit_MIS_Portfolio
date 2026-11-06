@@ -1,0 +1,77 @@
+import { SkillCategory } from "@/types";
+
+export const skillCategories: SkillCategory[] = [
+  {
+    id: "programming-languages",
+    title: "Programming Languages",
+    description: "Core languages utilized for system logic, algorithms, application backends, and data manipulation.",
+    iconName: "Binary",
+    skills: [
+      { name: "C#", level: "Proficient", iconName: "Code", highlight: true },
+      { name: "SQL (PL/SQL & T-SQL)", level: "Advanced", iconName: "Database", highlight: true },
+      { name: "TypeScript", level: "Proficient", iconName: "FileCode", highlight: true },
+      { name: "JavaScript", level: "Proficient", iconName: "FileJson" },
+      { name: "Dart", level: "Proficient", iconName: "Cpu", highlight: true },
+      { name: "Python", level: "Intermediate", iconName: "Terminal" },
+      { name: "PHP", level: "Intermediate", iconName: "Server" },
+      { name: "HTML5 & CSS3", level: "Advanced", iconName: "Layout" },
+    ],
+  },
+  {
+    id: "frameworks-technologies",
+    title: "Frameworks & Modern Technologies",
+    description: "Modern frameworks powering responsive web interfaces, enterprise backends, and cross-platform mobile apps.",
+    iconName: "Layers",
+    skills: [
+      { name: "Flutter", level: "Proficient", iconName: "Smartphone", highlight: true },
+      { name: "Next.js (App Router)", level: "Proficient", iconName: "Globe", highlight: true },
+      { name: "React.js", level: "Proficient", iconName: "Boxes", highlight: true },
+      { name: "ASP.NET Core", level: "Intermediate", iconName: "ShieldCheck" },
+      { name: "Node.js & Express", level: "Proficient", iconName: "Cpu" },
+      { name: "Tailwind CSS", level: "Advanced", iconName: "Palette", highlight: true },
+      { name: "RESTful APIs", level: "Advanced", iconName: "Network" },
+    ],
+  },
+  {
+    id: "databases",
+    title: "Database Management Systems",
+    description: "Enterprise and relational database systems for mission-critical transactional and analytical data storage.",
+    iconName: "Database",
+    skills: [
+      { name: "Oracle Database", level: "Proficient", iconName: "Database", highlight: true },
+      { name: "Microsoft SQL Server", level: "Advanced", iconName: "Server", highlight: true },
+      { name: "PostgreSQL", level: "Proficient", iconName: "HardDrive", highlight: true },
+      { name: "MySQL", level: "Advanced", iconName: "Database", highlight: true },
+      { name: "MongoDB", level: "Intermediate", iconName: "Table" },
+      { name: "Database Normalization (3NF/BCNF)", level: "Advanced", iconName: "GitMerge" },
+    ],
+  },
+  {
+    id: "data-analytics",
+    title: "Data Analytics & Business Intelligence",
+    description: "Analytical tools and methodologies for extracting intelligence, KPIs, and structured reporting from data.",
+    iconName: "BarChart3",
+    skills: [
+      { name: "Power BI", level: "Intermediate", iconName: "PieChart", highlight: true },
+      { name: "Advanced Microsoft Excel", level: "Advanced", iconName: "Sheet", highlight: true },
+      { name: "Complex SQL Analytics (Aggregates & Window Functions)", level: "Advanced", iconName: "Activity" },
+      { name: "Entity Relationship Modeling (ERD)", level: "Advanced", iconName: "Network", highlight: true },
+      { name: "Data Warehousing & ETL Concepts", level: "Intermediate", iconName: "FolderGit2" },
+      { name: "Data Cleansing & Validation", level: "Advanced", iconName: "CheckCircle2" },
+    ],
+  },
+  {
+    id: "tools-platforms",
+    title: "Developer Tools & Platforms",
+    description: "Professional toolchain for collaborative version control, debugging, containerization, and cloud deployment.",
+    iconName: "Wrench",
+    skills: [
+      { name: "Git & GitHub", level: "Advanced", iconName: "GitBranch", highlight: true },
+      { name: "Postman API Platform", level: "Advanced", iconName: "Send" },
+      { name: "VS Code & Visual Studio", level: "Advanced", iconName: "Code2" },
+      { name: "Vercel Platform", level: "Proficient", iconName: "Cloud", highlight: true },
+      { name: "Docker", level: "Intermediate", iconName: "Box" },
+      { name: "Figma (UI/UX Review)", level: "Intermediate", iconName: "Figma" },
+    ],
+  },
+];

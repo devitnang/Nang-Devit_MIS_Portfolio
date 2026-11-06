@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --corporate-navy: #0b2046;
+  --corporate-navy-dark: #07152e;
+  --corporate-red: #d32f2f;
+  --corporate-red-hover: #b71c1c;
+  --corporate-border: #e2e8f0;
+  --card-bg: #ffffff;
+  --card-subtle: #f8fafc;
+}
+
+.dark {
+  --background: #080f1e;
+  --foreground: #f1f5f9;
+  --corporate-navy: #0f2756;
+  --corporate-navy-dark: #071228;
+  --corporate-red: #e53935;
+  --corporate-red-hover: #d32f2f;
+  --corporate-border: #1e293b;
+  --card-bg: #0d182e;
+  --card-subtle: #13223f;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* Corporate Focus Rings */
+:focus-visible {
+  outline: 2px solid #d32f2f;
+  outline-offset: 2px;
+}
