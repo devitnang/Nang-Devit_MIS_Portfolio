@@ -225,3 +225,4 @@ export const projects: Project[] = [
     demoUrl: "https://electoral-demo.nangdevit.xyz",
   },
 ];
+

@@ -128,3 +128,4 @@ files.forEach(f => {
 });
 
 console.log(`Generated ${files.length} project mockups.`);
+

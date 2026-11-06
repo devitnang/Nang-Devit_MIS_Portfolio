@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { personalInfo } from "@/data/portfolioData";
 import { Menu, X, FileText, Send, ChevronRight } from "lucide-react";
@@ -61,8 +62,14 @@ export function Navbar() {
             className="flex items-center gap-3 group focus:outline-none"
             aria-label="Nang Devit - Home"
           >
-            <div className="w-10 h-10 rounded-lg bg-[#0B2046] dark:bg-[#0F2756] text-white flex items-center justify-center font-bold text-lg border border-[#0B2046] dark:border-slate-700 shadow-xs group-hover:bg-[#D32F2F] dark:group-hover:bg-[#D32F2F] transition-colors duration-200">
-              ND
+            <div className="relative w-10 h-10 rounded-lg bg-white dark:bg-[#0F2756] p-1 border border-slate-200 dark:border-slate-700 shadow-2xs group-hover:border-[#D32F2F] dark:group-hover:border-[#D32F2F] transition-colors duration-200 flex items-center justify-center overflow-hidden">
+              <Image
+                src="/assets/images/logo/mylogo_1.png"
+                alt="Nang Devit Logo"
+                fill
+                className="object-contain p-0.5"
+                sizes="40px"
+              />
             </div>
             <div className="flex flex-col">
               <span className="text-lg font-bold tracking-tight text-[#0B2046] dark:text-white leading-none group-hover:text-[#D32F2F] dark:group-hover:text-red-400 transition-colors">
@@ -191,3 +198,4 @@ export function Navbar() {
     </header>
   );
 }
+

@@ -117,3 +117,4 @@ export const socialLinks: SocialLink[] = [
     label: personalInfo.contact.displayPhone,
   },
 ];
+

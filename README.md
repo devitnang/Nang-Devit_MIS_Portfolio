@@ -92,7 +92,8 @@ cp .env.example .env.local
 Add your credentials:
 ```env
 TELEGRAM_BOT_TOKEN="your_telegram_bot_token"
-TELEGRAM_CHAT_ID="your_telegram_group_chat_id"
+TELEGRAM_GROUP_ID="-100xxxxxxxxxx"
+TELEGRAM_TOPIC_ID="your_topic_id"
 NEXT_PUBLIC_SITE_URL="http://localhost:3000"
 ```
 *(If Telegram keys are left blank, the contact endpoint runs in development mode and logs submissions safely to the server console).*

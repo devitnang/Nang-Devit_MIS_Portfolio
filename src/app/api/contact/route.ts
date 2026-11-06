@@ -104,15 +104,17 @@ export async function POST(request: NextRequest) {
     ].join("\n");
 
     const botToken = process.env.TELEGRAM_BOT_TOKEN;
-    const chatId = process.env.TELEGRAM_CHAT_ID;
+    const groupId = process.env.TELEGRAM_GROUP_ID || process.env.TELEGRAM_CHAT_ID;
+    const topicId = process.env.TELEGRAM_TOPIC_ID || process.env.TELEGRAM_THREAD_ID;
 
     // 5. Check if Telegram configuration exists
-    if (!botToken || !chatId) {
+    if (!botToken || !groupId) {
       console.warn(
-        "⚠️ [Telegram Contact API] TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID is not configured in environment variables.\n" +
+        "⚠️ [Telegram Contact API] TELEGRAM_BOT_TOKEN or TELEGRAM_GROUP_ID is not configured in environment variables.\n" +
           "Simulated message receipt:\n" +
           `Name: ${cleanName} | Email: ${cleanEmail} | Subject: ${cleanSubject}\n` +
-          `Message: ${cleanMessage}`
+          `Message: ${cleanMessage}` +
+          (topicId ? ` | Topic ID: ${topicId}` : "")
       );
 
       return NextResponse.json<ApiResponse>(
@@ -125,20 +127,27 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // 6. Send to Telegram Bot API
+    // 6. Send to Telegram Bot API (with Topic / Thread ID support)
     const telegramEndpoint = `https://api.telegram.org/bot${botToken}/sendMessage`;
+
+    const requestPayload: Record<string, unknown> = {
+      chat_id: groupId,
+      text: telegramMessage,
+      parse_mode: "HTML",
+      disable_web_page_preview: true,
+    };
+
+    // If a topic ID is specified, route the message into that specific topic thread
+    if (topicId && !isNaN(Number(topicId))) {
+      requestPayload.message_thread_id = Number(topicId);
+    }
 
     const telegramRes = await fetch(telegramEndpoint, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        chat_id: chatId,
-        text: telegramMessage,
-        parse_mode: "HTML",
-        disable_web_page_preview: true,
-      }),
+      body: JSON.stringify(requestPayload),
     });
 
     const telegramData = await telegramRes.json();
@@ -179,3 +188,4 @@ export async function POST(request: NextRequest) {
     );
   }
 }
+
