@@ -17,11 +17,11 @@ export function MinimalFooter() {
 
   const navigation = [
     { title: "Home", href: "#home" },
-    { title: "About Devit", href: "#about" },
     { title: "Technical Skills", href: "#skills" },
     { title: "Featured Projects", href: "#projects" },
     { title: "Work Experience", href: "#experience" },
     { title: "Education", href: "#education" },
+    { title: "Contact", href: "#contact" },
   ];
 
   const resources = [
