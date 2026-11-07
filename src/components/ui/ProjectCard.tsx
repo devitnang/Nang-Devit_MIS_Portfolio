@@ -252,3 +252,4 @@ export function ProjectCard({ project, onOpenModal }: ProjectCardProps) {
     </div>
   );
 }
+
