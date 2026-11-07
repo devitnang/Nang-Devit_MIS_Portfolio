@@ -56,7 +56,7 @@ export function ProjectsSection() {
         <SectionHeading
           badge="Portfolio Showcase"
           title="Featured Projects"
-          subtitle="Explore mobile application engineering projects developed with Flutter and Dart, featuring modular architectures, reactive state management, comprehensive UI flows, and official technical documentation."
+          subtitle="A curated portfolio of systems analysis specifications, relational database engineering, modern web applications, and cross-platform mobile apps developed with clean architectures."
         />
 
         {/* Search, Filter & View Controls Toolbar */}

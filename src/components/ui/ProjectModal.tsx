@@ -14,6 +14,7 @@ import {
   Building,
   FileText,
   Users,
+  ExternalLink,
 } from "lucide-react";
 
 interface ProjectModalProps {
@@ -237,6 +238,17 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
         {/* Modal Footer / Actions */}
         <div className="p-4 border-t border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-900/60 flex flex-wrap items-center justify-between gap-3 sticky bottom-0">
           <div className="flex flex-wrap items-center gap-2">
+            {project.demoUrl && (
+              <a
+                href={project.demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-md text-xs sm:text-sm font-semibold bg-[#0B2046] text-white hover:bg-[#07152E] dark:bg-blue-600 dark:hover:bg-blue-700 transition-colors shadow-2xs"
+              >
+                <ExternalLink className="w-4 h-4" />
+                <span>Live Website</span>
+              </a>
+            )}
             {project.documentationUrl && (
               <a
                 href={project.documentationUrl}

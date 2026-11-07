@@ -135,4 +135,138 @@ export const projects: Project[] = [
     ],
     githubUrl: "https://github.com/devitnang/my_app",
   },
+  {
+    id: "library-management-system-sa",
+    title: "Library Management System — 3-Tier Enterprise SA Capstone",
+    category: "System Analysis",
+    featured: true,
+    year: "2026",
+    clientOrOrg: "SETEC Institute — Systems Analysis & Design (SA-II)",
+    role: "Lead System Analyst & Database Architect",
+    teamMembers: ["Thai Sulinh", "Nang Devit", "Ken Sokraingsey"],
+    shortDescription:
+      "A comprehensive System Analysis (SA-II) capstone blueprint and 3-tier architecture for digital library operations, borrowing cycles, automated fine tracking, and reporting.",
+    fullDescription:
+      "Engineered an end-to-end enterprise systems analysis specification for digital library operations at SETEC Institute under instructor CHEA Savuth. Authored formal functional and non-functional requirements via Agile Scrum sprints and ClickUp, modeled 3-tier system architecture (presentation, application business logic, and relational SQL storage tier), and structured normalized database schemas for book circulation, member accounts, fines, reservations, and multi-role access control.",
+    keyFeatures: [
+      "3-Tier System Architecture modeled for Web/Mobile presentation, Business API, and Relational SQL storage.",
+      "Book catalog management with ISBN indexing, category classification, and available copy tracking.",
+      "Borrowing and return processing with due date validation and automated overdue fine calculation.",
+      "Reservation queue system for unavailable titles with automated status notifications.",
+      "Role-based access control (Admin, Librarian, Member) with secure authentication flows.",
+      "Production DDL relational schema script (db_library.sql) with 3NF normalization and foreign key integrity.",
+    ],
+    technologies: [
+      { name: "System Analysis (SA)" },
+      { name: "3-Tier Architecture" },
+      { name: "MySQL / SQL DDL" },
+      { name: "Agile Scrum" },
+      { name: "ClickUp" },
+      { name: "Database Normalization" },
+    ],
+    images: [
+      {
+        url: "/assets/projects/library_sa/library_architecture.svg",
+        caption: "Library Management System 3-Tier Enterprise Architecture (Client, API & SQL)",
+        alt: "Library SA 3-Tier Architecture Diagram",
+      },
+      {
+        url: "/assets/projects/library_sa/library_erd.svg",
+        caption: "Entity-Relationship Diagram (ERD) with 3NF Relational Structure (db_library.sql)",
+        alt: "Library SA Relational Schema ERD",
+      },
+    ],
+    githubUrl: "https://github.com/devitnang/Library_Mangement_System_SA",
+  },
+  {
+    id: "crm-system-sql",
+    title: "Customer Relationship Management (CRM) — SQL Architecture & DFD",
+    category: "Enterprise Systems",
+    featured: true,
+    year: "2024",
+    clientOrOrg: "Enterprise Database Architecture & Business Modeling",
+    role: "Database Architect & Systems Modeler",
+    teamMembers: ["Ken Sokraingsey", "Nang Devit"],
+    shortDescription:
+      "A robust SQL-based architecture streamlining the entire sales lifecycle—from lead acquisition and qualification to deal closure, revenue reporting, and support.",
+    fullDescription:
+      "Designed an enterprise relational database schema and business workflow architecture for a multi-tiered Customer Relationship Management (CRM) platform. Engineered 3NF normalized tables across 8 core modules (User Auth, Pre-Sales Leads, Accounts & Contacts, Opportunity Deals, Line Items, Support Tickets, and Interaction Logs). Enforced business logic rules including manager approval workflows for high-value discounts (>20%), 360-degree customer auditing, and Level 0, Level 1, and Level 2 Data Flow Diagrams (DFDs).",
+    keyFeatures: [
+      "360-degree customer view separating parent corporate accounts from individual contact persons.",
+      "End-to-end sales pipeline tracking leads from qualification to opportunity deals and line item revenue.",
+      "Context Level 0, Level 1 process decomposition, and Level 2 deal closure Data Flow Diagrams (DFD).",
+      "Automated business logic rules routing discounts over 20% to manager approval workflows.",
+      "Integrated post-sale customer support ticketing module with SLA tracking and priority queues.",
+      "Complete SQL DDL schema script with third normal form (3NF) relational constraints and audit logs.",
+    ],
+    technologies: [
+      { name: "SQL (MySQL)" },
+      { name: "Database Schema (ERD)" },
+      { name: "Data Flow Diagrams (DFD)" },
+      { name: "3NF Normalization" },
+      { name: "Relational Modeling" },
+      { name: "Business Logic Engine" },
+    ],
+    images: [
+      {
+        url: "/assets/projects/crm_sql/crm_erd.png",
+        caption: "Third Normal Form (3NF) Entity-Relationship Diagram (ERD) & Schema",
+        alt: "CRM Database Schema ERD",
+      },
+      {
+        url: "/assets/projects/crm_sql/dfd_level0.png",
+        caption: "Data Flow Diagram Level 0: High-Level Context Diagram",
+        alt: "CRM Level 0 Context DFD",
+      },
+      {
+        url: "/assets/projects/crm_sql/dfd_level1.png",
+        caption: "Data Flow Diagram Level 1: Subsystems & Process Decomposition",
+        alt: "CRM Level 1 Process DFD",
+      },
+      {
+        url: "/assets/projects/crm_sql/dfd_level2.png",
+        caption: "Data Flow Diagram Level 2: Deal Closure & Approval Logic Workflow",
+        alt: "CRM Level 2 Deal Closure DFD",
+      },
+    ],
+    githubUrl: "https://github.com/devitnang/Customer_Relationship_Management_System_SQL",
+  },
+  {
+    id: "sokraingsey-ken-portfolio",
+    title: "Sokraingsey Ken — IT Support & Professional Web Portfolio",
+    category: "Software Development",
+    featured: true,
+    year: "2026",
+    clientOrOrg: "Production Web Portfolio",
+    role: "Full-Stack Web Developer & UI Designer",
+    shortDescription:
+      "A high-performance modern web portfolio built with Next.js 16, TypeScript, Tailwind CSS, Framer Motion, and Lenis smooth scrolling, deployed live on Vercel.",
+    fullDescription:
+      "Architected and deployed a production-grade portfolio website for Ken Sokraingsey (IT Support & Systems Specialist). Built using Next.js 16 App Router, TypeScript, and Tailwind CSS with fluid Lenis smooth scrolling and Framer Motion micro-interactions. Features dark mode theming, responsive grid layouts, automated contact dispatching, and zero-downtime production deployment on Vercel with custom SSL at portfolio.sokraingseyken.xyz.",
+    keyFeatures: [
+      "Modern Next.js 16 App Router architecture with TypeScript and React 19.",
+      "Fluid cinematic smooth scrolling powered by Lenis and Framer Motion animations.",
+      "Responsive mobile-first layout with dark mode palette and enterprise slate aesthetics.",
+      "Interactive technical competency pillars highlighting IT infrastructure, networking, and modern web stack.",
+      "Production deployment on Vercel Edge CDN with custom domain configuration and SSL verification.",
+    ],
+    technologies: [
+      { name: "Next.js 16" },
+      { name: "TypeScript" },
+      { name: "React 19" },
+      { name: "Tailwind CSS" },
+      { name: "Framer Motion" },
+      { name: "Lenis Scroll" },
+      { name: "Vercel Deployment" },
+    ],
+    images: [
+      {
+        url: "/assets/projects/sokraingsey_portfolio/portfolio_preview.svg",
+        caption: "Live Web Portfolio Interface at portfolio.sokraingseyken.xyz",
+        alt: "Sokraingsey Ken Web Portfolio Preview",
+      },
+    ],
+    demoUrl: "https://portfolio.sokraingseyken.xyz",
+    githubUrl: "https://github.com/devitnang/Sokraingsey_KEN",
+  },
 ];

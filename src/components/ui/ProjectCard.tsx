@@ -11,6 +11,7 @@ import {
   ChevronRight,
   Code2,
   FileText,
+  ExternalLink,
 } from "lucide-react";
 
 interface ProjectCardProps {
@@ -209,6 +210,17 @@ export function ProjectCard({
             </button>
 
             <div className="flex items-center gap-2">
+              {project.demoUrl && (
+                <a
+                  href={project.demoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-1.5 rounded-md text-[#0B2046] dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/40 transition-colors"
+                  title="Visit Live Website"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                </a>
+              )}
               {project.documentationUrl && (
                 <a
                   href={project.documentationUrl}
@@ -296,6 +308,17 @@ export function ProjectCard({
         </button>
 
         <div className="flex items-center gap-2">
+          {project.demoUrl && (
+            <a
+              href={project.demoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-1.5 rounded-md text-[#0B2046] dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/40 transition-colors"
+              title="Visit Live Website"
+            >
+              <ExternalLink className="w-4 h-4" />
+            </a>
+          )}
           {project.documentationUrl && (
             <a
               href={project.documentationUrl}

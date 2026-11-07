@@ -1,0 +1,148 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080F1E"/>
+      <stop offset="100%" stop-color="#0F1E36"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#13233F"/>
+      <stop offset="100%" stop-color="#0C182B"/>
+    </linearGradient>
+    <linearGradient id="blueGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#60A5FA"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="750" fill="url(#bgGrad)"/>
+  <rect x="0" y="0" width="1200" height="750" fill="none" stroke="#1E293B" stroke-width="2"/>
+
+  <!-- Grid overlay -->
+  <g opacity="0.06" stroke="#FFFFFF" stroke-width="1">
+    <line x1="0" y1="150" x2="1200" y2="150"/>
+    <line x1="0" y1="300" x2="1200" y2="300"/>
+    <line x1="0" y1="450" x2="1200" y2="450"/>
+    <line x1="0" y1="600" x2="1200" y2="600"/>
+    <line x1="300" y1="0" x2="300" y2="750"/>
+    <line x1="600" y1="0" x2="600" y2="750"/>
+    <line x1="900" y1="0" x2="900" y2="750"/>
+  </g>
+
+  <!-- Header Banner -->
+  <rect x="50" y="40" width="1100" height="90" rx="14" fill="url(#cardGrad)" stroke="#1E3A8A" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="80" y="82" fill="#FFFFFF" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="bold" letter-spacing="1">LIBRARY MANAGEMENT SYSTEM</text>
+  <text x="80" y="108" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="500">SYSTEM ANALYSIS &amp; 3-TIER ENTERPRISE ARCHITECTURE · SETEC INSTITUTE (SA-II)</text>
+
+  <rect x="990" y="65" width="130" height="34" rx="6" fill="#1E293B" stroke="#3B82F6" stroke-width="1"/>
+  <text x="1055" y="87" fill="#60A5FA" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">Agile / 3-Tier</text>
+
+  <!-- Tier 1: Presentation Layer -->
+  <g transform="translate(60, 160)" filter="url(#shadow)">
+    <rect width="330" height="520" rx="14" fill="url(#cardGrad)" stroke="#1E3A8A" stroke-width="1.5"/>
+    <rect x="0" y="0" width="330" height="48" rx="14" fill="#0F244A"/>
+    <text x="25" y="31" fill="#60A5FA" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" letter-spacing="1">1. PRESENTATION TIER</text>
+    <text x="290" y="31" fill="#94A3B8" font-family="monospace" font-size="12">CLIENT</text>
+
+    <!-- Client modules -->
+    <rect x="20" y="70" width="290" height="74" rx="8" fill="#0A162B" stroke="#1E293B" stroke-width="1"/>
+    <text x="35" y="98" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="14" font-weight="600">Admin Portal</text>
+    <text x="35" y="122" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="11">Staff permissions, system settings, policy config</text>
+
+    <rect x="20" y="160" width="290" height="74" rx="8" fill="#0A162B" stroke="#1E293B" stroke-width="1"/>
+    <text x="35" y="188" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="14" font-weight="600">Librarian Operations</text>
+    <text x="35" y="212" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="11">Check-in, check-out, catalog search, barcode scan</text>
+
+    <rect x="20" y="250" width="290" height="74" rx="8" fill="#0A162B" stroke="#1E293B" stroke-width="1"/>
+    <text x="35" y="278" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="14" font-weight="600">Member Self-Service</text>
+    <text x="35" y="302" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="11">Book reservations, loan status, fine balances</text>
+
+    <rect x="20" y="340" width="290" height="74" rx="8" fill="#0A162B" stroke="#1E293B" stroke-width="1"/>
+    <text x="35" y="368" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="14" font-weight="600">Reporting &amp; Analytics UI</text>
+    <text x="35" y="392" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="11">Circulation metrics, overdue lists, inventory losses</text>
+
+    <rect x="20" y="430" width="290" height="64" rx="8" fill="#1E293B" stroke="#3B82F6" stroke-width="1"/>
+    <text x="35" y="456" fill="#60A5FA" font-family="system-ui, sans-serif" font-size="12" font-weight="bold">Prototypes &amp; ClickUp Tasks</text>
+    <text x="35" y="476" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="11">Documented via Agile Scrum sprints</text>
+  </g>
+
+  <!-- Connectors Tier 1 to 2 -->
+  <g stroke="#3B82F6" stroke-width="2" stroke-dasharray="6,4" fill="none">
+    <path d="M 390 290 L 435 290"/>
+    <path d="M 390 380 L 435 380"/>
+  </g>
+  <polygon points="435,286 445,290 435,294" fill="#3B82F6"/>
+  <polygon points="435,376 445,380 435,384" fill="#3B82F6"/>
+
+  <!-- Tier 2: Application / Logic Layer -->
+  <g transform="translate(435, 160)" filter="url(#shadow)">
+    <rect width="330" height="520" rx="14" fill="url(#cardGrad)" stroke="#1E3A8A" stroke-width="1.5"/>
+    <rect x="0" y="0" width="330" height="48" rx="14" fill="#0F244A"/>
+    <text x="25" y="31" fill="#60A5FA" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" letter-spacing="1">2. BUSINESS LOGIC TIER</text>
+    <text x="280" y="31" fill="#94A3B8" font-family="monospace" font-size="12">API</text>
+
+    <!-- Logic components -->
+    <rect x="20" y="70" width="290" height="74" rx="8" fill="#0A162B" stroke="#1E293B" stroke-width="1"/>
+    <text x="35" y="98" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="14" font-weight="600">Auth &amp; RBAC Service</text>
+    <text x="35" y="122" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="11">JWT tokens, role guards, user profile sessions</text>
+
+    <rect x="20" y="160" width="290" height="74" rx="8" fill="#0A162B" stroke="#1E293B" stroke-width="1"/>
+    <text x="35" y="188" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="14" font-weight="600">Loan &amp; Circulation Engine</text>
+    <text x="35" y="212" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="11">Borrow limits, 14-day cycle, copy availability</text>
+
+    <rect x="20" y="250" width="290" height="74" rx="8" fill="#0A162B" stroke="#1E293B" stroke-width="1"/>
+    <text x="35" y="278" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="14" font-weight="600">Overdue Fine Calculator</text>
+    <text x="35" y="302" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="11">Automated daily penalty rate &amp; waiver records</text>
+
+    <rect x="20" y="340" width="290" height="74" rx="8" fill="#0A162B" stroke="#1E293B" stroke-width="1"/>
+    <text x="35" y="368" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="14" font-weight="600">Reservation Queue Manager</text>
+    <text x="35" y="392" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="11">FIFO reservation prioritization on returned books</text>
+
+    <rect x="20" y="430" width="290" height="64" rx="8" fill="#1E293B" stroke="#3B82F6" stroke-width="1"/>
+    <text x="35" y="456" fill="#60A5FA" font-family="system-ui, sans-serif" font-size="12" font-weight="bold">RESTful Endpoints</text>
+    <text x="35" y="476" fill="#E2E8F0" font-family="monospace" font-size="11">/api/books, /api/borrow, /api/return</text>
+  </g>
+
+  <!-- Connectors Tier 2 to 3 -->
+  <g stroke="#3B82F6" stroke-width="2" stroke-dasharray="6,4" fill="none">
+    <path d="M 765 290 L 810 290"/>
+    <path d="M 765 380 L 810 380"/>
+  </g>
+  <polygon points="810,286 820,290 810,294" fill="#3B82F6"/>
+  <polygon points="810,376 820,380 810,384" fill="#3B82F6"/>
+
+  <!-- Tier 3: Database / Storage Layer -->
+  <g transform="translate(810, 160)" filter="url(#shadow)">
+    <rect width="330" height="520" rx="14" fill="url(#cardGrad)" stroke="#1E3A8A" stroke-width="1.5"/>
+    <rect x="0" y="0" width="330" height="48" rx="14" fill="#0F244A"/>
+    <text x="25" y="31" fill="#60A5FA" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" letter-spacing="1">3. RELATIONAL DATA TIER</text>
+    <text x="280" y="31" fill="#94A3B8" font-family="monospace" font-size="12">SQL</text>
+
+    <!-- Database tables -->
+    <rect x="20" y="70" width="290" height="60" rx="8" fill="#0A162B" stroke="#1E293B" stroke-width="1"/>
+    <text x="35" y="96" fill="#FFFFFF" font-family="monospace" font-size="13" font-weight="bold">BOOK &amp; AUTHOR &amp; CATEGORY</text>
+    <text x="35" y="116" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="11">ISBN, title, publisher_id, available_copies</text>
+
+    <rect x="20" y="145" width="290" height="60" rx="8" fill="#0A162B" stroke="#1E293B" stroke-width="1"/>
+    <text x="35" y="171" fill="#FFFFFF" font-family="monospace" font-size="13" font-weight="bold">MEMBER &amp; STAFF</text>
+    <text x="35" y="191" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="11">Accounts, contact info, membership expiry</text>
+
+    <rect x="20" y="220" width="290" height="60" rx="8" fill="#0A162B" stroke="#1E293B" stroke-width="1"/>
+    <text x="35" y="246" fill="#FFFFFF" font-family="monospace" font-size="13" font-weight="bold">TRANSACTION &amp; LOAN</text>
+    <text x="35" y="266" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="11">borrow_date, due_date, return_date, status</text>
+
+    <rect x="20" y="295" width="290" height="60" rx="8" fill="#0A162B" stroke="#1E293B" stroke-width="1"/>
+    <text x="35" y="321" fill="#FFFFFF" font-family="monospace" font-size="13" font-weight="bold">FINE &amp; RESERVATION</text>
+    <text x="35" y="341" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="11">fine_amount, payment_status, reserved_at</text>
+
+    <rect x="20" y="370" width="290" height="60" rx="8" fill="#0A162B" stroke="#1E293B" stroke-width="1"/>
+    <text x="35" y="396" fill="#FFFFFF" font-family="monospace" font-size="13" font-weight="bold">PUBLISHER &amp; SUPPLIER</text>
+    <text x="35" y="416" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="11">Vendor records, supply shipments &amp; contacts</text>
+
+    <rect x="20" y="445" width="290" height="50" rx="8" fill="#1E293B" stroke="#10B981" stroke-width="1"/>
+    <text x="35" y="475" fill="#34D399" font-family="monospace" font-size="11" font-weight="bold">3NF Normalized Relational DDL (db_library.sql)</text>
+  </g>
+</svg>
