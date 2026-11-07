@@ -10,6 +10,12 @@ export interface SkillItem {
   level?: "Beginner" | "Intermediate" | "Advanced" | "Proficient";
   iconName: string;
   highlight?: boolean;
+  slug?: string;
+  domain?: string;
+  commit?: string;
+  repo?: string;
+  date?: string;
+  status?: "waveform" | "ready";
 }
 
 export interface SkillCategory {
