@@ -2,79 +2,117 @@
 
 import React from "react";
 import Image from "next/image";
-import { personalInfo, socialLinks } from "@/data/portfolioData";
+import { personalInfo } from "@/data/portfolioData";
 import { GithubIcon, LinkedinIcon, TelegramIcon } from "@/components/ui/Icons";
-import { Mail, Phone } from "lucide-react";
+import { Mail } from "lucide-react";
 
 export function HeroSection() {
-  const getSocialIcon = (name: string) => {
-    switch (name) {
-      case "LinkedIn":
-        return <LinkedinIcon className="w-5 h-5" />;
-      case "GitHub":
-        return <GithubIcon className="w-5 h-5" />;
-      case "Telegram":
-        return <TelegramIcon className="w-5 h-5" />;
-      case "Email":
-        return <Mail className="w-5 h-5" />;
-      case "Phone":
-        return <Phone className="w-5 h-5" />;
-      default:
-        return null;
-    }
-  };
-
   return (
     <section
       id="home"
-      className="relative pt-28 pb-16 md:pt-36 md:pb-24 overflow-hidden border-b border-slate-200 dark:border-slate-800 bg-linear-to-b from-slate-50 via-white to-white dark:from-[#070D19] dark:via-[#080F1E] dark:to-[#080F1E] flex items-center justify-center min-h-[70vh]"
+      className="relative pt-32 pb-14 md:pt-40 md:pb-20 overflow-hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-[#080F1E] flex items-center justify-center transition-colors"
     >
-      {/* Subtle Corporate Grid Background */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_40%,#000_70%,transparent_100%)] opacity-30 dark:opacity-20 pointer-events-none" />
-
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-        {/* Profile Photo */}
-        <div className="flex justify-center mb-6">
-          <div className="relative w-44 h-44 sm:w-52 sm:h-52 md:w-60 md:h-60 rounded-full p-1.5 bg-gradient-to-b from-[#0B2046] via-[#16366E] to-[#07152E] dark:from-[#0F2756] dark:via-[#1D4ED8] dark:to-[#07152E] shadow-xl">
-            <div className="relative w-full h-full rounded-full overflow-hidden bg-slate-100 dark:bg-slate-900 border-2 border-white dark:border-[#080F1E]">
-              <Image
-                src={personalInfo.assets.avatar}
-                alt="Nang Devit"
-                fill
-                priority
-                className="object-cover object-top hover:scale-105 transition-transform duration-300"
-                sizes="(max-width: 768px) 210px, 240px"
-              />
+        {/* Top Block: Avatar on left + Name & Socials on right */}
+        <div className="inline-flex items-center justify-center gap-4 sm:gap-6 text-left">
+          {/* Circular Avatar */}
+          <div className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full overflow-hidden shrink-0 border-2 border-slate-200/90 dark:border-slate-700 shadow-sm bg-slate-100 dark:bg-slate-800">
+            <Image
+              src="/assets/images/devit_avatar.png"
+              alt="Devit NANG"
+              fill
+              priority
+              className="object-cover"
+              sizes="(max-width: 768px) 96px, 112px"
+            />
+          </div>
+
+          {/* Name & Socials Column */}
+          <div className="flex flex-col justify-center">
+            {/* Name + Blue Verified Checkmark Badge */}
+            <div className="flex items-center gap-2">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-[#0B2046] dark:text-white">
+                Devit NANG
+              </h1>
+
+              {/* Blue Verified Checkmark Badge */}
+              <div
+                title="Verified MIS Professional"
+                className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#1D9BF0] flex items-center justify-center shrink-0 shadow-2xs"
+              >
+                <svg
+                  className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-white"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="3.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </div>
+            </div>
+
+            {/* Social Icons row */}
+            <div className="flex items-center gap-3 sm:gap-3.5 mt-2 text-slate-500 dark:text-slate-400">
+              {/* GitHub */}
+              <a
+                href={personalInfo.contact.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-slate-900 dark:hover:text-white transition-colors"
+                title="GitHub"
+                aria-label="GitHub Profile"
+              >
+                <GithubIcon className="w-4 h-4 sm:w-5 sm:h-5" />
+              </a>
+
+              {/* LinkedIn */}
+              <a
+                href={personalInfo.contact.linkedinUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-[#0A66C2] transition-colors"
+                title="LinkedIn"
+                aria-label="LinkedIn Profile"
+              >
+                <LinkedinIcon className="w-4 h-4 sm:w-5 sm:h-5" />
+              </a>
+
+              {/* Email */}
+              <a
+                href={`mailto:${personalInfo.contact.email}`}
+                className="hover:text-[#0B2046] dark:hover:text-blue-400 transition-colors"
+                title={`Email: ${personalInfo.contact.email}`}
+                aria-label="Send Email"
+              >
+                <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
+              </a>
+
+              {/* Telegram */}
+              <a
+                href={personalInfo.contact.telegramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-[#0088cc] transition-colors"
+                title="Telegram"
+                aria-label="Telegram Channel"
+              >
+                <TelegramIcon className="w-4 h-4 sm:w-5 sm:h-5" />
+              </a>
             </div>
           </div>
         </div>
 
-        {/* Name */}
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#0B2046] dark:text-white mb-2">
-          {personalInfo.name}
-        </h1>
-
-        {/* Major Only */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-[#0B2046] dark:text-blue-300 font-bold text-sm sm:text-base md:text-lg mb-8 shadow-2xs">
-          <span className="w-2 h-2 rounded-full bg-[#0B2046] dark:bg-blue-400" />
-          <span>Major: Management Information Systems (MIS)</span>
-        </div>
-
-        {/* Contact Icons Only */}
-        <div className="flex items-center justify-center gap-3 sm:gap-4">
-          {socialLinks.map((s) => (
-            <a
-              key={s.name}
-              href={s.url}
-              target={s.url.startsWith("http") ? "_blank" : undefined}
-              rel={s.url.startsWith("http") ? "noopener noreferrer" : undefined}
-              className="p-3 sm:p-3.5 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:text-white hover:bg-[#0B2046] dark:hover:bg-blue-600 hover:border-[#0B2046] dark:hover:border-blue-600 transition-all duration-200 shadow-xs hover:shadow-md hover:-translate-y-0.5 cursor-pointer"
-              title={`${s.name}: ${s.label}`}
-              aria-label={s.name}
-            >
-              {getSocialIcon(s.name)}
-            </a>
-          ))}
+        {/* Subtitle Underneath */}
+        <div className="mt-6 sm:mt-8">
+          <p className="text-base sm:text-lg md:text-xl font-normal text-slate-600 dark:text-slate-400">
+            <strong className="font-bold text-[#0B2046] dark:text-blue-400">
+              Management Information Systems
+            </strong>{" "}
+            — SETEC Institute (Year 4)
+          </p>
         </div>
       </div>
     </section>

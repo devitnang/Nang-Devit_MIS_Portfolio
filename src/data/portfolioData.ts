@@ -25,7 +25,7 @@ export const personalInfo = {
   },
   
   assets: {
-    avatar: "/assets/images/nangdevit.PNG",
+    avatar: "/assets/images/devit_avatar.png",
     cv: "/assets/cv/NANGDEVIT__CV.pdf",
     cvFileName: "NANGDEVIT__CV.pdf",
   },

@@ -261,9 +261,14 @@ export const projects: Project[] = [
     ],
     images: [
       {
-        url: "/assets/projects/sokraingsey_portfolio/portfolio_preview.svg",
-        caption: "Live Web Portfolio Interface at portfolio.sokraingseyken.xyz",
-        alt: "Sokraingsey Ken Web Portfolio Preview",
+        url: "/assets/projects/sokraingsey_portfolio/home.png",
+        caption: "Live Web Portfolio Home Interface at portfolio.sokraingseyken.xyz",
+        alt: "Sokraingsey Ken Web Portfolio Home Preview",
+      },
+      {
+        url: "/assets/projects/sokraingsey_portfolio/project.png",
+        caption: "Interactive Projects Showcase & Responsive Layouts",
+        alt: "Sokraingsey Ken Projects Showcase Preview",
       },
     ],
     demoUrl: "https://portfolio.sokraingseyken.xyz",
