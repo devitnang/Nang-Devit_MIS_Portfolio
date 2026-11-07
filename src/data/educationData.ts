@@ -6,7 +6,7 @@ export const educationList: Education[] = [
     institution: "SETEC Institute",
     degree: "Bachelor of Science in Management Information Systems (MIS)",
     major: "Management Information Systems (MIS)",
-    period: "2021 – Present (Year 4)",
+    period: "2024 – Present (Year 4)",
     year: "Year 4 Senior",
     location: "Phnom Penh, Cambodia",
     logo: "/assets/images/logo/setec_institute.png",
@@ -26,6 +26,7 @@ export const educationList: Education[] = [
       "Lead System Analyst role in multi-member capstone projects designing enterprise-grade application prototypes.",
       "Developed end-to-end full-stack and mobile applications as practical academic deliverables.",
     ],
+    courseImage: "/assets/images/my_course.JPG",
   },
 ];
 

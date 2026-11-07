@@ -73,6 +73,7 @@ export interface Education {
   description: string;
   coreCourses: string[];
   highlights: string[];
+  courseImage?: string;
 }
 
 export interface ContactFormData {
