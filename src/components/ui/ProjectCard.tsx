@@ -70,13 +70,18 @@ export function ProjectCard({
     setTouchEndX(null);
   };
 
-  const renderSlider = () => (
+  const renderSlider = (isList = false) => (
     <div
       onClick={() => onOpenModal(project)}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
-      className="relative aspect-16/10 h-full min-h-[220px] bg-slate-900 overflow-hidden cursor-pointer group/img select-none"
+      className={cn(
+        "relative w-full bg-slate-900 overflow-hidden cursor-pointer group/img select-none",
+        isList
+          ? "aspect-16/10 md:aspect-auto h-full min-h-[220px]"
+          : "aspect-16/10 h-full min-h-[220px]"
+      )}
       title="Click to expand gallery"
     >
       {images.length > 0 ? (
@@ -164,7 +169,7 @@ export function ProjectCard({
   if (viewMode === "list") {
     return (
       <div className="group rounded-xl bg-white dark:bg-[#0D182E] border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 shadow-2xs hover:shadow-lg transition-all duration-200 flex flex-col md:flex-row overflow-hidden">
-        <div className="md:w-5/12 shrink-0">{renderSlider()}</div>
+        <div className="md:w-5/12 shrink-0 relative min-h-[220px]">{renderSlider(true)}</div>
         <div className="p-6 md:w-7/12 flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-2">

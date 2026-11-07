@@ -12,7 +12,7 @@ import { RotateCcw } from "lucide-react";
 export function ProjectsSection() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
+  const [viewMode, setViewMode] = useState<"grid" | "list">("list");
   const [activeModalProject, setActiveModalProject] = useState<Project | null>(null);
 
   // Dynamic categories with counts
