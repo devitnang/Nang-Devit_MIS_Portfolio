@@ -9,6 +9,7 @@ import {
 import { skillCategories } from "@/data/skillsData";
 import { SkillItem } from "@/types";
 import { GithubIcon } from "@/components/ui/Icons";
+import { cn } from "@/lib/utils";
 import {
   Code,
   Database,
@@ -25,7 +26,6 @@ import {
   Send,
   RotateCcw,
   Filter,
-  ChevronsUpDown,
   Cpu,
   Image as ImageIcon,
   PenTool,
@@ -39,7 +39,7 @@ import {
 } from "lucide-react";
 
 /**
- * Renders the circular avatar icon for a skill, matching Vercel's dashboard styling
+ * Renders the brand app tile icon for a skill
  */
 function SkillAvatar({ skill }: { skill: SkillItem }) {
   const name = skill.name.toLowerCase();
@@ -47,7 +47,7 @@ function SkillAvatar({ skill }: { skill: SkillItem }) {
   // Flutter Brand Icon
   if (name.includes("flutter")) {
     return (
-      <div className="w-10 h-10 rounded-full bg-[#02569B] text-white flex items-center justify-center shrink-0 border border-blue-400/30 shadow-2xs">
+      <div className="w-11 h-11 rounded-xl bg-[#02569B] text-white flex items-center justify-center shrink-0 border border-blue-400/30 shadow-2xs">
         <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
           <path d="M14.314 0L2.3 12 6 15.7 21.684 0zm.014 11.072L7.857 17.53 14.328 24H21.7l-6.471-6.47 6.457-6.458z" />
         </svg>
@@ -58,7 +58,7 @@ function SkillAvatar({ skill }: { skill: SkillItem }) {
   // Dart Icon
   if (name.includes("dart")) {
     return (
-      <div className="w-10 h-10 rounded-full bg-[#0175C2] text-white flex items-center justify-center shrink-0 border border-cyan-400/30 shadow-2xs">
+      <div className="w-11 h-11 rounded-xl bg-[#0175C2] text-white flex items-center justify-center shrink-0 border border-cyan-400/30 shadow-2xs">
         <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
           <path d="M4.105 4.105L12.5 0l7.395 3.553L4.105 19.895V4.105zm15.79 3.552L12.5 24l-3.553-7.395L20.895 4.105l-1 3.552z" />
         </svg>
@@ -69,7 +69,7 @@ function SkillAvatar({ skill }: { skill: SkillItem }) {
   // C# Icon
   if (name.includes("c#")) {
     return (
-      <div className="w-10 h-10 rounded-full bg-[#239120] text-white flex items-center justify-center shrink-0 font-bold text-xs tracking-tight border border-green-500/30 shadow-2xs">
+      <div className="w-11 h-11 rounded-xl bg-[#239120] text-white flex items-center justify-center shrink-0 font-bold text-sm tracking-tight border border-green-500/30 shadow-2xs">
         C#
       </div>
     );
@@ -78,7 +78,7 @@ function SkillAvatar({ skill }: { skill: SkillItem }) {
   // Oracle Database Icon
   if (name.includes("oracle")) {
     return (
-      <div className="w-10 h-10 rounded-full bg-[#E51C23] text-white flex items-center justify-center shrink-0 border border-red-500/30 shadow-2xs">
+      <div className="w-11 h-11 rounded-xl bg-[#E51C23] text-white flex items-center justify-center shrink-0 border border-red-500/30 shadow-2xs">
         <Database className="w-5 h-5 text-white" />
       </div>
     );
@@ -87,8 +87,8 @@ function SkillAvatar({ skill }: { skill: SkillItem }) {
   // SQL Server Icon
   if (name.includes("sql server")) {
     return (
-      <div className="w-10 h-10 rounded-full bg-[#CC292B] text-white flex items-center justify-center shrink-0 border border-red-400/30 shadow-2xs">
-        <Server className="w-4 h-4 text-white" />
+      <div className="w-11 h-11 rounded-xl bg-[#CC292B] text-white flex items-center justify-center shrink-0 border border-red-400/30 shadow-2xs">
+        <Server className="w-5 h-5 text-white" />
       </div>
     );
   }
@@ -96,8 +96,8 @@ function SkillAvatar({ skill }: { skill: SkillItem }) {
   // MySQL Icon
   if (name.includes("mysql")) {
     return (
-      <div className="w-10 h-10 rounded-full bg-[#00758F] text-white flex items-center justify-center shrink-0 border border-cyan-400/30 shadow-2xs">
-        <Database className="w-4 h-4 text-white" />
+      <div className="w-11 h-11 rounded-xl bg-[#00758F] text-white flex items-center justify-center shrink-0 border border-cyan-400/30 shadow-2xs">
+        <Database className="w-5 h-5 text-white" />
       </div>
     );
   }
@@ -105,8 +105,8 @@ function SkillAvatar({ skill }: { skill: SkillItem }) {
   // MongoDB Icon
   if (name.includes("mongodb")) {
     return (
-      <div className="w-10 h-10 rounded-full bg-[#13AA52] text-white flex items-center justify-center shrink-0 border border-emerald-400/30 shadow-2xs">
-        <Database className="w-4 h-4 text-white" />
+      <div className="w-11 h-11 rounded-xl bg-[#13AA52] text-white flex items-center justify-center shrink-0 border border-emerald-400/30 shadow-2xs">
+        <Database className="w-5 h-5 text-white" />
       </div>
     );
   }
@@ -114,8 +114,8 @@ function SkillAvatar({ skill }: { skill: SkillItem }) {
   // GitHub Icon
   if (name.includes("git")) {
     return (
-      <div className="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center shrink-0 border border-slate-800 shadow-2xs">
-        <GithubIcon className="w-4 h-4 fill-white" />
+      <div className="w-11 h-11 rounded-xl bg-[#181717] dark:bg-[#24292E] text-white flex items-center justify-center shrink-0 border border-slate-700 shadow-2xs">
+        <GithubIcon className="w-5 h-5 fill-white" />
       </div>
     );
   }
@@ -123,7 +123,7 @@ function SkillAvatar({ skill }: { skill: SkillItem }) {
   // Figma Icon
   if (name.includes("figma")) {
     return (
-      <div className="w-10 h-10 rounded-full bg-[#1E1E1E] text-white flex items-center justify-center shrink-0 border border-slate-700 shadow-2xs">
+      <div className="w-11 h-11 rounded-xl bg-[#1E1E1E] text-white flex items-center justify-center shrink-0 border border-slate-700 shadow-2xs">
         <svg className="w-5 h-5" viewBox="0 0 38 57" fill="none">
           <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z" fill="#1ABCFE" />
           <path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z" fill="#0ACF83" />
@@ -138,7 +138,7 @@ function SkillAvatar({ skill }: { skill: SkillItem }) {
   // Adobe Photoshop
   if (name.includes("photoshop")) {
     return (
-      <div className="w-10 h-10 rounded-full bg-[#001E36] text-[#31A8FF] flex items-center justify-center shrink-0 font-extrabold text-sm border border-[#31A8FF]/40 shadow-2xs">
+      <div className="w-11 h-11 rounded-xl bg-[#001E36] text-[#31A8FF] flex items-center justify-center shrink-0 font-extrabold text-base border border-[#31A8FF]/40 shadow-2xs">
         Ps
       </div>
     );
@@ -147,7 +147,7 @@ function SkillAvatar({ skill }: { skill: SkillItem }) {
   // Adobe Illustrator
   if (name.includes("illustrator")) {
     return (
-      <div className="w-10 h-10 rounded-full bg-[#330000] text-[#FF9A00] flex items-center justify-center shrink-0 font-extrabold text-sm border border-[#FF9A00]/40 shadow-2xs">
+      <div className="w-11 h-11 rounded-xl bg-[#330000] text-[#FF9A00] flex items-center justify-center shrink-0 font-extrabold text-base border border-[#FF9A00]/40 shadow-2xs">
         Ai
       </div>
     );
@@ -156,7 +156,7 @@ function SkillAvatar({ skill }: { skill: SkillItem }) {
   // Adobe Premiere Pro
   if (name.includes("premiere")) {
     return (
-      <div className="w-10 h-10 rounded-full bg-[#00005B] text-[#9999FF] flex items-center justify-center shrink-0 font-extrabold text-sm border border-[#9999FF]/40 shadow-2xs">
+      <div className="w-11 h-11 rounded-xl bg-[#00005B] text-[#9999FF] flex items-center justify-center shrink-0 font-extrabold text-base border border-[#9999FF]/40 shadow-2xs">
         Pr
       </div>
     );
@@ -165,7 +165,7 @@ function SkillAvatar({ skill }: { skill: SkillItem }) {
   // Adobe After Effects
   if (name.includes("after effect")) {
     return (
-      <div className="w-10 h-10 rounded-full bg-[#00005B] text-[#CF96FD] flex items-center justify-center shrink-0 font-extrabold text-sm border border-[#CF96FD]/40 shadow-2xs">
+      <div className="w-11 h-11 rounded-xl bg-[#00005B] text-[#CF96FD] flex items-center justify-center shrink-0 font-extrabold text-base border border-[#CF96FD]/40 shadow-2xs">
         Ae
       </div>
     );
@@ -174,8 +174,8 @@ function SkillAvatar({ skill }: { skill: SkillItem }) {
   // CapCut
   if (name.includes("capcut") || name.includes("cupcut")) {
     return (
-      <div className="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center shrink-0 border border-slate-700 shadow-2xs">
-        <Scissors className="w-4 h-4 text-white" />
+      <div className="w-11 h-11 rounded-xl bg-black text-white flex items-center justify-center shrink-0 border border-slate-700 shadow-2xs">
+        <Scissors className="w-5 h-5 text-white" />
       </div>
     );
   }
@@ -183,8 +183,8 @@ function SkillAvatar({ skill }: { skill: SkillItem }) {
   // Microsoft Office
   if (name.includes("microsoft office") || name.includes("office")) {
     return (
-      <div className="w-10 h-10 rounded-full bg-[#D83B01] text-white flex items-center justify-center shrink-0 border border-orange-400/30 shadow-2xs">
-        <FileSpreadsheet className="w-4 h-4 text-white" />
+      <div className="w-11 h-11 rounded-xl bg-[#D83B01] text-white flex items-center justify-center shrink-0 border border-orange-400/30 shadow-2xs">
+        <FileSpreadsheet className="w-5 h-5 text-white" />
       </div>
     );
   }
@@ -192,8 +192,8 @@ function SkillAvatar({ skill }: { skill: SkillItem }) {
   // Google Docs
   if (name.includes("docs")) {
     return (
-      <div className="w-10 h-10 rounded-full bg-[#4285F4] text-white flex items-center justify-center shrink-0 border border-blue-300/40 shadow-2xs">
-        <FileText className="w-4 h-4 text-white" />
+      <div className="w-11 h-11 rounded-xl bg-[#4285F4] text-white flex items-center justify-center shrink-0 border border-blue-300/40 shadow-2xs">
+        <FileText className="w-5 h-5 text-white" />
       </div>
     );
   }
@@ -201,8 +201,8 @@ function SkillAvatar({ skill }: { skill: SkillItem }) {
   // Google Sheets
   if (name.includes("sheets")) {
     return (
-      <div className="w-10 h-10 rounded-full bg-[#0F9D58] text-white flex items-center justify-center shrink-0 border border-emerald-300/40 shadow-2xs">
-        <Table className="w-4 h-4 text-white" />
+      <div className="w-11 h-11 rounded-xl bg-[#0F9D58] text-white flex items-center justify-center shrink-0 border border-emerald-300/40 shadow-2xs">
+        <Table className="w-5 h-5 text-white" />
       </div>
     );
   }
@@ -210,171 +210,151 @@ function SkillAvatar({ skill }: { skill: SkillItem }) {
   // Google Slides
   if (name.includes("slides")) {
     return (
-      <div className="w-10 h-10 rounded-full bg-[#F4B400] text-white flex items-center justify-center shrink-0 border border-amber-300/40 shadow-2xs">
-        <Presentation className="w-4 h-4 text-white" />
+      <div className="w-11 h-11 rounded-xl bg-[#F4B400] text-white flex items-center justify-center shrink-0 border border-amber-300/40 shadow-2xs">
+        <Presentation className="w-5 h-5 text-white" />
       </div>
     );
   }
 
-  // Fallback icon inside dark circular avatar
+  // Fallback icon inside dark square tile
   return (
-    <div className="w-10 h-10 rounded-full bg-slate-900 dark:bg-slate-800 text-white dark:text-blue-400 flex items-center justify-center shrink-0 border border-slate-700 shadow-2xs">
-      <Code className="w-4 h-4" />
+    <div className="w-11 h-11 rounded-xl bg-[#0B2046] text-white dark:text-blue-400 flex items-center justify-center shrink-0 border border-slate-700 shadow-2xs">
+      <Code className="w-5 h-5" />
     </div>
   );
 }
 
 /**
- * Deployment status icon (waveform or checkmark with light-blue progress ring)
+ * Real-world practical application descriptions for each skill
  */
-function DeploymentStatus({
-  status = "ready",
+function getSkillDescription(name: string): string {
+  const n = name.toLowerCase();
+  if (n.includes("c#")) {
+    return "Enterprise OOP business logic, LINQ queries, Windows desktop applications, and structured .NET architecture.";
+  }
+  if (n.includes("dart")) {
+    return "Reactive stateful logic, asynchronous streams, event handling, and cross-platform widget architectures.";
+  }
+  if (n.includes("flutter")) {
+    return "Cross-platform mobile development with Provider state management, RESTful APIs, responsive layouts, and native UI flows.";
+  }
+  if (n.includes("oracle")) {
+    return "Enterprise 3NF relational schemas, PL/SQL stored packages, triggers, transaction management, and database administration.";
+  }
+  if (n.includes("sql server")) {
+    return "Relational database modeling, complex SQL queries, stored procedures, indexed views, and transactional constraints.";
+  }
+  if (n.includes("mysql")) {
+    return "Normalized tables, foreign key constraints, relational queries, and ACID-compliant persistence for academic & full-stack systems.";
+  }
+  if (n.includes("mongodb")) {
+    return "Document schema validation, JSON data structures, aggregation pipelines, and scalable NoSQL database storage.";
+  }
+  if (n.includes("git")) {
+    return "Git version control, collaborative branch workflows, pull request reviews, repository management, and continuous delivery.";
+  }
+  if (n.includes("figma")) {
+    return "User experience design, interactive wireframing, high-fidelity mobile prototypes, and design component libraries.";
+  }
+  if (n.includes("photoshop")) {
+    return "High-resolution digital graphics composition, UI asset creation, image retouching, and marketing visual materials.";
+  }
+  if (n.includes("illustrator")) {
+    return "Precision vector artwork, custom iconography, corporate logos, and scalable branding graphics.";
+  }
+  if (n.includes("premiere")) {
+    return "Multi-track audio-visual timeline editing, color grading, sequence pacing, and dynamic promotional video production.";
+  }
+  if (n.includes("after effect")) {
+    return "Keyframed motion graphics, dynamic title animations, visual effects, and UI interaction presentations.";
+  }
+  if (n.includes("capcut") || n.includes("cupcut")) {
+    return "Agile mobile video editing, short-form presentation reels, dynamic captions, and fast-turnaround video content.";
+  }
+  if (n.includes("office")) {
+    return "Comprehensive enterprise documentation (Word), structured workbook analytics (Excel), and executive presentations (PowerPoint).";
+  }
+  if (n.includes("docs")) {
+    return "Cloud-collaborative technical documentation, systems analysis specifications, and academic capstone deliverables.";
+  }
+  if (n.includes("sheets")) {
+    return "Analytical data modeling, mathematical formulations, pivot tables, and automated reporting dashboards.";
+  }
+  if (n.includes("slides")) {
+    return "Structured system architecture slide decks, coursework defenses, and executive project presentations.";
+  }
+  return "Practical technical application, system architecture, and coursework implementation at SETEC Institute.";
+}
+
+/**
+ * Returns clean category sub-label
+ */
+function getSkillCategoryTag(categoryTitle: string): string {
+  const c = categoryTitle.toLowerCase();
+  if (c.includes("programming")) return "Programming Language";
+  if (c.includes("framework")) return "Mobile Framework";
+  if (c.includes("database")) return "Database Management";
+  if (c.includes("tools")) return "Developer Tool";
+  if (c.includes("design")) return "Design & Multimedia";
+  if (c.includes("office")) return "Productivity Suite";
+  return "Core Competency";
+}
+
+/**
+ * Professional Skill Card matching the website's clean enterprise design
+ */
+function SkillCard({
+  skill,
+  categoryTitle,
 }: {
-  status?: "waveform" | "ready";
+  skill: SkillItem;
+  categoryTitle: string;
 }) {
-  if (status === "waveform") {
-    return (
-      <div
-        title="Active Production Deployment"
-        className="w-6 h-6 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center bg-white dark:bg-slate-900 shadow-2xs"
-      >
-        <svg
-          className="w-3.5 h-3.5 text-slate-700 dark:text-slate-300"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M2 12h4l3-7 4 14 3-7h6" />
-        </svg>
-      </div>
-    );
-  }
+  const description = getSkillDescription(skill.name);
+  const tag = getSkillCategoryTag(categoryTitle);
 
   return (
-    <div
-      title="Ready & Deployed"
-      className="relative w-6 h-6 flex items-center justify-center"
-    >
-      {/* Light blue partial progress ring */}
-      <svg className="w-6 h-6 -rotate-90 text-sky-400" viewBox="0 0 24 24">
-        <circle
-          cx="12"
-          cy="12"
-          r="9.5"
-          stroke="currentColor"
-          strokeWidth="2"
-          fill="none"
-          strokeDasharray="59.7"
-          strokeDashoffset="16"
-          strokeLinecap="round"
-        />
-      </svg>
-      {/* Checkmark inside */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <svg
-          className="w-2.5 h-2.5 text-slate-700 dark:text-slate-300"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="3"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <polyline points="20 6 9 17 4 12" />
-        </svg>
-      </div>
-    </div>
-  );
-}
-
-/**
- * Vercel-style deployment card for the Grid View
- */
-function VercelSkillCard({ skill }: { skill: SkillItem }) {
-  const slug =
-    skill.slug || skill.name.toLowerCase().replace(/[^a-z0-9]+/g, "-");
-  const domain = skill.domain || `${slug}.vercel.app`;
-  const commit =
-    skill.commit || "Add Flutter skill, new projects, logo branding, and...";
-  const repo = skill.repo || "devitnang/MIS_Portfolio";
-  const date = skill.date || "Sep 19";
-  const status = skill.status || "ready";
-
-  const repoUrl = repo.startsWith("http")
-    ? repo
-    : `https://github.com/${repo}`;
-
-  const domainUrl = domain.startsWith("http")
-    ? domain
-    : `https://${domain}`;
-
-  return (
-    <div className="group rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0D182E] p-4 sm:p-5 hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-2xs transition-all flex flex-col justify-between">
-      {/* Top Row: Avatar, Title, Domain, Status Indicator, Chevrons */}
-      <div className="flex items-start justify-between gap-3 min-w-0">
-        <div className="flex items-center gap-3 min-w-0 flex-1">
+    <div className="group rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0D182E] p-5 hover:border-slate-300 dark:hover:border-slate-700 shadow-2xs hover:shadow-md transition-all duration-200 flex flex-col justify-between">
+      <div>
+        {/* Top Row: Brand App Tile Icon & Proficiency Pill */}
+        <div className="flex items-center justify-between gap-3 mb-4">
           <SkillAvatar skill={skill} />
 
-          <div className="min-w-0 flex-1">
-            <h4 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white truncate">
-              {slug}
-            </h4>
-            <a
-              href={domainUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xs text-slate-500 dark:text-slate-400 font-mono truncate block mt-0.5 hover:text-[#0B2046] dark:hover:text-blue-400 hover:underline transition-colors"
-            >
-              {domain}
-            </a>
-          </div>
+          <span
+            className={cn(
+              "text-[11px] font-semibold px-2.5 py-0.5 rounded-full border tracking-wide",
+              skill.level === "Advanced"
+                ? "bg-blue-50 dark:bg-blue-950/60 text-[#0B2046] dark:text-blue-300 border-blue-200 dark:border-blue-800/80"
+                : "bg-slate-100 dark:bg-slate-800/90 text-slate-700 dark:text-slate-200 border-slate-200 dark:border-slate-700"
+            )}
+          >
+            {skill.level}
+          </span>
         </div>
 
-        {/* Right Status Indicator & Selector Chevrons */}
-        <div className="flex items-center gap-1.5 shrink-0 pt-0.5">
-          <DeploymentStatus status={status} />
-          <ChevronsUpDown className="w-4 h-4 text-slate-400 dark:text-slate-500" />
-        </div>
-      </div>
+        {/* Skill Name */}
+        <h4 className="text-base font-bold text-[#0B2046] dark:text-white group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors">
+          {skill.name}
+        </h4>
 
-      {/* Middle Row: Commit message with Git commit symbol -o- */}
-      <div className="mt-4 pt-3.5 border-t border-slate-100 dark:border-slate-800/80 flex items-center gap-2 min-w-0">
-        <svg
-          className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 shrink-0"
-          viewBox="0 0 16 16"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.75"
-        >
-          <circle cx="8" cy="8" r="2.5" />
-          <line x1="0" y1="8" x2="5.5" y2="8" />
-          <line x1="10.5" y1="8" x2="16" y2="8" />
-        </svg>
-
-        <p
-          className="text-xs sm:text-[13px] font-medium text-slate-800 dark:text-slate-200 truncate min-w-0"
-          title={commit}
-        >
-          {commit}
+        {/* Competency Description */}
+        <p className="text-xs sm:text-[13px] text-slate-600 dark:text-slate-300 leading-relaxed mt-2 line-clamp-3">
+          {description}
         </p>
       </div>
 
-      {/* Bottom Row: GitHub repo & date */}
-      <div className="mt-2.5 flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 font-mono min-w-0">
-        <GithubIcon className="w-3.5 h-3.5 text-slate-700 dark:text-slate-300 shrink-0" />
-        <a
-          href={repoUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="truncate min-w-0 hover:text-[#0B2046] dark:hover:text-blue-400 hover:underline transition-colors"
-        >
-          {repo}
-        </a>
-        <span className="text-slate-400 shrink-0">·</span>
-        <span className="shrink-0">{date}</span>
+      {/* Card Footer: Category Tag & Core Competency Badge */}
+      <div className="mt-4 pt-3.5 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-[11px]">
+        <span className="font-medium text-slate-500 dark:text-slate-400">
+          {tag}
+        </span>
+
+        {skill.highlight && (
+          <span className="inline-flex items-center gap-1.5 font-semibold text-[#0B2046] dark:text-blue-400">
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-600 dark:bg-blue-400" />
+            Core Stack
+          </span>
+        )}
       </div>
     </div>
   );
@@ -523,7 +503,7 @@ export function SkillsSection() {
           )}
         </div>
 
-        {/* Skills View (List: Clean Line-Divided Table, Grid: Vercel Cards Layout) */}
+        {/* Skills View (List: Clean Line-Divided Table, Grid: Enterprise Skill Cards Layout) */}
         {filteredCategories.length > 0 ? (
           viewMode === "list" ? (
             <div className="divide-y divide-slate-200 dark:divide-slate-800 max-w-5xl mx-auto">
@@ -590,10 +570,14 @@ export function SkillsSection() {
                     </p>
                   </div>
 
-                  {/* 2-Column Vercel Card Grid */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
+                  {/* Modern Enterprise Skill Card Grid */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
                     {cat.skills.map((skill) => (
-                      <VercelSkillCard key={skill.name} skill={skill} />
+                      <SkillCard
+                        key={skill.name}
+                        skill={skill}
+                        categoryTitle={cat.title}
+                      />
                     ))}
                   </div>
                 </div>
