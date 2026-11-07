@@ -26,6 +26,16 @@ import {
   RotateCcw,
   Filter,
   ChevronsUpDown,
+  Cpu,
+  Image as ImageIcon,
+  PenTool,
+  Video,
+  Film,
+  Scissors,
+  FileSpreadsheet,
+  FileText,
+  Table,
+  Presentation,
 } from "lucide-react";
 
 /**
@@ -34,75 +44,23 @@ import {
 function SkillAvatar({ skill }: { skill: SkillItem }) {
   const name = skill.name.toLowerCase();
 
-  // Next.js & Vercel special brand logos
-  if (skill.slug === "devitnang-mis-portfolio" || name.includes("vercel")) {
-    return (
-      <div className="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center shrink-0 border border-slate-800 shadow-2xs">
-        <svg className="w-4 h-4 fill-white" viewBox="0 0 75 65">
-          <path d="M37.5 0L75 65H0z" />
-        </svg>
-      </div>
-    );
-  }
-
-  if (
-    skill.slug === "portfolio-nangdevit-v1" ||
-    skill.slug === "nang-devit-portfolio" ||
-    name.includes("next.js")
-  ) {
-    return (
-      <div className="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center shrink-0 border border-slate-800 shadow-2xs">
-        <svg className="w-5 h-5 fill-white" viewBox="0 0 180 180">
-          <mask
-            height="180"
-            id={`next-mask-${skill.slug}`}
-            maskUnits="userSpaceOnUse"
-            width="180"
-            x="0"
-            y="0"
-            style={{ maskType: "alpha" }}
-          >
-            <circle cx="90" cy="90" fill="black" r="90" />
-          </mask>
-          <g mask={`url(#next-mask-${skill.slug})`}>
-            <circle cx="90" cy="90" fill="black" r="90" />
-            <path
-              d="M149.508 157.438L69.1478 54H54V125.97H66.1136V69.3836L139.999 164.845C143.333 162.614 146.509 160.137 149.508 157.438Z"
-              fill="white"
-            />
-            <rect fill="white" height="72" width="12" x="115" y="54" />
-          </g>
-        </svg>
-      </div>
-    );
-  }
-
-  // Card 4 from screenshot: White circle with royal blue monogram 'D'
-  if (skill.slug === "portfolio-devitnang") {
-    return (
-      <div className="w-10 h-10 rounded-full bg-white dark:bg-slate-900 flex items-center justify-center shrink-0 border border-slate-200 dark:border-slate-700 shadow-2xs">
-        <svg
-          className="w-5 h-5 text-[#1A56DB] fill-none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth="2.5"
-        >
-          <path
-            d="M6 4h6a8 8 0 0 1 8 8 8 8 0 0 1-8 8H6V4z"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </div>
-    );
-  }
-
   // Flutter Brand Icon
   if (name.includes("flutter")) {
     return (
       <div className="w-10 h-10 rounded-full bg-[#02569B] text-white flex items-center justify-center shrink-0 border border-blue-400/30 shadow-2xs">
         <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
           <path d="M14.314 0L2.3 12 6 15.7 21.684 0zm.014 11.072L7.857 17.53 14.328 24H21.7l-6.471-6.47 6.457-6.458z" />
+        </svg>
+      </div>
+    );
+  }
+
+  // Dart Icon
+  if (name.includes("dart")) {
+    return (
+      <div className="w-10 h-10 rounded-full bg-[#0175C2] text-white flex items-center justify-center shrink-0 border border-cyan-400/30 shadow-2xs">
+        <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+          <path d="M4.105 4.105L12.5 0l7.395 3.553L4.105 19.895V4.105zm15.79 3.552L12.5 24l-3.553-7.395L20.895 4.105l-1 3.552z" />
         </svg>
       </div>
     );
@@ -126,35 +84,34 @@ function SkillAvatar({ skill }: { skill: SkillItem }) {
     );
   }
 
-  // Databases & SQL
-  if (
-    name.includes("sql") ||
-    name.includes("database") ||
-    name.includes("postgres") ||
-    name.includes("mysql") ||
-    name.includes("mongo")
-  ) {
+  // SQL Server Icon
+  if (name.includes("sql server")) {
     return (
-      <div className="w-10 h-10 rounded-full bg-slate-900 text-white dark:bg-slate-800 dark:text-blue-400 flex items-center justify-center shrink-0 border border-slate-700 shadow-2xs">
-        <Database className="w-4 h-4" />
+      <div className="w-10 h-10 rounded-full bg-[#CC292B] text-white flex items-center justify-center shrink-0 border border-red-400/30 shadow-2xs">
+        <Server className="w-4 h-4 text-white" />
       </div>
     );
   }
 
-  // Data Analytics & BI
-  if (
-    name.includes("power bi") ||
-    name.includes("excel") ||
-    name.includes("analytics")
-  ) {
+  // MySQL Icon
+  if (name.includes("mysql")) {
     return (
-      <div className="w-10 h-10 rounded-full bg-amber-500 text-white flex items-center justify-center shrink-0 border border-amber-400/30 shadow-2xs">
-        <BarChart3 className="w-4 h-4 text-white" />
+      <div className="w-10 h-10 rounded-full bg-[#00758F] text-white flex items-center justify-center shrink-0 border border-cyan-400/30 shadow-2xs">
+        <Database className="w-4 h-4 text-white" />
       </div>
     );
   }
 
-  // Git & GitHub
+  // MongoDB Icon
+  if (name.includes("mongodb")) {
+    return (
+      <div className="w-10 h-10 rounded-full bg-[#13AA52] text-white flex items-center justify-center shrink-0 border border-emerald-400/30 shadow-2xs">
+        <Database className="w-4 h-4 text-white" />
+      </div>
+    );
+  }
+
+  // GitHub Icon
   if (name.includes("git")) {
     return (
       <div className="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center shrink-0 border border-slate-800 shadow-2xs">
@@ -163,11 +120,98 @@ function SkillAvatar({ skill }: { skill: SkillItem }) {
     );
   }
 
-  // Docker
-  if (name.includes("docker")) {
+  // Figma Icon
+  if (name.includes("figma")) {
     return (
-      <div className="w-10 h-10 rounded-full bg-[#2496ED] text-white flex items-center justify-center shrink-0 border border-blue-400/30 shadow-2xs">
-        <Box className="w-4 h-4 text-white" />
+      <div className="w-10 h-10 rounded-full bg-[#1E1E1E] text-white flex items-center justify-center shrink-0 border border-slate-700 shadow-2xs">
+        <svg className="w-5 h-5" viewBox="0 0 38 57" fill="none">
+          <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z" fill="#1ABCFE" />
+          <path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z" fill="#0ACF83" />
+          <path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z" fill="#FF7262" />
+          <path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z" fill="#F24E1E" />
+          <path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z" fill="#A259FF" />
+        </svg>
+      </div>
+    );
+  }
+
+  // Adobe Photoshop
+  if (name.includes("photoshop")) {
+    return (
+      <div className="w-10 h-10 rounded-full bg-[#001E36] text-[#31A8FF] flex items-center justify-center shrink-0 font-extrabold text-sm border border-[#31A8FF]/40 shadow-2xs">
+        Ps
+      </div>
+    );
+  }
+
+  // Adobe Illustrator
+  if (name.includes("illustrator")) {
+    return (
+      <div className="w-10 h-10 rounded-full bg-[#330000] text-[#FF9A00] flex items-center justify-center shrink-0 font-extrabold text-sm border border-[#FF9A00]/40 shadow-2xs">
+        Ai
+      </div>
+    );
+  }
+
+  // Adobe Premiere Pro
+  if (name.includes("premiere")) {
+    return (
+      <div className="w-10 h-10 rounded-full bg-[#00005B] text-[#9999FF] flex items-center justify-center shrink-0 font-extrabold text-sm border border-[#9999FF]/40 shadow-2xs">
+        Pr
+      </div>
+    );
+  }
+
+  // Adobe After Effects
+  if (name.includes("after effect")) {
+    return (
+      <div className="w-10 h-10 rounded-full bg-[#00005B] text-[#CF96FD] flex items-center justify-center shrink-0 font-extrabold text-sm border border-[#CF96FD]/40 shadow-2xs">
+        Ae
+      </div>
+    );
+  }
+
+  // CapCut
+  if (name.includes("capcut") || name.includes("cupcut")) {
+    return (
+      <div className="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center shrink-0 border border-slate-700 shadow-2xs">
+        <Scissors className="w-4 h-4 text-white" />
+      </div>
+    );
+  }
+
+  // Microsoft Office
+  if (name.includes("microsoft office") || name.includes("office")) {
+    return (
+      <div className="w-10 h-10 rounded-full bg-[#D83B01] text-white flex items-center justify-center shrink-0 border border-orange-400/30 shadow-2xs">
+        <FileSpreadsheet className="w-4 h-4 text-white" />
+      </div>
+    );
+  }
+
+  // Google Docs
+  if (name.includes("docs")) {
+    return (
+      <div className="w-10 h-10 rounded-full bg-[#4285F4] text-white flex items-center justify-center shrink-0 border border-blue-300/40 shadow-2xs">
+        <FileText className="w-4 h-4 text-white" />
+      </div>
+    );
+  }
+
+  // Google Sheets
+  if (name.includes("sheets")) {
+    return (
+      <div className="w-10 h-10 rounded-full bg-[#0F9D58] text-white flex items-center justify-center shrink-0 border border-emerald-300/40 shadow-2xs">
+        <Table className="w-4 h-4 text-white" />
+      </div>
+    );
+  }
+
+  // Google Slides
+  if (name.includes("slides")) {
+    return (
+      <div className="w-10 h-10 rounded-full bg-[#F4B400] text-white flex items-center justify-center shrink-0 border border-amber-300/40 shadow-2xs">
+        <Presentation className="w-4 h-4 text-white" />
       </div>
     );
   }
@@ -191,7 +235,7 @@ function DeploymentStatus({
   if (status === "waveform") {
     return (
       <div
-        title="Active Production Domain"
+        title="Active Production Deployment"
         className="w-6 h-6 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center bg-white dark:bg-slate-900 shadow-2xs"
       >
         <svg
@@ -346,33 +390,37 @@ export function SkillsSection() {
       case "Code":
       case "Code2":
         return <Code className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />;
-      case "Database":
-      case "Table":
-        return <Database className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />;
+      case "Cpu":
+        return <Cpu className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />;
       case "Smartphone":
         return <Smartphone className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />;
-      case "Globe":
-      case "Boxes":
-        return <Globe className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />;
-      case "Palette":
-        return <Palette className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />;
+      case "Database":
+        return <Database className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />;
       case "Server":
-      case "HardDrive":
         return <Server className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />;
-      case "BarChart3":
-      case "PieChart":
-        return <BarChart3 className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />;
+      case "Table":
+        return <Table className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />;
       case "GitBranch":
         return <GitBranch className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />;
-      case "Cloud":
-        return <Cloud className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />;
-      case "Box":
-        return <Box className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />;
-      case "Send":
-        return <Send className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />;
-      case "Terminal":
-      case "Cpu":
-        return <Terminal className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />;
+      case "Palette":
+        return <Palette className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />;
+      case "Image":
+        return <ImageIcon className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />;
+      case "PenTool":
+        return <PenTool className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />;
+      case "Video":
+        return <Video className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />;
+      case "Film":
+        return <Film className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />;
+      case "Scissors":
+        return <Scissors className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />;
+      case "FileSpreadsheet":
+      case "Sheet":
+        return <FileSpreadsheet className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />;
+      case "FileText":
+        return <FileText className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />;
+      case "Presentation":
+        return <Presentation className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />;
       default:
         return <Layers className="w-4 h-4 text-[#0B2046] dark:text-blue-400" />;
     }
@@ -433,7 +481,7 @@ export function SkillsSection() {
         <SectionHeading
           badge="Technical Competencies"
           title="Skills & Technologies"
-          subtitle="A comprehensive inventory of programming languages, enterprise database systems, frameworks, analytics tools, and deployment environments."
+          subtitle="A verified inventory of programming languages, frameworks, enterprise database management systems, developer tools, design software, and productivity suites."
         />
 
         {/* Search, Filter & View Controls Toolbar */}
@@ -441,7 +489,7 @@ export function SkillsSection() {
           <SearchFilterToolbar
             searchQuery={searchQuery}
             onSearchChange={setSearchQuery}
-            placeholder="Search Skills (e.g. Flutter, C#, SQL, Next.js, Oracle)..."
+            placeholder="Search Skills (e.g. Flutter, C#, Oracle, Figma, Photoshop)..."
             categories={categoryOptions}
             selectedCategory={selectedCategory}
             onCategoryChange={setSelectedCategory}

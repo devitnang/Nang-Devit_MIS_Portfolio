@@ -32,9 +32,9 @@ export const personalInfo = {
   
   highlights: [
     { label: "Academic Specialization", value: "Management Information Systems (MIS)" },
-    { label: "Core Database Expertise", value: "Oracle, MSSQL, PostgreSQL, MySQL" },
-    { label: "Key Development Stack", value: "C#, Next.js, Flutter, TypeScript" },
-    { label: "Analytical Strengths", value: "System Analysis, Data Modeling, BI" },
+    { label: "Core Database Systems", value: "Oracle, SQL Server, MySQL, MongoDB" },
+    { label: "Software & Mobile Stack", value: "Flutter, Dart, C#" },
+    { label: "Design & Productivity", value: "Adobe Suite, Figma, MS Office, Google Workspace" },
   ],
 
   corePillars: [
