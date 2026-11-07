@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { ProjectModal } from "@/components/ui/ProjectModal";
 import { ProjectCard } from "@/components/ui/ProjectCard";
 import { SearchFilterToolbar, CategoryOption } from "@/components/ui/SearchFilterToolbar";
@@ -53,11 +54,13 @@ export function ProjectsSection() {
       className="py-16 md:py-24 bg-white dark:bg-[#080F1E] border-b border-slate-200 dark:border-slate-800 transition-colors"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          badge="Portfolio Showcase"
-          title="Featured Projects"
-          subtitle="A curated portfolio of systems analysis specifications, relational database engineering, modern web applications, and cross-platform mobile apps developed with clean architectures."
-        />
+        <ScrollReveal animation="fade-up">
+          <SectionHeading
+            badge="Portfolio Showcase"
+            title="Featured Projects"
+            subtitle="A curated portfolio of systems analysis specifications, relational database engineering, modern web applications, and cross-platform mobile apps developed with clean architectures."
+          />
+        </ScrollReveal>
 
         {/* Search, Filter & View Controls Toolbar */}
         <div className="mb-8 max-w-5xl mx-auto">
@@ -99,24 +102,34 @@ export function ProjectsSection() {
         {filteredProjects.length > 0 ? (
           viewMode === "grid" ? (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-              {filteredProjects.map((project) => (
-                <ProjectCard
+              {filteredProjects.map((project, idx) => (
+                <ScrollReveal
                   key={project.id}
-                  project={project}
-                  onOpenModal={setActiveModalProject}
-                  viewMode="grid"
-                />
+                  animation="fade-up"
+                  delay={idx * 90}
+                >
+                  <ProjectCard
+                    project={project}
+                    onOpenModal={setActiveModalProject}
+                    viewMode="grid"
+                  />
+                </ScrollReveal>
               ))}
             </div>
           ) : (
             <div className="flex flex-col gap-6 max-w-5xl mx-auto">
-              {filteredProjects.map((project) => (
-                <ProjectCard
+              {filteredProjects.map((project, idx) => (
+                <ScrollReveal
                   key={project.id}
-                  project={project}
-                  onOpenModal={setActiveModalProject}
-                  viewMode="list"
-                />
+                  animation="fade-up"
+                  delay={idx * 90}
+                >
+                  <ProjectCard
+                    project={project}
+                    onOpenModal={setActiveModalProject}
+                    viewMode="list"
+                  />
+                </ScrollReveal>
               ))}
             </div>
           )

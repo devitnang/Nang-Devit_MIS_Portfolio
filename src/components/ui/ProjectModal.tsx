@@ -89,7 +89,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
         </div>
 
         {/* Modal Scrollable Body */}
-        <div className="p-6 overflow-y-auto space-y-6">
+        <div className="p-6 overflow-y-auto custom-scrollbar space-y-6">
           {/* Gallery Carousel */}
           {images.length > 0 && (
             <div className="space-y-3">
@@ -134,7 +134,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
 
               {/* Thumbnails row */}
               {images.length > 1 && (
-                <div className="flex gap-2 justify-start sm:justify-center overflow-x-auto py-1.5 px-1 max-w-full">
+                <div className="flex gap-2 justify-start sm:justify-center overflow-x-auto custom-scrollbar py-1.5 px-1 max-w-full">
                   {images.map((img, idx) => (
                     <button
                       key={idx}

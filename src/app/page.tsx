@@ -1,4 +1,5 @@
 import { Navbar } from "@/components/layout/Navbar";
+import { ScrollProgressBar } from "@/components/ui/ScrollProgressBar";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { SkillsSection } from "@/components/sections/SkillsSection";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
@@ -10,6 +11,7 @@ import { Footer } from "@/components/layout/Footer";
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col bg-white dark:bg-[#080F1E] text-slate-900 dark:text-slate-100 transition-colors">
+      <ScrollProgressBar />
       <Navbar />
       <main className="flex-1">
         <HeroSection />

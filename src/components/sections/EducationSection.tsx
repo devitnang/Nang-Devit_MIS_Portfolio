@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { educationList } from "@/data/educationData";
 import {
   Calendar,
@@ -37,20 +38,24 @@ export function EducationSection() {
       className="py-16 md:py-24 bg-white dark:bg-[#080F1E] border-b border-slate-200 dark:border-slate-800 transition-colors"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          badge="Academic Qualifications"
-          title="Education Background"
-          subtitle="Formal higher education in Management Information Systems (MIS) integrating enterprise technology management with advanced computer science disciplines."
-        />
+        <ScrollReveal animation="fade-up">
+          <SectionHeading
+            badge="Academic Qualifications"
+            title="Education Background"
+            subtitle="Formal higher education in Management Information Systems (MIS) integrating enterprise technology management with advanced computer science disciplines."
+          />
+        </ScrollReveal>
 
         {/* Clean Line-Based Academic Timeline */}
         <div className="divide-y divide-slate-200 dark:divide-slate-800 border-t border-b border-slate-200 dark:border-slate-800">
-          {educationList.map((edu) => {
+          {educationList.map((edu, idx) => {
             const courseImg = edu.courseImage || "/assets/images/my_course.JPG";
 
             return (
-              <div
+              <ScrollReveal
                 key={edu.id}
+                animation="fade-up"
+                delay={idx * 100}
                 className="py-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6"
               >
                 <div className="flex items-start sm:items-center gap-4 sm:gap-6">
@@ -104,7 +109,7 @@ export function EducationSection() {
                     <Eye className="w-5 h-5 text-[#0B2046] dark:text-blue-400 group-hover:scale-110 transition-transform" />
                   </button>
                 </div>
-              </div>
+              </ScrollReveal>
             );
           })}
         </div>
@@ -151,7 +156,7 @@ export function EducationSection() {
             </div>
 
             {/* Modal Image Body */}
-            <div className="p-4 sm:p-6 overflow-y-auto flex items-center justify-center bg-slate-950/20">
+            <div className="p-4 sm:p-6 overflow-y-auto custom-scrollbar flex items-center justify-center bg-slate-950/20">
               <div className="relative w-full max-w-3xl aspect-16/11 sm:aspect-16/10 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-800 bg-white">
                 <Image
                   src={selectedImage}

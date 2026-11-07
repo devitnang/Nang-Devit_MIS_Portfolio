@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { experiences } from "@/data/experienceData";
 import {
   MapPin,
@@ -19,17 +20,21 @@ export function ExperienceSection() {
       className="py-16 md:py-24 bg-white dark:bg-[#080F1E] border-b border-slate-200 dark:border-slate-800 transition-colors"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          badge="Organizational & Professional Record"
-          title="Professional Experience"
-          subtitle="Documented field and organizational coordination experience demonstrating operational precision, statutory compliance, and leadership in high-integrity environments."
-        />
+        <ScrollReveal animation="fade-up">
+          <SectionHeading
+            badge="Organizational & Professional Record"
+            title="Professional Experience"
+            subtitle="Documented field and organizational coordination experience demonstrating operational precision, statutory compliance, and leadership in high-integrity environments."
+          />
+        </ScrollReveal>
 
         {/* Clean Line-Based Timeline Table (No outer box outline, clean dividing lines only) */}
         <div className="divide-y divide-slate-200 dark:divide-slate-800 border-t border-b border-slate-200 dark:border-slate-800">
-          {experiences.map((exp) => (
-            <div
+          {experiences.map((exp, idx) => (
+            <ScrollReveal
               key={exp.id}
+              animation="fade-up"
+              delay={idx * 100}
               className="py-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start"
             >
               {/* Organization Info Column (Left 4 cols) */}
@@ -106,7 +111,7 @@ export function ExperienceSection() {
                   </div>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>

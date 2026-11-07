@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import {
   SearchFilterToolbar,
   CategoryOption,
@@ -458,11 +459,13 @@ export function SkillsSection() {
       className="py-16 md:py-24 bg-white dark:bg-[#080F1E] border-b border-slate-200 dark:border-slate-800 transition-colors"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          badge="Technical Competencies"
-          title="Skills & Technologies"
-          subtitle="A verified inventory of programming languages, frameworks, enterprise database management systems, developer tools, design software, and productivity suites."
-        />
+        <ScrollReveal animation="fade-up">
+          <SectionHeading
+            badge="Technical Competencies"
+            title="Skills & Technologies"
+            subtitle="A verified inventory of programming languages, frameworks, enterprise database management systems, developer tools, design software, and productivity suites."
+          />
+        </ScrollReveal>
 
         {/* Search, Filter & View Controls Toolbar */}
         <div className="mb-10 max-w-5xl mx-auto">
@@ -532,11 +535,10 @@ export function SkillsSection() {
                     {cat.skills.map((skill) => (
                       <div
                         key={skill.name}
-                        className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-md text-xs font-semibold transition-all ${
-                          skill.highlight
+                        className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-md text-xs font-semibold transition-all ${skill.highlight
                             ? "bg-slate-50 dark:bg-slate-900 border-b-2 border-[#0B2046] dark:border-blue-400 text-slate-900 dark:text-white"
                             : "bg-slate-50/70 dark:bg-slate-900/60 border-b border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300"
-                        }`}
+                          }`}
                       >
                         {getSkillIcon(skill.iconName)}
                         <span>{skill.name}</span>
@@ -553,8 +555,13 @@ export function SkillsSection() {
             </div>
           ) : (
             <div className="space-y-10 max-w-5xl mx-auto">
-              {filteredCategories.map((cat) => (
-                <div key={cat.id} className="space-y-4">
+              {filteredCategories.map((cat, catIdx) => (
+                <ScrollReveal
+                  key={cat.id}
+                  animation="fade-up"
+                  delay={catIdx * 60}
+                  className="space-y-4"
+                >
                   {/* Category Section Header */}
                   <div className="flex items-center justify-between border-b border-slate-200/80 dark:border-slate-800 pb-2.5">
                     <div className="flex items-center gap-2.5">
@@ -580,7 +587,7 @@ export function SkillsSection() {
                       />
                     ))}
                   </div>
-                </div>
+                </ScrollReveal>
               ))}
             </div>
           )

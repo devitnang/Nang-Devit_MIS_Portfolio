@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import {
   Send,
   CheckCircle2,
@@ -160,13 +161,15 @@ export function ContactSection() {
       className="py-16 md:py-24 bg-slate-50 dark:bg-[#070D19] border-b border-slate-200 dark:border-slate-800 transition-colors"
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          badge="Direct Inquiries & Collaboration"
-          title="Contact Nang Devit"
-          center={true}
-        />
+        <ScrollReveal animation="fade-up">
+          <SectionHeading
+            badge="Direct Inquiries & Collaboration"
+            title="Contact Nang Devit"
+            center={true}
+          />
+        </ScrollReveal>
 
-        <div className="max-w-2xl mx-auto">
+        <ScrollReveal animation="fade-up" delay={100} className="max-w-2xl mx-auto">
           {/* Success Notification Alert */}
           {submitSuccess && (
             <div className="mb-6 p-4 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-200 flex items-start gap-3 text-xs sm:text-sm">
@@ -346,7 +349,7 @@ export function ContactSection() {
               </button>
             </div>
           </form>
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );
