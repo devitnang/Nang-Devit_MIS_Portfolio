@@ -6,7 +6,7 @@ export const educationList: Education[] = [
     institution: "SETEC Institute",
     degree: "Bachelor of Science in Management Information Systems (MIS)",
     major: "Management Information Systems (MIS)",
-    period: "2024 – Present (Year 4)",
+    period: "2024 – Present (Year 4, Semester 2)",
     year: "Year 4 Senior",
     location: "Phnom Penh, Cambodia",
     logo: "/assets/images/logo/setec_institute.png",
