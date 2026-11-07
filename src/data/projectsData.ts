@@ -133,6 +133,6 @@ export const projects: Project[] = [
         alt: "Grocery Specials Screen",
       },
     ],
-    githubUrl: "https://github.com/devitnang/flutter-groceries-app",
+    githubUrl: "https://github.com/devitnang/my_app",
   },
 ];
