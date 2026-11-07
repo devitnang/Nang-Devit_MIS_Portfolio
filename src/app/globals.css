@@ -23,6 +23,8 @@
   --corporate-border: #e2e8f0;
   --card-bg: #ffffff;
   --card-subtle: #f8fafc;
+  --glass-foreground: #0b2046;
+  --glass-highlight: rgba(255, 255, 255, 0.85);
 }
 
 .dark {
@@ -37,6 +39,8 @@
   --corporate-border: #1e293b;
   --card-bg: #0d182e;
   --card-subtle: #13223f;
+  --glass-foreground: #f8fafc;
+  --glass-highlight: rgba(255, 255, 255, 0.12);
 }
 
 html {

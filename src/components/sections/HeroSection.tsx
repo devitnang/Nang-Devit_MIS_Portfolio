@@ -18,8 +18,8 @@ export function HeroSection() {
           {/* Circular Avatar */}
           <div className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full overflow-hidden shrink-0 border-2 border-slate-200/90 dark:border-slate-700 shadow-sm bg-slate-100 dark:bg-slate-800">
             <Image
-              src="/assets/images/devit_avatar.png"
-              alt="Devit NANG"
+              src="/assets/images/nangdevit.png"
+              alt="Nang Devit"
               fill
               priority
               className="object-cover"

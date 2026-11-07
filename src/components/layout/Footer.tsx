@@ -145,7 +145,7 @@ export function MinimalFooter() {
         </div>
 
         <div className="bg-border absolute inset-x-0 h-px w-full" />
-        <div className="flex max-w-4xl flex-col justify-between gap-2 pt-4 pb-6 px-4">
+        <div className="flex max-w-4xl flex-col justify-between gap-2 pt-4 pb-24 md:pb-6 px-4">
           <p className="text-muted-foreground text-center font-normal text-xs">
             &copy; {year}{" "}
             <Link
