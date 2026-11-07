@@ -10,7 +10,6 @@ import {
   ChevronLeft,
   ChevronRight,
   Code2,
-  ExternalLink,
   FileText,
   Maximize2,
 } from "lucide-react";
@@ -234,17 +233,6 @@ export function ProjectCard({ project, onOpenModal }: ProjectCardProps) {
               title="View GitHub Repository"
             >
               <GithubIcon className="w-4 h-4" />
-            </a>
-          )}
-          {project.demoUrl && (
-            <a
-              href={project.demoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-1.5 rounded-md text-[#0B2046] dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/40 transition-colors"
-              title="Open Live Demo"
-            >
-              <ExternalLink className="w-4 h-4" />
             </a>
           )}
         </div>

@@ -6,7 +6,6 @@ import { Project } from "@/types";
 import { GithubIcon } from "@/components/ui/Icons";
 import {
   X,
-  ExternalLink,
   ChevronLeft,
   ChevronRight,
   CheckCircle2,
@@ -258,17 +257,6 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
               >
                 <GithubIcon className="w-4 h-4" />
                 <span>GitHub Repository</span>
-              </a>
-            )}
-            {project.demoUrl && (
-              <a
-                href={project.demoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-md text-xs sm:text-sm font-semibold bg-[#0B2046] hover:bg-[#07152E] dark:bg-blue-600 dark:hover:bg-blue-700 text-white transition-colors"
-              >
-                <ExternalLink className="w-4 h-4" />
-                <span>Live System Demo</span>
               </a>
             )}
           </div>
