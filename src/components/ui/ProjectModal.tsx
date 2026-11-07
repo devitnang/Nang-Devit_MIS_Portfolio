@@ -134,7 +134,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
 
               {/* Thumbnails row */}
               {images.length > 1 && (
-                <div className="flex gap-2 justify-center overflow-x-auto py-1">
+                <div className="flex gap-2 justify-start sm:justify-center overflow-x-auto py-1.5 px-1 max-w-full">
                   {images.map((img, idx) => (
                     <button
                       key={idx}

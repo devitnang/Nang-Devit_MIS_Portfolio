@@ -197,12 +197,12 @@ export function Header() {
           ========================================================================= */}
       <aside
         aria-label="Mobile Navigation"
-        className="fixed bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 z-50 md:hidden w-auto max-w-[96vw] pointer-events-auto"
+        className="fixed bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 z-50 md:hidden w-[95vw] max-w-md pointer-events-auto"
       >
         <GlassTabBar
           value={activeSection}
           onValueChange={(val) => scrollToSection(val)}
-          className="shadow-2xl shadow-slate-950/20 dark:shadow-black/70 border border-white/40 dark:border-white/10"
+          className="shadow-2xl shadow-slate-950/20 dark:shadow-black/70 border border-white/40 dark:border-white/10 w-full"
         >
           {links.map((tab) => (
             <GlassTabBarItem

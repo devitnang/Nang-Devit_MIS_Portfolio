@@ -91,13 +91,13 @@ function GlassTabBarItem({
         onClick?.(e);
       }}
       className={cn(
-        "relative z-10 flex h-13 sm:h-14 min-w-12 sm:min-w-16 md:min-w-18 cursor-pointer flex-col items-center justify-center gap-0.5 rounded-full px-2 sm:px-3 text-[9px] sm:text-[10px] font-semibold tracking-[0.01em] text-(--glass-foreground) transition-[color,transform] duration-300 outline-none active:scale-95 focus-visible:ring-[3px] focus-visible:ring-ring/40 aria-[current=page]:text-[#0B2046] dark:aria-[current=page]:text-blue-400 [&_svg]:size-5 sm:[&_svg]:size-6",
+        "relative z-10 flex h-13 sm:h-14 flex-1 min-w-[44px] sm:min-w-16 cursor-pointer flex-col items-center justify-center gap-0.5 rounded-full px-1.5 sm:px-2.5 text-[9px] sm:text-[10px] font-semibold tracking-tight text-(--glass-foreground) transition-[color,transform] duration-300 outline-none active:scale-95 focus-visible:ring-[3px] focus-visible:ring-ring/40 aria-[current=page]:text-[#0B2046] dark:aria-[current=page]:text-blue-400 [&_svg]:size-5 sm:[&_svg]:size-5.5 select-none",
         className
       )}
       {...props}
     >
       {icon}
-      <span>{label}</span>
+      <span className="truncate max-w-full">{label}</span>
     </button>
   );
 }

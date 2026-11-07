@@ -127,7 +127,7 @@ export function SearchFilterToolbar({
 
         {/* Filter Dropdown Popover */}
         {isFilterOpen && (
-          <div className="absolute right-0 mt-2 w-64 rounded-xl bg-white dark:bg-[#0D182E] border border-slate-200 dark:border-slate-800 shadow-xl py-2 z-30 animate-in fade-in zoom-in-95 duration-150">
+          <div className="absolute right-0 mt-2 w-64 max-w-[calc(100vw-2rem)] rounded-xl bg-white dark:bg-[#0D182E] border border-slate-200 dark:border-slate-800 shadow-xl py-2 z-30 animate-in fade-in zoom-in-95 duration-150">
             <div className="px-3 py-1.5 border-b border-slate-100 dark:border-slate-800 text-[11px] font-bold uppercase tracking-wider text-slate-400">
               Filter by Category
             </div>

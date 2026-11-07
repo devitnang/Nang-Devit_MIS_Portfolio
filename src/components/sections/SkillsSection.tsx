@@ -270,11 +270,11 @@ function VercelSkillCard({ skill }: { skill: SkillItem }) {
   return (
     <div className="group rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0D182E] p-4 sm:p-5 hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-2xs transition-all flex flex-col justify-between">
       {/* Top Row: Avatar, Title, Domain, Status Indicator, Chevrons */}
-      <div className="flex items-start justify-between gap-3">
-        <div className="flex items-center gap-3 min-w-0">
+      <div className="flex items-start justify-between gap-3 min-w-0">
+        <div className="flex items-center gap-3 min-w-0 flex-1">
           <SkillAvatar skill={skill} />
 
-          <div className="min-w-0">
+          <div className="min-w-0 flex-1">
             <h4 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white truncate">
               {slug}
             </h4>
@@ -311,7 +311,7 @@ function VercelSkillCard({ skill }: { skill: SkillItem }) {
         </svg>
 
         <p
-          className="text-xs sm:text-[13px] font-medium text-slate-800 dark:text-slate-200 truncate"
+          className="text-xs sm:text-[13px] font-medium text-slate-800 dark:text-slate-200 truncate min-w-0"
           title={commit}
         >
           {commit}
@@ -319,13 +319,13 @@ function VercelSkillCard({ skill }: { skill: SkillItem }) {
       </div>
 
       {/* Bottom Row: GitHub repo & date */}
-      <div className="mt-2.5 flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 font-mono">
+      <div className="mt-2.5 flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 font-mono min-w-0">
         <GithubIcon className="w-3.5 h-3.5 text-slate-700 dark:text-slate-300 shrink-0" />
         <a
           href={repoUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="truncate hover:text-[#0B2046] dark:hover:text-blue-400 hover:underline transition-colors"
+          className="truncate min-w-0 hover:text-[#0B2046] dark:hover:text-blue-400 hover:underline transition-colors"
         >
           {repo}
         </a>
