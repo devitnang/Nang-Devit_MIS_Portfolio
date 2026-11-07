@@ -4,13 +4,13 @@ import React from "react";
 import Image from "next/image";
 import { personalInfo } from "@/data/portfolioData";
 import { GithubIcon, LinkedinIcon, TelegramIcon } from "@/components/ui/Icons";
-import { Mail } from "lucide-react";
+import { Mail, ChevronDown } from "lucide-react";
 
 export function HeroSection() {
   return (
     <section
       id="home"
-      className="relative pt-32 pb-14 md:pt-40 md:pb-20 overflow-hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-[#080F1E] flex items-center justify-center transition-colors"
+      className="relative min-h-[calc(100vh-3.5rem)] md:min-h-[calc(100vh-4.5rem)] h-[calc(100dvh-3.5rem)] md:h-[calc(100vh-4.5rem)] min-h-[500px] flex flex-col items-center justify-center py-12 md:py-20 overflow-hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-[#080F1E] transition-colors"
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         {/* Top Block: Avatar on left + Name & Socials on right */}
@@ -115,6 +115,15 @@ export function HeroSection() {
           </p>
         </div>
       </div>
+
+      {/* Subtle Scroll Down Indicator on Desktop */}
+      <a
+        href="#skills"
+        aria-label="Scroll to Skills & Technologies"
+        className="hidden md:inline-flex absolute bottom-6 left-1/2 -translate-x-1/2 p-2 rounded-full text-slate-400 hover:text-[#0B2046] dark:hover:text-blue-400 transition-colors animate-bounce"
+      >
+        <ChevronDown className="w-5 h-5" />
+      </a>
     </section>
   );
 }
