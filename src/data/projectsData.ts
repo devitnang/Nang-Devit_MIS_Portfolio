@@ -73,7 +73,7 @@ export const projects: Project[] = [
         alt: "App Launcher Icon Screen",
       },
     ],
-    githubUrl: "https://github.com/devitnang/the-d3v-ecommerce",
+    githubUrl: "https://github.com/devitnang/mid-ecommerce-flutter",
   },
   {
     id: "flutter-groceries-app",
