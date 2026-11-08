@@ -22,7 +22,7 @@ export function HeroSection() {
               alt="Nang Devit"
               fill
               priority
-              className="object-cover"
+              className="object-cover object-top"
               sizes="(max-width: 768px) 96px, 112px"
             />
           </div>
