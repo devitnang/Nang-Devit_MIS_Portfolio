@@ -220,13 +220,13 @@ export function ContactSection() {
                   type="text"
                   id="fullName"
                   name="fullName"
-                  placeholder="e.g. Sok Sovan"
+                  placeholder="e.g. Nang Devit"
                   value={formData.fullName}
                   onChange={handleChange}
                   disabled={isSubmitting}
                   className={`w-full px-3.5 py-2.5 text-xs sm:text-sm rounded-md bg-white dark:bg-slate-900 border text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-1 transition-colors ${errors.fullName
-                      ? "border-red-500 focus:ring-red-500"
-                      : "border-slate-300 dark:border-slate-700 focus:ring-[#0B2046] dark:focus:ring-blue-400"
+                    ? "border-red-500 focus:ring-red-500"
+                    : "border-slate-300 dark:border-slate-700 focus:ring-[#0B2046] dark:focus:ring-blue-400"
                     }`}
                 />
                 {errors.fullName && (
@@ -253,8 +253,8 @@ export function ContactSection() {
                   onChange={handleChange}
                   disabled={isSubmitting}
                   className={`w-full px-3.5 py-2.5 text-xs sm:text-sm rounded-md bg-white dark:bg-slate-900 border text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-1 transition-colors ${errors.email
-                      ? "border-red-500 focus:ring-red-500"
-                      : "border-slate-300 dark:border-slate-700 focus:ring-[#0B2046] dark:focus:ring-blue-400"
+                    ? "border-red-500 focus:ring-red-500"
+                    : "border-slate-300 dark:border-slate-700 focus:ring-[#0B2046] dark:focus:ring-blue-400"
                     }`}
                 />
                 {errors.email && (
@@ -282,8 +282,8 @@ export function ContactSection() {
                 onChange={handleChange}
                 disabled={isSubmitting}
                 className={`w-full px-3.5 py-2.5 text-xs sm:text-sm rounded-md bg-white dark:bg-slate-900 border text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-1 transition-colors ${errors.subject
-                    ? "border-red-500 focus:ring-red-500"
-                    : "border-slate-300 dark:border-slate-700 focus:ring-[#0B2046] dark:focus:ring-blue-400"
+                  ? "border-red-500 focus:ring-red-500"
+                  : "border-slate-300 dark:border-slate-700 focus:ring-[#0B2046] dark:focus:ring-blue-400"
                   }`}
               />
               {errors.subject && (
@@ -310,8 +310,8 @@ export function ContactSection() {
                 onChange={handleChange}
                 disabled={isSubmitting}
                 className={`w-full px-3.5 py-2.5 text-xs sm:text-sm rounded-md bg-white dark:bg-slate-900 border text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-1 transition-colors resize-y ${errors.message
-                    ? "border-red-500 focus:ring-red-500"
-                    : "border-slate-300 dark:border-slate-700 focus:ring-[#0B2046] dark:focus:ring-blue-400"
+                  ? "border-red-500 focus:ring-red-500"
+                  : "border-slate-300 dark:border-slate-700 focus:ring-[#0B2046] dark:focus:ring-blue-400"
                   }`}
               />
               <div className="flex items-center justify-between mt-1 text-[11px] text-slate-500">

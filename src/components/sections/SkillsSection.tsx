@@ -11,7 +11,6 @@ import { skillCategories } from "@/data/skillsData";
 import { SkillItem } from "@/types";
 import { GithubIcon } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
-import { ProgressiveBlur } from "@/components/ui/ProgressiveBlur";
 import {
   Code,
   Database,
@@ -360,13 +359,7 @@ function SkillCard({
         )}
       </div>
 
-      {/* Subtle Progressive Blur Glass Shimmer on Card Hover */}
-      <ProgressiveBlur
-        direction="bottom"
-        blurLayers={4}
-        blurIntensity={0.25}
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-10 rounded-b-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-      />
+
     </div>
   );
 }
@@ -475,27 +468,6 @@ export function SkillsSection() {
             title="Skills & Technologies"
             subtitle="A verified inventory of programming languages, frameworks, enterprise database management systems, developer tools, design software, and productivity suites."
           />
-
-          {/* Progressive Blur Bar Under Skills & Technologies */}
-          <div className="relative -mt-6 sm:-mt-8 mb-8 max-w-5xl mx-auto overflow-hidden rounded-xl border border-slate-200/80 dark:border-slate-800/80 bg-slate-50/60 dark:bg-slate-900/40 p-3 sm:p-4 shadow-2xs backdrop-blur-xs">
-            <div className="flex flex-wrap items-center justify-between gap-3 text-xs">
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                <span className="font-semibold text-[#0B2046] dark:text-blue-300">
-                  Verified Technical Proficiency & Coursework Stack
-                </span>
-              </div>
-              <span className="text-[11px] font-mono text-slate-500 dark:text-slate-400">
-                {totalSkills} Skills Across {skillCategories.length} Categories
-              </span>
-            </div>
-            <ProgressiveBlur
-              direction="bottom"
-              blurLayers={8}
-              blurIntensity={0.35}
-              className="pointer-events-none absolute inset-0 rounded-xl"
-            />
-          </div>
         </ScrollReveal>
 
         {/* Search, Filter & View Controls Toolbar */}
@@ -537,15 +509,8 @@ export function SkillsSection() {
           )}
         </div>
 
-        {/* Skills View Container with Progressive Blur Framing */}
-        <div className="relative">
-          {/* Top Subtle Edge Progressive Blur */}
-          <ProgressiveBlur
-            direction="top"
-            blurLayers={6}
-            blurIntensity={0.3}
-            className="pointer-events-none absolute -top-4 left-0 right-0 h-8 z-10"
-          />
+        {/* Skills View Container */}
+        <div>
 
           {filteredCategories.length > 0 ? (
             viewMode === "list" ? (
@@ -646,14 +611,6 @@ export function SkillsSection() {
               </button>
             </div>
           )}
-
-          {/* Bottom Edge Progressive Blur Fade */}
-          <ProgressiveBlur
-            direction="bottom"
-            blurLayers={6}
-            blurIntensity={0.35}
-            className="pointer-events-none absolute -bottom-6 left-0 right-0 h-12 z-10"
-          />
         </div>
       </div>
     </section>

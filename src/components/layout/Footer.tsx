@@ -86,7 +86,7 @@ export function MinimalFooter() {
             <p className="text-muted-foreground max-w-sm font-sans text-xs sm:text-sm leading-relaxed text-balance">
               Management Information Systems (MIS) Senior at SETEC Institute.
               Specializing in enterprise systems analysis, relational database
-              architectures, data analytics, and modern full-stack development.
+              architectures.
             </p>
 
             <div className="flex gap-2 pt-1">
