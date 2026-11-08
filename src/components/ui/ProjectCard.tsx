@@ -79,8 +79,8 @@ export function ProjectCard({
       className={cn(
         "relative w-full bg-slate-900 overflow-hidden cursor-pointer group/img select-none",
         isList
-          ? "aspect-16/10 md:aspect-auto h-full min-h-[220px]"
-          : "aspect-16/10 h-full min-h-[220px]"
+          ? "aspect-16/10 md:aspect-auto h-full min-h-[130px] sm:min-h-[180px] md:min-h-[220px]"
+          : "aspect-16/10 h-full min-h-[130px] sm:min-h-[180px] md:min-h-[220px]"
       )}
       title="Click to expand gallery"
     >
@@ -96,7 +96,7 @@ export function ProjectCard({
                 alt={img.alt || `${project.title} screenshot ${idx + 1}`}
                 fill
                 className="object-cover object-top"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                sizes="(max-width: 768px) 50vw, (max-width: 1200px) 50vw, 33vw"
                 priority={idx === 0}
               />
             </div>
@@ -104,20 +104,20 @@ export function ProjectCard({
         </div>
       ) : (
         <div className="w-full h-full flex items-center justify-center text-slate-500">
-          <Code2 className="w-10 h-10" />
+          <Code2 className="w-8 h-8 sm:w-10 sm:h-10" />
         </div>
       )}
 
       {/* Category Badge overlay */}
-      <div className="absolute top-3 left-3 px-2.5 py-1 rounded text-[11px] font-bold uppercase tracking-wider bg-[#0B2046]/90 text-white backdrop-blur-xs border border-white/10 z-10">
+      <div className="absolute top-2 left-2 sm:top-3 sm:left-3 px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded text-[9px] sm:text-[11px] font-bold uppercase tracking-wider bg-[#0B2046]/90 text-white backdrop-blur-xs border border-white/10 z-10 truncate max-w-[70%] sm:max-w-none">
         {project.category}
       </div>
 
       {/* Slide Counter Overlay */}
       {hasMultipleImages && (
-        <div className="absolute top-3 right-3 px-2 py-0.5 rounded text-[10px] font-mono bg-slate-950/80 text-white backdrop-blur-xs border border-white/10 z-10 flex items-center gap-1">
+        <div className="absolute top-2 right-2 sm:top-3 sm:right-3 px-1.5 sm:px-2 py-0.5 rounded text-[9px] sm:text-[10px] font-mono bg-slate-950/80 text-white backdrop-blur-xs border border-white/10 z-10 flex items-center gap-1">
           <span>
-            {currentIndex + 1} / {images.length}
+            {currentIndex + 1}/{images.length}
           </span>
         </div>
       )}
@@ -128,18 +128,18 @@ export function ProjectCard({
           <button
             type="button"
             onClick={handlePrev}
-            className="absolute left-2 top-1/2 -translate-y-1/2 p-1.5 rounded-full bg-slate-950/75 hover:bg-[#0B2046] text-white opacity-80 sm:opacity-0 sm:group-hover/img:opacity-100 transition-all duration-150 hover:scale-110 shadow-md z-20 cursor-pointer border border-white/10"
+            className="absolute left-1.5 sm:left-2 top-1/2 -translate-y-1/2 p-1 sm:p-1.5 rounded-full bg-slate-950/75 hover:bg-[#0B2046] text-white opacity-80 sm:opacity-0 sm:group-hover/img:opacity-100 transition-all duration-150 hover:scale-110 shadow-md z-20 cursor-pointer border border-white/10"
             aria-label="Previous slide"
           >
-            <ChevronLeft className="w-4 h-4" />
+            <ChevronLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
           </button>
           <button
             type="button"
             onClick={handleNext}
-            className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 rounded-full bg-slate-950/75 hover:bg-[#0B2046] text-white opacity-80 sm:opacity-0 sm:group-hover/img:opacity-100 transition-all duration-150 hover:scale-110 shadow-md z-20 cursor-pointer border border-white/10"
+            className="absolute right-1.5 sm:right-2 top-1/2 -translate-y-1/2 p-1 sm:p-1.5 rounded-full bg-slate-950/75 hover:bg-[#0B2046] text-white opacity-80 sm:opacity-0 sm:group-hover/img:opacity-100 transition-all duration-150 hover:scale-110 shadow-md z-20 cursor-pointer border border-white/10"
             aria-label="Next slide"
           >
-            <ChevronRight className="w-4 h-4" />
+            <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
           </button>
         </>
       )}
@@ -169,61 +169,69 @@ export function ProjectCard({
   if (viewMode === "list") {
     return (
       <div className="group rounded-xl bg-white dark:bg-[#0D182E] border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 shadow-2xs hover:shadow-lg transition-all duration-200 flex flex-col md:flex-row overflow-hidden">
-        <div className="md:w-5/12 shrink-0 relative min-h-[220px]">{renderSlider(true)}</div>
-        <div className="p-6 md:w-7/12 flex flex-col justify-between">
+        <div className="md:w-5/12 shrink-0 relative min-h-[130px] sm:min-h-[180px] md:min-h-[220px]">
+          {renderSlider(true)}
+        </div>
+        <div className="p-3 sm:p-5 md:p-6 md:w-7/12 flex flex-col justify-between">
           <div>
-            <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-2">
+            <div className="flex items-center justify-between text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 mb-1.5 sm:mb-2">
               <span className="flex items-center gap-1">
-                <Calendar className="w-3.5 h-3.5" />
+                <Calendar className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                 {project.year}
               </span>
-              <span className="font-semibold text-slate-700 dark:text-slate-300">
+              <span className="font-semibold text-slate-700 dark:text-slate-300 truncate max-w-[80px] sm:max-w-none">
                 {project.role}
               </span>
             </div>
 
             <h3
               onClick={() => onOpenModal(project)}
-              className="text-lg font-bold text-[#0B2046] dark:text-white mb-2 hover:text-blue-700 dark:hover:text-blue-400 cursor-pointer transition-colors"
+              className="text-xs sm:text-base md:text-lg font-bold text-[#0B2046] dark:text-white mb-1 sm:mb-2 hover:text-blue-700 dark:hover:text-blue-400 cursor-pointer transition-colors line-clamp-1 md:line-clamp-none"
             >
               {project.title}
             </h3>
 
-            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 line-clamp-3 leading-relaxed mb-4">
+            <p className="text-[10px] sm:text-xs md:text-sm text-slate-600 dark:text-slate-300 line-clamp-2 md:line-clamp-3 leading-snug sm:leading-relaxed mb-2 sm:mb-4">
               {project.shortDescription}
             </p>
 
-            <div className="flex flex-wrap gap-1.5 mb-4">
-              {project.technologies.map((tech, idx) => (
+            <div className="flex flex-wrap gap-1 sm:gap-1.5 mb-2.5 sm:mb-4">
+              {project.technologies.slice(0, 3).map((tech, idx) => (
                 <span
                   key={idx}
-                  className="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700"
+                  className="px-1.5 sm:px-2 py-0.5 rounded text-[9px] sm:text-[11px] font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700"
                 >
                   {tech.name}
                 </span>
               ))}
+              {project.technologies.length > 3 && (
+                <span className="px-1.5 py-0.5 rounded text-[9px] sm:text-[11px] font-medium bg-slate-50 dark:bg-slate-900 text-slate-500 border border-slate-200 dark:border-slate-800">
+                  +{project.technologies.length - 3}
+                </span>
+              )}
             </div>
           </div>
 
-          <div className="pt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between">
+          <div className="pt-2 sm:pt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between gap-1">
             <button
               onClick={() => onOpenModal(project)}
-              className="inline-flex items-center gap-1 text-xs font-bold text-[#0B2046] dark:text-blue-400 hover:underline transition-colors cursor-pointer"
+              className="inline-flex items-center gap-0.5 sm:gap-1 text-[11px] sm:text-xs font-bold text-[#0B2046] dark:text-blue-400 hover:underline transition-colors cursor-pointer truncate"
             >
-              <span>Details & Screenshots</span>
-              <ChevronRight className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">Details & Screenshots</span>
+              <span className="sm:hidden">Details</span>
+              <ChevronRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
             </button>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1 sm:gap-2 shrink-0">
               {project.demoUrl && (
                 <a
                   href={project.demoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-1.5 rounded-md text-[#0B2046] dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/40 transition-colors"
+                  className="p-1 sm:p-1.5 rounded-md text-[#0B2046] dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/40 transition-colors"
                   title="Visit Live Website"
                 >
-                  <ExternalLink className="w-4 h-4" />
+                  <ExternalLink className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </a>
               )}
               {project.documentationUrl && (
@@ -231,10 +239,10 @@ export function ProjectCard({
                   href={project.documentationUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-1.5 rounded-md text-[#0B2046] dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/40 transition-colors"
+                  className="p-1 sm:p-1.5 rounded-md text-[#0B2046] dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/40 transition-colors"
                   title="Read Architecture Documentation (PDF)"
                 >
-                  <FileText className="w-4 h-4" />
+                  <FileText className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </a>
               )}
               {project.githubUrl && (
@@ -242,10 +250,10 @@ export function ProjectCard({
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-1.5 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
+                  className="p-1 sm:p-1.5 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
                   title="View GitHub Repository"
                 >
-                  <GithubIcon className="w-4 h-4" />
+                  <GithubIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </a>
               )}
             </div>
@@ -261,41 +269,41 @@ export function ProjectCard({
         {renderSlider()}
 
         {/* Project Content */}
-        <div className="p-6">
-          <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-2">
+        <div className="p-3 sm:p-5 md:p-6">
+          <div className="flex items-center justify-between text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 mb-1.5 sm:mb-2">
             <span className="flex items-center gap-1">
-              <Calendar className="w-3.5 h-3.5" />
+              <Calendar className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
               {project.year}
             </span>
-            <span className="font-semibold text-slate-700 dark:text-slate-300 truncate max-w-[150px]">
+            <span className="font-semibold text-slate-700 dark:text-slate-300 truncate max-w-[80px] sm:max-w-[150px]">
               {project.role}
             </span>
           </div>
 
           <h3
             onClick={() => onOpenModal(project)}
-            className="text-lg font-bold text-[#0B2046] dark:text-white mb-2.5 line-clamp-2 hover:text-blue-700 dark:hover:text-blue-400 cursor-pointer transition-colors"
+            className="text-xs sm:text-base md:text-lg font-bold text-[#0B2046] dark:text-white mb-1 sm:mb-2.5 line-clamp-1 sm:line-clamp-2 hover:text-blue-700 dark:hover:text-blue-400 cursor-pointer transition-colors"
           >
             {project.title}
           </h3>
 
-          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 line-clamp-3 leading-relaxed mb-4">
+          <p className="text-[10px] sm:text-xs md:text-sm text-slate-600 dark:text-slate-300 line-clamp-2 sm:line-clamp-3 leading-snug sm:leading-relaxed mb-2 sm:mb-4">
             {project.shortDescription}
           </p>
 
           {/* Tech Badges */}
-          <div className="flex flex-wrap gap-1.5 mb-2">
-            {project.technologies.slice(0, 4).map((tech, idx) => (
+          <div className="flex flex-wrap gap-1 sm:gap-1.5 mb-2">
+            {project.technologies.slice(0, 3).map((tech, idx) => (
               <span
                 key={idx}
-                className="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700"
+                className="px-1.5 sm:px-2 py-0.5 rounded text-[9px] sm:text-[11px] font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700"
               >
                 {tech.name}
               </span>
             ))}
-            {project.technologies.length > 4 && (
-              <span className="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-50 dark:bg-slate-900 text-slate-500 border border-slate-200 dark:border-slate-800">
-                +{project.technologies.length - 4} more
+            {project.technologies.length > 3 && (
+              <span className="px-1.5 py-0.5 rounded text-[9px] sm:text-[11px] font-medium bg-slate-50 dark:bg-slate-900 text-slate-500 border border-slate-200 dark:border-slate-800">
+                +{project.technologies.length - 3}
               </span>
             )}
           </div>
@@ -303,25 +311,26 @@ export function ProjectCard({
       </div>
 
       {/* Card Action Footer */}
-      <div className="px-6 py-4 border-t border-slate-100 dark:border-slate-800/80 bg-slate-50/60 dark:bg-slate-900/40 flex items-center justify-between">
+      <div className="p-2.5 sm:px-6 sm:py-4 border-t border-slate-100 dark:border-slate-800/80 bg-slate-50/60 dark:bg-slate-900/40 flex items-center justify-between gap-1">
         <button
           onClick={() => onOpenModal(project)}
-          className="inline-flex items-center gap-1 text-xs font-bold text-[#0B2046] dark:text-blue-400 hover:underline transition-colors cursor-pointer"
+          className="inline-flex items-center gap-0.5 sm:gap-1 text-[11px] sm:text-xs font-bold text-[#0B2046] dark:text-blue-400 hover:underline transition-colors cursor-pointer truncate"
         >
-          <span>Details & Screenshots</span>
-          <ChevronRight className="w-3.5 h-3.5" />
+          <span className="hidden sm:inline">Details & Screenshots</span>
+          <span className="sm:hidden">Details</span>
+          <ChevronRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
         </button>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1 sm:gap-2 shrink-0">
           {project.demoUrl && (
             <a
               href={project.demoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-1.5 rounded-md text-[#0B2046] dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/40 transition-colors"
+              className="p-1 sm:p-1.5 rounded-md text-[#0B2046] dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/40 transition-colors"
               title="Visit Live Website"
             >
-              <ExternalLink className="w-4 h-4" />
+              <ExternalLink className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </a>
           )}
           {project.documentationUrl && (
@@ -329,10 +338,10 @@ export function ProjectCard({
               href={project.documentationUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-1.5 rounded-md text-[#0B2046] dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/40 transition-colors"
+              className="p-1 sm:p-1.5 rounded-md text-[#0B2046] dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/40 transition-colors"
               title="Read Architecture Documentation (PDF)"
             >
-              <FileText className="w-4 h-4" />
+              <FileText className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </a>
           )}
           {project.githubUrl && (
@@ -340,10 +349,10 @@ export function ProjectCard({
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-1.5 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
+              className="p-1 sm:p-1.5 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
               title="View GitHub Repository"
             >
-              <GithubIcon className="w-4 h-4" />
+              <GithubIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </a>
           )}
         </div>

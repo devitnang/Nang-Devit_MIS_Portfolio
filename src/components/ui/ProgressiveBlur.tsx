@@ -70,3 +70,4 @@ export function ProgressiveBlur({
 }
 
 export default ProgressiveBlur;
+

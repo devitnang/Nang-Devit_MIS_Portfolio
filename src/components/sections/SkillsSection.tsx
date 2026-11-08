@@ -49,8 +49,8 @@ function SkillAvatar({ skill }: { skill: SkillItem }) {
   // Flutter Brand Icon
   if (name.includes("flutter")) {
     return (
-      <div className="w-11 h-11 rounded-xl bg-[#02569B] text-white flex items-center justify-center shrink-0 border border-blue-400/30 shadow-2xs">
-        <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+      <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-lg sm:rounded-xl bg-[#02569B] text-white flex items-center justify-center shrink-0 border border-blue-400/30 shadow-2xs">
+        <svg className="w-4 h-4 sm:w-5 sm:h-5 fill-current" viewBox="0 0 24 24">
           <path d="M14.314 0L2.3 12 6 15.7 21.684 0zm.014 11.072L7.857 17.53 14.328 24H21.7l-6.471-6.47 6.457-6.458z" />
         </svg>
       </div>
@@ -60,8 +60,8 @@ function SkillAvatar({ skill }: { skill: SkillItem }) {
   // Dart Icon
   if (name.includes("dart")) {
     return (
-      <div className="w-11 h-11 rounded-xl bg-[#0175C2] text-white flex items-center justify-center shrink-0 border border-cyan-400/30 shadow-2xs">
-        <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+      <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-lg sm:rounded-xl bg-[#0175C2] text-white flex items-center justify-center shrink-0 border border-cyan-400/30 shadow-2xs">
+        <svg className="w-4 h-4 sm:w-5 sm:h-5 fill-current" viewBox="0 0 24 24">
           <path d="M4.105 4.105L12.5 0l7.395 3.553L4.105 19.895V4.105zm15.79 3.552L12.5 24l-3.553-7.395L20.895 4.105l-1 3.552z" />
         </svg>
       </div>
@@ -71,7 +71,7 @@ function SkillAvatar({ skill }: { skill: SkillItem }) {
   // C# Icon
   if (name.includes("c#")) {
     return (
-      <div className="w-11 h-11 rounded-xl bg-[#239120] text-white flex items-center justify-center shrink-0 font-bold text-sm tracking-tight border border-green-500/30 shadow-2xs">
+      <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-lg sm:rounded-xl bg-[#239120] text-white flex items-center justify-center shrink-0 font-bold text-xs sm:text-sm tracking-tight border border-green-500/30 shadow-2xs">
         C#
       </div>
     );
@@ -80,8 +80,8 @@ function SkillAvatar({ skill }: { skill: SkillItem }) {
   // Oracle Database Icon
   if (name.includes("oracle")) {
     return (
-      <div className="w-11 h-11 rounded-xl bg-[#E51C23] text-white flex items-center justify-center shrink-0 border border-red-500/30 shadow-2xs">
-        <Database className="w-5 h-5 text-white" />
+      <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-lg sm:rounded-xl bg-[#E51C23] text-white flex items-center justify-center shrink-0 border border-red-500/30 shadow-2xs">
+        <Database className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
       </div>
     );
   }
@@ -89,8 +89,8 @@ function SkillAvatar({ skill }: { skill: SkillItem }) {
   // SQL Server Icon
   if (name.includes("sql server")) {
     return (
-      <div className="w-11 h-11 rounded-xl bg-[#CC292B] text-white flex items-center justify-center shrink-0 border border-red-400/30 shadow-2xs">
-        <Server className="w-5 h-5 text-white" />
+      <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-lg sm:rounded-xl bg-[#CC292B] text-white flex items-center justify-center shrink-0 border border-red-400/30 shadow-2xs">
+        <Server className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
       </div>
     );
   }
@@ -98,8 +98,8 @@ function SkillAvatar({ skill }: { skill: SkillItem }) {
   // MySQL Icon
   if (name.includes("mysql")) {
     return (
-      <div className="w-11 h-11 rounded-xl bg-[#00758F] text-white flex items-center justify-center shrink-0 border border-cyan-400/30 shadow-2xs">
-        <Database className="w-5 h-5 text-white" />
+      <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-lg sm:rounded-xl bg-[#00758F] text-white flex items-center justify-center shrink-0 border border-cyan-400/30 shadow-2xs">
+        <Database className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
       </div>
     );
   }
@@ -107,8 +107,8 @@ function SkillAvatar({ skill }: { skill: SkillItem }) {
   // MongoDB Icon
   if (name.includes("mongodb")) {
     return (
-      <div className="w-11 h-11 rounded-xl bg-[#13AA52] text-white flex items-center justify-center shrink-0 border border-emerald-400/30 shadow-2xs">
-        <Database className="w-5 h-5 text-white" />
+      <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-lg sm:rounded-xl bg-[#13AA52] text-white flex items-center justify-center shrink-0 border border-emerald-400/30 shadow-2xs">
+        <Database className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
       </div>
     );
   }
@@ -116,8 +116,8 @@ function SkillAvatar({ skill }: { skill: SkillItem }) {
   // GitHub Icon
   if (name.includes("git")) {
     return (
-      <div className="w-11 h-11 rounded-xl bg-[#181717] dark:bg-[#24292E] text-white flex items-center justify-center shrink-0 border border-slate-700 shadow-2xs">
-        <GithubIcon className="w-5 h-5 fill-white" />
+      <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-lg sm:rounded-xl bg-[#181717] dark:bg-[#24292E] text-white flex items-center justify-center shrink-0 border border-slate-700 shadow-2xs">
+        <GithubIcon className="w-4 h-4 sm:w-5 sm:h-5 fill-white" />
       </div>
     );
   }
@@ -125,8 +125,8 @@ function SkillAvatar({ skill }: { skill: SkillItem }) {
   // Figma Icon
   if (name.includes("figma")) {
     return (
-      <div className="w-11 h-11 rounded-xl bg-[#1E1E1E] text-white flex items-center justify-center shrink-0 border border-slate-700 shadow-2xs">
-        <svg className="w-5 h-5" viewBox="0 0 38 57" fill="none">
+      <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-lg sm:rounded-xl bg-[#1E1E1E] text-white flex items-center justify-center shrink-0 border border-slate-700 shadow-2xs">
+        <svg className="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 38 57" fill="none">
           <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z" fill="#1ABCFE" />
           <path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z" fill="#0ACF83" />
           <path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z" fill="#FF7262" />
@@ -140,7 +140,7 @@ function SkillAvatar({ skill }: { skill: SkillItem }) {
   // Adobe Photoshop
   if (name.includes("photoshop")) {
     return (
-      <div className="w-11 h-11 rounded-xl bg-[#001E36] text-[#31A8FF] flex items-center justify-center shrink-0 font-extrabold text-base border border-[#31A8FF]/40 shadow-2xs">
+      <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-lg sm:rounded-xl bg-[#001E36] text-[#31A8FF] flex items-center justify-center shrink-0 font-extrabold text-xs sm:text-base border border-[#31A8FF]/40 shadow-2xs">
         Ps
       </div>
     );
@@ -149,7 +149,7 @@ function SkillAvatar({ skill }: { skill: SkillItem }) {
   // Adobe Illustrator
   if (name.includes("illustrator")) {
     return (
-      <div className="w-11 h-11 rounded-xl bg-[#330000] text-[#FF9A00] flex items-center justify-center shrink-0 font-extrabold text-base border border-[#FF9A00]/40 shadow-2xs">
+      <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-lg sm:rounded-xl bg-[#330000] text-[#FF9A00] flex items-center justify-center shrink-0 font-extrabold text-xs sm:text-base border border-[#FF9A00]/40 shadow-2xs">
         Ai
       </div>
     );
@@ -158,7 +158,7 @@ function SkillAvatar({ skill }: { skill: SkillItem }) {
   // Adobe Premiere Pro
   if (name.includes("premiere")) {
     return (
-      <div className="w-11 h-11 rounded-xl bg-[#00005B] text-[#9999FF] flex items-center justify-center shrink-0 font-extrabold text-base border border-[#9999FF]/40 shadow-2xs">
+      <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-lg sm:rounded-xl bg-[#00005B] text-[#9999FF] flex items-center justify-center shrink-0 font-extrabold text-xs sm:text-base border border-[#9999FF]/40 shadow-2xs">
         Pr
       </div>
     );
@@ -167,7 +167,7 @@ function SkillAvatar({ skill }: { skill: SkillItem }) {
   // Adobe After Effects
   if (name.includes("after effect")) {
     return (
-      <div className="w-11 h-11 rounded-xl bg-[#00005B] text-[#CF96FD] flex items-center justify-center shrink-0 font-extrabold text-base border border-[#CF96FD]/40 shadow-2xs">
+      <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-lg sm:rounded-xl bg-[#00005B] text-[#CF96FD] flex items-center justify-center shrink-0 font-extrabold text-xs sm:text-base border border-[#CF96FD]/40 shadow-2xs">
         Ae
       </div>
     );
@@ -176,8 +176,8 @@ function SkillAvatar({ skill }: { skill: SkillItem }) {
   // CapCut
   if (name.includes("capcut") || name.includes("cupcut")) {
     return (
-      <div className="w-11 h-11 rounded-xl bg-black text-white flex items-center justify-center shrink-0 border border-slate-700 shadow-2xs">
-        <Scissors className="w-5 h-5 text-white" />
+      <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-lg sm:rounded-xl bg-black text-white flex items-center justify-center shrink-0 border border-slate-700 shadow-2xs">
+        <Scissors className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
       </div>
     );
   }
@@ -185,8 +185,8 @@ function SkillAvatar({ skill }: { skill: SkillItem }) {
   // Microsoft Office
   if (name.includes("microsoft office") || name.includes("office")) {
     return (
-      <div className="w-11 h-11 rounded-xl bg-[#D83B01] text-white flex items-center justify-center shrink-0 border border-orange-400/30 shadow-2xs">
-        <FileSpreadsheet className="w-5 h-5 text-white" />
+      <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-lg sm:rounded-xl bg-[#D83B01] text-white flex items-center justify-center shrink-0 border border-orange-400/30 shadow-2xs">
+        <FileSpreadsheet className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
       </div>
     );
   }
@@ -194,8 +194,8 @@ function SkillAvatar({ skill }: { skill: SkillItem }) {
   // Google Docs
   if (name.includes("docs")) {
     return (
-      <div className="w-11 h-11 rounded-xl bg-[#4285F4] text-white flex items-center justify-center shrink-0 border border-blue-300/40 shadow-2xs">
-        <FileText className="w-5 h-5 text-white" />
+      <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-lg sm:rounded-xl bg-[#4285F4] text-white flex items-center justify-center shrink-0 border border-blue-300/40 shadow-2xs">
+        <FileText className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
       </div>
     );
   }
@@ -203,8 +203,8 @@ function SkillAvatar({ skill }: { skill: SkillItem }) {
   // Google Sheets
   if (name.includes("sheets")) {
     return (
-      <div className="w-11 h-11 rounded-xl bg-[#0F9D58] text-white flex items-center justify-center shrink-0 border border-emerald-300/40 shadow-2xs">
-        <Table className="w-5 h-5 text-white" />
+      <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-lg sm:rounded-xl bg-[#0F9D58] text-white flex items-center justify-center shrink-0 border border-emerald-300/40 shadow-2xs">
+        <Table className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
       </div>
     );
   }
@@ -212,16 +212,16 @@ function SkillAvatar({ skill }: { skill: SkillItem }) {
   // Google Slides
   if (name.includes("slides")) {
     return (
-      <div className="w-11 h-11 rounded-xl bg-[#F4B400] text-white flex items-center justify-center shrink-0 border border-amber-300/40 shadow-2xs">
-        <Presentation className="w-5 h-5 text-white" />
+      <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-lg sm:rounded-xl bg-[#F4B400] text-white flex items-center justify-center shrink-0 border border-amber-300/40 shadow-2xs">
+        <Presentation className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
       </div>
     );
   }
 
   // Fallback icon inside dark square tile
   return (
-    <div className="w-11 h-11 rounded-xl bg-[#0B2046] text-white dark:text-blue-400 flex items-center justify-center shrink-0 border border-slate-700 shadow-2xs">
-      <Code className="w-5 h-5" />
+    <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-lg sm:rounded-xl bg-[#0B2046] text-white dark:text-blue-400 flex items-center justify-center shrink-0 border border-slate-700 shadow-2xs">
+      <Code className="w-4 h-4 sm:w-5 sm:h-5" />
     </div>
   );
 }
@@ -316,15 +316,15 @@ function SkillCard({
   const tag = getSkillCategoryTag(categoryTitle);
 
   return (
-    <div className="group relative overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-[#0D182E]/95 p-5 hover:border-slate-300 dark:hover:border-slate-700 shadow-2xs hover:shadow-md transition-all duration-200 flex flex-col justify-between backdrop-blur-xs">
+    <div className="group relative overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-[#0D182E]/95 p-3 sm:p-5 hover:border-slate-300 dark:hover:border-slate-700 shadow-2xs hover:shadow-md transition-all duration-200 flex flex-col justify-between backdrop-blur-xs">
       <div>
         {/* Top Row: Brand App Tile Icon & Proficiency Pill */}
-        <div className="flex items-center justify-between gap-3 mb-4">
+        <div className="flex items-center justify-between gap-1.5 sm:gap-3 mb-2.5 sm:mb-4">
           <SkillAvatar skill={skill} />
 
           <span
             className={cn(
-              "text-[11px] font-semibold px-2.5 py-0.5 rounded-full border tracking-wide",
+              "text-[9px] sm:text-[11px] font-semibold px-1.5 sm:px-2.5 py-0.5 rounded-full border tracking-wide shrink-0",
               skill.level === "Advanced"
                 ? "bg-blue-50 dark:bg-blue-950/60 text-[#0B2046] dark:text-blue-300 border-blue-200 dark:border-blue-800/80"
                 : "bg-slate-100 dark:bg-slate-800/90 text-slate-700 dark:text-slate-200 border-slate-200 dark:border-slate-700"
@@ -335,26 +335,27 @@ function SkillCard({
         </div>
 
         {/* Skill Name */}
-        <h4 className="text-base font-bold text-[#0B2046] dark:text-white group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors">
+        <h4 className="text-xs sm:text-base font-bold text-[#0B2046] dark:text-white group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors line-clamp-1 sm:line-clamp-none">
           {skill.name}
         </h4>
 
         {/* Competency Description */}
-        <p className="text-xs sm:text-[13px] text-slate-600 dark:text-slate-300 leading-relaxed mt-2 line-clamp-3">
+        <p className="text-[10px] sm:text-[13px] text-slate-600 dark:text-slate-300 leading-snug sm:leading-relaxed mt-1 sm:mt-2 line-clamp-2 sm:line-clamp-3">
           {description}
         </p>
       </div>
 
       {/* Card Footer: Category Tag & Core Competency Badge */}
-      <div className="mt-4 pt-3.5 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-[11px]">
-        <span className="font-medium text-slate-500 dark:text-slate-400">
+      <div className="mt-2.5 sm:mt-4 pt-2 sm:pt-3.5 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-[10px] sm:text-[11px] gap-1">
+        <span className="font-medium text-slate-500 dark:text-slate-400 truncate text-[9px] sm:text-[11px]">
           {tag}
         </span>
 
         {skill.highlight && (
-          <span className="inline-flex items-center gap-1.5 font-semibold text-[#0B2046] dark:text-blue-400">
+          <span className="inline-flex items-center gap-1 font-semibold text-[#0B2046] dark:text-blue-400 shrink-0 text-[9px] sm:text-[11px]">
             <span className="w-1.5 h-1.5 rounded-full bg-blue-600 dark:bg-blue-400" />
-            Core Stack
+            <span className="hidden sm:inline">Core Stack</span>
+            <span className="sm:hidden">Core</span>
           </span>
         )}
       </div>
@@ -616,8 +617,8 @@ export function SkillsSection() {
                       </p>
                     </div>
 
-                    {/* Modern Enterprise Skill Card Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+                    {/* Modern Enterprise Skill Card Grid (2 cards per row on mobile, 3 on large screens) */}
+                    <div className="grid grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-4 md:gap-5">
                       {cat.skills.map((skill) => (
                         <SkillCard
                           key={skill.name}

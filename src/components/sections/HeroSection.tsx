@@ -32,7 +32,7 @@ export function HeroSection() {
             {/* Name + Blue Verified Checkmark Badge with Pop-in Animation */}
             <div className="flex items-center gap-2">
               <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-[#0B2046] dark:text-white">
-                Devit NANG
+                Nang Devit
               </h1>
 
               {/* Blue Verified Checkmark Badge with Spring Pop */}
