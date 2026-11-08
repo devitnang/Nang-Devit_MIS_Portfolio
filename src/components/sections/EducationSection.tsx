@@ -56,11 +56,11 @@ export function EducationSection() {
                 key={edu.id}
                 animation="fade-up"
                 delay={idx * 100}
-                className="py-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6"
+                className="relative py-6 sm:py-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6"
               >
-                <div className="flex items-start sm:items-center gap-4 sm:gap-6">
+                <div className="flex items-start sm:items-center gap-3.5 sm:gap-6 pr-12 sm:pr-0">
                   {/* SETEC Logo */}
-                  <div className="relative w-16 h-16 rounded-lg overflow-hidden bg-white p-1 border border-slate-200 dark:border-slate-700 shrink-0 shadow-2xs">
+                  <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-xl overflow-hidden bg-white p-1 border border-slate-200 dark:border-slate-700 shrink-0 shadow-2xs">
                     <Image
                       src={edu.logo}
                       alt={`${edu.institution} Logo`}
@@ -70,7 +70,7 @@ export function EducationSection() {
                   </div>
 
                   {/* Details */}
-                  <div className="space-y-1.5">
+                  <div className="space-y-1 sm:space-y-1.5">
                     <div className="flex items-center gap-2">
                       <span className="text-[11px] font-mono font-bold text-[#0B2046] dark:text-blue-300">
                         {edu.year}
@@ -97,16 +97,16 @@ export function EducationSection() {
                   </div>
                 </div>
 
-                {/* Eye Icon Button Only */}
-                <div className="flex items-center self-end sm:self-center">
+                {/* Eye Icon Action Button (Top-right aligned on mobile, centered on desktop) */}
+                <div className="absolute top-6 right-0 sm:static sm:top-auto sm:right-auto flex items-center shrink-0">
                   <button
                     type="button"
                     onClick={() => setSelectedImage(courseImg)}
-                    className="p-2.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 hover:bg-slate-100 dark:bg-slate-900 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-[#0B2046] dark:hover:text-blue-400 transition-colors shadow-2xs cursor-pointer flex items-center justify-center group"
+                    className="p-2 sm:p-2.5 rounded-xl border border-slate-200/90 dark:border-slate-800 bg-slate-50 hover:bg-slate-100 dark:bg-slate-900/90 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-[#0B2046] dark:hover:text-blue-400 transition-all duration-200 shadow-2xs hover:shadow-xs cursor-pointer flex items-center justify-center group focus-visible:ring-2 focus-visible:ring-[#0B2046] dark:focus-visible:ring-blue-400 active:scale-95"
                     title="Preview Course Curriculum"
                     aria-label="Preview Course Curriculum"
                   >
-                    <Eye className="w-5 h-5 text-[#0B2046] dark:text-blue-400 group-hover:scale-110 transition-transform" />
+                    <Eye className="w-4 h-4 sm:w-5 sm:h-5 text-[#0B2046] dark:text-blue-400 group-hover:scale-110 transition-transform" />
                   </button>
                 </div>
               </ScrollReveal>
