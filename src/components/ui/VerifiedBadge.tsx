@@ -111,3 +111,4 @@ export function VerifiedBadge({
 }
 
 export default VerifiedBadge;
+
