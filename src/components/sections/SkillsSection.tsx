@@ -11,6 +11,7 @@ import { skillCategories } from "@/data/skillsData";
 import { SkillItem } from "@/types";
 import { GithubIcon } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
+import { Parallax, ParallaxBackground } from "@/components/ui/Parallax";
 import {
   Code,
   Database,
@@ -315,17 +316,19 @@ function SkillCard({
   const tag = getSkillCategoryTag(categoryTitle);
 
   return (
-    <div className="group relative overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-[#0D182E]/95 p-3 sm:p-5 hover:border-slate-300 dark:hover:border-slate-700 shadow-2xs hover:shadow-md transition-all duration-200 flex flex-col justify-between backdrop-blur-xs">
+    <div className="group relative overflow-hidden rounded-xl border border-slate-200/90 dark:border-slate-800 bg-white/95 dark:bg-[#0D182E]/95 p-3 sm:p-5 hover:border-slate-300 dark:hover:border-slate-700 shadow-2xs hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between backdrop-blur-xs">
       <div>
         {/* Top Row: Brand App Tile Icon & Proficiency Pill */}
         <div className="flex items-center justify-between gap-1.5 sm:gap-3 mb-2.5 sm:mb-4">
-          <SkillAvatar skill={skill} />
+          <div className="transition-transform duration-200 group-hover:scale-105">
+            <SkillAvatar skill={skill} />
+          </div>
 
           <span
             className={cn(
-              "text-[9px] sm:text-[11px] font-semibold px-1.5 sm:px-2.5 py-0.5 rounded-full border tracking-wide shrink-0",
+              "text-[9px] sm:text-[11px] font-semibold px-1.5 sm:px-2.5 py-0.5 rounded-full border tracking-wide shrink-0 transition-colors",
               skill.level === "Advanced"
-                ? "bg-blue-50 dark:bg-blue-950/60 text-[#0B2046] dark:text-blue-300 border-blue-200 dark:border-blue-800/80"
+                ? "bg-blue-50 dark:bg-blue-950/60 text-[#0B2046] dark:text-blue-300 border-blue-200 dark:border-blue-800/80 group-hover:border-blue-400/50"
                 : "bg-slate-100 dark:bg-slate-800/90 text-slate-700 dark:text-slate-200 border-slate-200 dark:border-slate-700"
             )}
           >
@@ -352,14 +355,12 @@ function SkillCard({
 
         {skill.highlight && (
           <span className="inline-flex items-center gap-1 font-semibold text-[#0B2046] dark:text-blue-400 shrink-0 text-[9px] sm:text-[11px]">
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-600 dark:bg-blue-400" />
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-600 dark:bg-blue-400 animate-pulse" />
             <span className="hidden sm:inline">Core Stack</span>
             <span className="sm:hidden">Core</span>
           </span>
         )}
       </div>
-
-
     </div>
   );
 }
@@ -459,9 +460,12 @@ export function SkillsSection() {
   return (
     <section
       id="skills"
-      className="py-16 md:py-24 bg-white dark:bg-[#080F1E] border-b border-slate-200 dark:border-slate-800 transition-colors"
+      className="relative py-16 md:py-24 bg-white dark:bg-[#080F1E] border-b border-slate-200 dark:border-slate-800 transition-colors overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Ambient Parallax Multi-Plane Depth Background */}
+      <ParallaxBackground />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <ScrollReveal animation="fade-up">
           <SectionHeading
             badge="Technical Competencies"

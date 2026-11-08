@@ -9,6 +9,7 @@ import {
   AlertCircle,
   Loader2,
 } from "lucide-react";
+import { ParallaxBackground } from "@/components/ui/Parallax";
 
 interface FormState {
   fullName: string;
@@ -158,9 +159,12 @@ export function ContactSection() {
   return (
     <section
       id="contact"
-      className="py-16 md:py-24 bg-slate-50 dark:bg-[#070D19] border-b border-slate-200 dark:border-slate-800 transition-colors"
+      className="relative py-16 md:py-24 bg-slate-50 dark:bg-[#070D19] border-b border-slate-200 dark:border-slate-800 transition-colors overflow-hidden"
     >
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Ambient Parallax Multi-Plane Depth Background */}
+      <ParallaxBackground />
+
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <ScrollReveal animation="fade-up">
           <SectionHeading
             badge="Direct Inquiries & Collaboration"

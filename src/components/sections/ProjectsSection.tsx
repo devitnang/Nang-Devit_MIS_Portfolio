@@ -9,6 +9,7 @@ import { SearchFilterToolbar, CategoryOption } from "@/components/ui/SearchFilte
 import { projects } from "@/data/projectsData";
 import { Project } from "@/types";
 import { RotateCcw } from "lucide-react";
+import { ParallaxBackground } from "@/components/ui/Parallax";
 
 export function ProjectsSection() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
@@ -51,9 +52,12 @@ export function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="py-16 md:py-24 bg-white dark:bg-[#080F1E] border-b border-slate-200 dark:border-slate-800 transition-colors"
+      className="relative py-16 md:py-24 bg-white dark:bg-[#080F1E] border-b border-slate-200 dark:border-slate-800 transition-colors overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Ambient Parallax Multi-Plane Depth Background */}
+      <ParallaxBackground />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <ScrollReveal animation="fade-up">
           <SectionHeading
             badge="Portfolio Showcase"
