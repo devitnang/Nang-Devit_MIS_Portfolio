@@ -236,3 +236,103 @@ body {
 .animate-scroll-indicator {
   animation: floatIndicator 2s ease-in-out infinite;
 }
+
+/* =========================================================================
+   Ultra-Smooth Theme Mode Crossfade Transition for Entire Website
+   ========================================================================= */
+html.theme-transitioning,
+html.theme-transitioning *,
+html.theme-transitioning *::before,
+html.theme-transitioning *::after {
+  transition:
+    background-color 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+    fill 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+    stroke 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.45s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition-delay: 0s !important;
+}
+
+/* =========================================================================
+   Modern Liquid-Glass Fluid SVG Theme Toggle Switch
+   ========================================================================= */
+.theme-switch-wrapper {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  padding: 5px;
+}
+
+.theme-switch-wrapper input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.theme-switch {
+  --a: 0.52s cubic-bezier(0.34, 1.25, 0.64, 1);
+  --track-bg: #cbd5e1;
+  --knob-color: #ffffff;
+  cursor: pointer;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 0 5px var(--track-bg), 0 1px 3px rgba(0, 0, 0, 0.12);
+  aspect-ratio: 212.4992 / 84.4688;
+  background-color: var(--track-bg);
+  transition:
+    background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.18s cubic-bezier(0.34, 1.25, 0.64, 1);
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.theme-switch:active {
+  transform: scale(0.94);
+}
+
+.dark .theme-switch {
+  --track-bg: #0b2046;
+  --knob-color: #38bdf8;
+  box-shadow: 0 0 0 5px var(--track-bg), 0 0 12px rgba(56, 189, 248, 0.3);
+}
+
+.theme-switch svg {
+  height: 100%;
+  width: 100%;
+  overflow: visible;
+}
+
+.theme-switch svg path {
+  color: var(--knob-color);
+  stroke-width: 16;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 136 224;
+  stroke-dashoffset: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.25));
+  transition:
+    stroke-dashoffset var(--a),
+    color 0.35s ease,
+    filter 0.35s ease,
+    0s transform;
+}
+
+.theme-switch-wrapper input[type="checkbox"]:checked ~ .theme-switch svg path {
+  stroke-dashoffset: 180;
+  transform: scaleY(-1);
+  filter: drop-shadow(0 0 5px rgba(56, 189, 248, 0.8));
+}
+
+.theme-switch-wrapper input[type="checkbox"]:focus-visible ~ .theme-switch {
+  outline: 2px solid #2563eb;
+  outline-offset: 7px;
+}

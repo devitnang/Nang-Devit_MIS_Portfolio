@@ -1,39 +1,75 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
-import { Sun, Moon } from "lucide-react";
+import { useEffect, useState, useId } from "react";
 
+/**
+ * Modern Liquid-Glass Fluid SVG Theme Toggle Switch.
+ * Features a single continuous stadium SVG track with a sliding liquid stroke knob,
+ * tactile haptic micro-feedback, and an ultra-smooth whole-page theme crossfade.
+ */
 export function ThemeToggle() {
   const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const inputId = useId();
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
+  const isDark = mounted && (resolvedTheme === "dark" || theme === "dark");
+
+  const toggleTheme = () => {
+    // Add smooth transition class to documentElement for fluid theme crossfade
+    if (typeof document !== "undefined") {
+      const root = document.documentElement;
+      root.classList.add("theme-transitioning");
+      window.setTimeout(() => {
+        root.classList.remove("theme-transitioning");
+      }, 500);
+    }
+    setTheme(isDark ? "light" : "dark");
+  };
+
   if (!mounted) {
     return (
-      <div className="w-9 h-9 rounded-md border border-slate-200 dark:border-slate-800 bg-transparent" />
+      <div className="p-[5px] inline-flex items-center">
+        <div
+          aria-hidden="true"
+          className="h-[20px] rounded-full aspect-[212.4992/84.4688] bg-slate-200 dark:bg-slate-800 animate-pulse"
+          style={{
+            boxShadow: "0 0 0 5px rgba(148, 163, 184, 0.4)",
+          }}
+        />
+      </div>
     );
   }
 
-  const isDark = resolvedTheme === "dark" || theme === "dark";
-
   return (
-    <button
-      type="button"
-      onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="p-2 rounded-md border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60 hover:bg-slate-100 dark:hover:bg-slate-800/80 text-slate-700 dark:text-slate-300 transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-[#0B2046] dark:focus:ring-blue-400 cursor-pointer"
-      aria-label={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
-      title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
-    >
-      {isDark ? (
-        <Sun className="w-4 h-4 text-amber-400" />
-      ) : (
-        <Moon className="w-4 h-4 text-[#0B2046]" />
-      )}
-    </button>
+    <div className="theme-switch-wrapper">
+      <input
+        id={inputId}
+        type="checkbox"
+        checked={isDark}
+        onChange={toggleTheme}
+        aria-label={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
+      />
+      <label
+        className="theme-switch"
+        htmlFor={inputId}
+        title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
+      >
+        <svg viewBox="0 0 212.4992 84.4688" overflow="visible">
+          <path
+            pathLength={360}
+            fill="none"
+            stroke="currentColor"
+            d="M 42.2496 0 A 42.24 42.24 90 0 0 0 42.2496 A 42.24 42.24 90 0 0 42.2496 84.4688 A 42.24 42.24 90 0 0 84.4992 42.2496 A 42.24 42.24 90 0 0 42.2496 0 A 42.24 42.24 90 0 0 0 42.2496 A 42.24 42.24 90 0 0 42.2496 84.4688 L 170.2496 84.4688 A 42.24 42.24 90 0 0 212.4992 42.2496 A 42.24 42.24 90 0 0 170.2496 0 A 42.24 42.24 90 0 0 128 42.2496 A 42.24 42.24 90 0 0 170.2496 84.4688 A 42.24 42.24 90 0 0 212.4992 42.2496 A 42.24 42.24 90 0 0 170.2496 0 L 42.2496 0"
+          />
+        </svg>
+      </label>
+    </div>
   );
 }
 
+export default ThemeToggle;
