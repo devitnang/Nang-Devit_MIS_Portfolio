@@ -5,6 +5,7 @@ import Image from "next/image";
 import { personalInfo } from "@/data/portfolioData";
 import { GithubIcon, LinkedinIcon, TelegramIcon } from "@/components/ui/Icons";
 import { Mail, ChevronDown } from "lucide-react";
+import { VerifiedBadge } from "@/components/ui/VerifiedBadge";
 
 export function HeroSection() {
   return (
@@ -35,23 +36,13 @@ export function HeroSection() {
                 Nang Devit
               </h1>
 
-              {/* Blue Verified Checkmark Badge with Spring Pop */}
-              <div
+              {/* Verified Scalloped Badge with Shimmer & Entrance Animation */}
+              <VerifiedBadge
+                size={24}
+                className="shrink-0 animate-badge-pop sm:scale-110 origin-left"
                 title="Verified MIS Professional"
-                className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#1D9BF0] flex items-center justify-center shrink-0 shadow-2xs animate-badge-pop"
-              >
-                <svg
-                  className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-white"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="3.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-              </div>
+                aria-label="Verified MIS Professional"
+              />
             </div>
 
             {/* Social Icons row with Staggered Entrance */}
