@@ -140,16 +140,16 @@ export function Header() {
               <ThemeToggle />
 
               <a
-                href="#contact"
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection("contact");
-                }}
+                href={personalInfo.contact.telegramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={buttonVariants({
                   variant: "default",
                   size: "sm",
                   className: "text-xs font-bold h-8 px-3 gap-1.5",
                 })}
+                aria-label="Contact Nang Devit on Telegram"
+                title="Contact on Telegram (@nangdevit)"
               >
                 <Send className="w-3.5 h-3.5" />
                 <span>Contact</span>
