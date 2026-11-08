@@ -126,10 +126,10 @@ export async function POST(request: NextRequest) {
     }
 
     // ── 4. Coerce & trim ───────────────────────────────────────────────────
-    const cleanName    = String(fullName    ?? "").trim();
-    const cleanEmail   = String(email       ?? "").trim();
-    const cleanSubject = String(subject     ?? "").trim();
-    const cleanMessage = String(message     ?? "").trim();
+    const cleanName = String(fullName ?? "").trim();
+    const cleanEmail = String(email ?? "").trim();
+    const cleanSubject = String(subject ?? "").trim();
+    const cleanMessage = String(message ?? "").trim();
 
     // ── 5. Backend field validation ─────────────────────────────────────────
     const errors: Record<string, string> = {};
@@ -176,8 +176,8 @@ export async function POST(request: NextRequest) {
     }
 
     // ── 6. Sanitize for Telegram delivery (after validation passes) ─────────
-    const safeName    = sanitizeForTelegram(cleanName);
-    const safeEmail   = sanitizeForTelegram(cleanEmail);
+    const safeName = sanitizeForTelegram(cleanName);
+    const safeEmail = sanitizeForTelegram(cleanEmail);
     const safeSubject = sanitizeForTelegram(cleanSubject);
     const safeMessage = sanitizeForTelegram(cleanMessage);
 
@@ -205,8 +205,8 @@ export async function POST(request: NextRequest) {
 
     // ── 9. Read secrets from environment (server-side only) ─────────────────
     const botToken = process.env.TELEGRAM_BOT_TOKEN;
-    const groupId  = process.env.TELEGRAM_GROUP_ID ?? process.env.TELEGRAM_CHAT_ID;
-    const topicId  = process.env.TELEGRAM_TOPIC_ID ?? process.env.TELEGRAM_THREAD_ID;
+    const groupId = process.env.TELEGRAM_GROUP_ID ?? process.env.TELEGRAM_CHAT_ID;
+    const topicId = process.env.TELEGRAM_TOPIC_ID ?? process.env.TELEGRAM_THREAD_ID;
 
     if (!botToken || !groupId) {
       // Dev / staging: log sanitized summary (no raw user data in logs)
