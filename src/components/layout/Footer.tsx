@@ -64,12 +64,12 @@ export function MinimalFooter() {
         <div className="grid max-w-4xl grid-cols-6 gap-6 p-6 sm:p-8">
           <div className="col-span-6 flex flex-col gap-4 md:col-span-4">
             <Link href="#home" className="flex items-center gap-2.5 w-max group">
-              <div className="relative w-8 h-8 rounded-md bg-[#0B2046] dark:bg-blue-600 p-0.5 flex items-center justify-center overflow-hidden">
+              <div className="relative w-8 h-8 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 flex items-center justify-center shrink-0">
                 <Image
                   src="/assets/images/logo/mylogo.png"
                   alt="Nang Devit Logo"
                   fill
-                  className="object-contain p-0.5"
+                  className="object-cover"
                   sizes="32px"
                 />
               </div>

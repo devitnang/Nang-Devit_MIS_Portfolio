@@ -91,12 +91,13 @@ export function Header() {
             aria-label="Nang Devit - Home"
             onClick={() => scrollToSection("home")}
           >
-            <div className="relative w-8 h-8 rounded-md bg-white dark:bg-[#0F2756] p-0.5 border border-slate-200 dark:border-slate-700 shadow-2xs group-hover:border-[#0B2046] dark:group-hover:border-blue-400 transition-colors flex items-center justify-center overflow-hidden">
+            <div className="relative w-8 h-8 rounded-lg overflow-hidden border border-slate-200/80 dark:border-slate-700/80 shadow-2xs group-hover:border-[#0B2046] dark:group-hover:border-blue-400 transition-colors flex items-center justify-center shrink-0">
               <Image
                 src="/assets/images/logo/mylogo.png"
                 alt="Nang Devit Logo"
                 fill
-                className="object-contain p-0.5"
+                priority
+                className="object-cover"
                 sizes="32px"
               />
             </div>
