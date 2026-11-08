@@ -1,17 +1,15 @@
 "use client";
 
+import { useId, useState, useEffect } from "react";
+import { Switch } from "@/components/ui/switch";
+import { cn } from "@/lib/utils";
+import { MoonIcon, SunIcon } from "lucide-react";
 import { useTheme } from "next-themes";
-import { useEffect, useState, useId } from "react";
 
-/**
- * Real Fluid SVG Dark/Light Switch UI.
- * Single continuous stadium path with sliding liquid stroke ring knob,
- * matching the exact physics and geometry of the demonstration video.
- */
-export function ThemeToggle() {
+export const SwitchToggleThemeDemo = () => {
+  const id = useId();
   const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  const inputId = useId();
 
   useEffect(() => {
     setMounted(true);
@@ -19,63 +17,85 @@ export function ThemeToggle() {
 
   const isDark = mounted && (resolvedTheme === "dark" || theme === "dark");
 
-  const toggleTheme = () => {
+  const setIsDark = (val: boolean) => {
     if (typeof document !== "undefined") {
       const root = document.documentElement;
       root.classList.add("theme-transitioning");
       window.setTimeout(() => {
         root.classList.remove("theme-transitioning");
-      }, 550);
+      }, 450);
     }
-    setTheme(isDark ? "light" : "dark");
+    setTheme(val ? "dark" : "light");
   };
 
   if (!mounted) {
     return (
-      <div className="theme-switch-wrapper">
-        <div
-          aria-hidden="true"
-          className="theme-switch opacity-60 animate-pulse pointer-events-none"
+      <div className="group inline-flex items-center gap-2 select-none">
+        <span
+          id={`${id}-light`}
+          className="cursor-pointer text-left text-sm font-medium text-foreground/50"
+          aria-controls={id}
         >
-          <svg viewBox="0 0 212.4992 84.4688" overflow="visible">
-            <path
-              pathLength={360}
-              fill="none"
-              stroke="currentColor"
-              d="M 42.2496 0 A 42.24 42.24 90 0 0 0 42.2496 A 42.24 42.24 90 0 0 42.2496 84.4688 A 42.24 42.24 90 0 0 84.4992 42.2496 A 42.24 42.24 90 0 0 42.2496 0 A 42.24 42.24 90 0 0 0 42.2496 A 42.24 42.24 90 0 0 42.2496 84.4688 L 170.2496 84.4688 A 42.24 42.24 90 0 0 212.4992 42.2496 A 42.24 42.24 90 0 0 170.2496 0 A 42.24 42.24 90 0 0 128 42.2496 A 42.24 42.24 90 0 0 170.2496 84.4688 A 42.24 42.24 90 0 0 212.4992 42.2496 A 42.24 42.24 90 0 0 170.2496 0 L 42.2496 0"
-            />
-          </svg>
-        </div>
+          <SunIcon className="size-4" aria-hidden="true" />
+        </span>
+
+        <Switch
+          id={id}
+          checked={false}
+          aria-labelledby={`${id}-light ${id}-dark`}
+          aria-label="Toggle between dark and light mode"
+          disabled
+        />
+
+        <span
+          id={`${id}-dark`}
+          className="cursor-pointer text-right text-sm font-medium text-foreground/50"
+          aria-controls={id}
+        >
+          <MoonIcon className="size-4" aria-hidden="true" />
+        </span>
       </div>
     );
   }
 
   return (
-    <div className="theme-switch-wrapper">
-      <input
-        id={inputId}
-        type="checkbox"
-        checked={isDark}
-        onChange={toggleTheme}
-        aria-label={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
-      />
-      <label
-        className="theme-switch"
-        htmlFor={inputId}
-        data-checked={isDark ? "true" : "false"}
-        title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
+    <div className="group inline-flex items-center gap-2 select-none">
+      <span
+        id={`${id}-light`}
+        className={cn(
+          "cursor-pointer text-left text-sm font-medium transition-colors hover:text-foreground",
+          isDark && "text-foreground/50",
+        )}
+        aria-controls={id}
+        onClick={() => setIsDark(false)}
+        title="Switch to Light Mode"
       >
-        <svg viewBox="0 0 212.4992 84.4688" overflow="visible">
-          <path
-            pathLength={360}
-            fill="none"
-            stroke="currentColor"
-            d="M 42.2496 0 A 42.24 42.24 90 0 0 0 42.2496 A 42.24 42.24 90 0 0 42.2496 84.4688 A 42.24 42.24 90 0 0 84.4992 42.2496 A 42.24 42.24 90 0 0 42.2496 0 A 42.24 42.24 90 0 0 0 42.2496 A 42.24 42.24 90 0 0 42.2496 84.4688 L 170.2496 84.4688 A 42.24 42.24 90 0 0 212.4992 42.2496 A 42.24 42.24 90 0 0 170.2496 0 A 42.24 42.24 90 0 0 128 42.2496 A 42.24 42.24 90 0 0 170.2496 84.4688 A 42.24 42.24 90 0 0 212.4992 42.2496 A 42.24 42.24 90 0 0 170.2496 0 L 42.2496 0"
-          />
-        </svg>
-      </label>
+        <SunIcon className="size-4" aria-hidden="true" />
+      </span>
+
+      <Switch
+        id={id}
+        checked={isDark}
+        onCheckedChange={setIsDark}
+        aria-labelledby={`${id}-light ${id}-dark`}
+        aria-label="Toggle between dark and light mode"
+      />
+
+      <span
+        id={`${id}-dark`}
+        className={cn(
+          "cursor-pointer text-right text-sm font-medium transition-colors hover:text-foreground",
+          isDark || "text-foreground/50",
+        )}
+        aria-controls={id}
+        onClick={() => setIsDark(true)}
+        title="Switch to Dark Mode"
+      >
+        <MoonIcon className="size-4" aria-hidden="true" />
+      </span>
     </div>
   );
-}
+};
 
-export default ThemeToggle;
+export const ThemeToggle = SwitchToggleThemeDemo;
+export default SwitchToggleThemeDemo;

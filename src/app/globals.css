@@ -239,10 +239,9 @@ body {
 
 /* =========================================================================
    Ultra-Smooth Theme Mode Crossfade Transition for Entire Website
-   Strictly excludes .theme-switch and .theme-switch-wrapper so the liquid SVG
-   sliding animation remains 100% fluid and free of property overrides!
    ========================================================================= */
-html.theme-transitioning *:not(.theme-switch, .theme-switch *, .theme-switch-wrapper, .theme-switch-wrapper *) {
+html.theme-transitioning,
+html.theme-transitioning *:not([role="switch"], [role="switch"] *) {
   transition:
     background-color 0.45s cubic-bezier(0.4, 0, 0.2, 1),
     border-color 0.45s cubic-bezier(0.4, 0, 0.2, 1),
@@ -250,86 +249,4 @@ html.theme-transitioning *:not(.theme-switch, .theme-switch *, .theme-switch-wra
     fill 0.45s cubic-bezier(0.4, 0, 0.2, 1),
     box-shadow 0.45s cubic-bezier(0.4, 0, 0.2, 1) !important;
   transition-delay: 0s !important;
-}
-
-/* =========================================================================
-   Real Fluid SVG Dark / Light Mode Switch (matching the demonstration video)
-   ========================================================================= */
-.theme-switch-wrapper {
-  display: inline-flex;
-  align-items: center;
-  position: relative;
-  padding: 8px;
-}
-
-/* Hide default HTML checkbox */
-.theme-switch-wrapper input[type="checkbox"] {
-  position: absolute;
-  opacity: 0;
-  width: 0;
-  height: 0;
-  pointer-events: none;
-}
-
-/* The switch - the stadium track box around the slider */
-.theme-switch {
-  --a: 0.5s ease-out;
-  --switch-track: #aaa;
-  cursor: pointer;
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 1.8em;
-  font-size: 12px;
-  border-radius: 2em;
-  box-shadow: 0 0 0 0.66em var(--switch-track);
-  aspect-ratio: 212.4992 / 84.4688;
-  background-color: var(--switch-track);
-  user-select: none;
-  -webkit-tap-highlight-color: transparent;
-  transition:
-    background-color var(--a),
-    box-shadow var(--a),
-    transform 0.15s ease;
-}
-
-.theme-switch:active {
-  transform: scale(0.95);
-}
-
-.dark .theme-switch,
-.theme-switch[data-checked="true"] {
-  --switch-track: #0b2046;
-}
-
-.theme-switch svg {
-  height: 100%;
-  width: 100%;
-  overflow: visible;
-}
-
-.theme-switch svg path {
-  color: #fff;
-  stroke-width: 16;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-dasharray: 136 224;
-  stroke-dashoffset: 0;
-  transform-origin: center;
-  transition:
-    all var(--a),
-    0s transform;
-}
-
-.theme-switch-wrapper input[type="checkbox"]:checked ~ .theme-switch svg path,
-.theme-switch[data-checked="true"] svg path {
-  stroke-dashoffset: 180;
-  transform: scaleY(-1);
-}
-
-/* Keyboard Accessibility Focus Outline */
-.theme-switch-wrapper input[type="checkbox"]:focus-visible ~ .theme-switch {
-  outline: 2px solid #2563eb;
-  outline-offset: 10px;
 }
