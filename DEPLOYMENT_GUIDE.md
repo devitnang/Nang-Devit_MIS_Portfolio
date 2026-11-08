@@ -141,8 +141,7 @@ Log in to your DNS provider (e.g. Namecheap, Cloudflare, GoDaddy, Hostinger) and
 
 - [x] Responsive layout on Desktop, Tablet, and Mobile.
 - [x] Light Mode and Dark Mode toggling with persistent corporate palette.
-- [x] CV download points directly to `public/assets/cv/NANGDEVIT__CV.pdf`.
-- [x] Profile picture rendering from `public/assets/images/nangdevit.PNG`.
+- [x] Profile picture rendering from `public/assets/images/nangdevit.png`.
 - [x] NEC Experience timeline displaying `public/assets/images/logo/National_Election_Committee.png`.
 - [x] SETEC Institute Education card displaying `public/assets/images/logo/setec_institute.png`.
 - [x] Project gallery and carousel with interactive screenshots, GitHub, and Demo buttons.

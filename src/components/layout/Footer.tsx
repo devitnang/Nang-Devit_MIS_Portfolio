@@ -25,7 +25,6 @@ export function MinimalFooter() {
   ];
 
   const resources = [
-    { title: "Download CV (PDF)", href: personalInfo.assets.cv },
     { title: "SETEC Institute", href: "#education" },
     {
       title: "Flutter Ecommerce Doc",

@@ -29,14 +29,12 @@ Official personal portfolio website for **Nang Devit**, presenting a clean, corp
 
 ## 📁 Key Sections & Layout
 
-1. **Navigation Bar**: Fixed header with monogram branding, active section tracking, theme toggle, CV download button, and mobile drawer menu.
+1. **Navigation Bar**: Fixed header with monogram branding, active section tracking, theme toggle, and mobile navigation.
 2. **Hero Section**:
-   - Name: **Nang Devit**
-   - Title: **System Analyst | Data Analytics | Software Developer**
-   - Executive profile portrait (`/assets/images/nangdevit.PNG`)
-   - Direct CV download button (`/assets/cv/NANGDEVIT__CV.pdf`)
-   - "View Projects" smooth navigation
-   - Social & direct contact badges (LinkedIn, GitHub, Telegram, Email, Phone)
+   - Name: **Devit NANG**
+   - Title: **Management Information Systems — SETEC Institute (Year 4)**
+   - Executive profile portrait (`/assets/images/nangdevit.png`)
+   - Verified checkmark badge and interactive social badges (LinkedIn, GitHub, Telegram, Email)
 3. **About Me**:
    - Professional narrative & core philosophy
    - Academic background in Management Information Systems (SETEC Institute)

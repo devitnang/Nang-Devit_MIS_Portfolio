@@ -10,7 +10,6 @@ import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { personalInfo } from "@/data/portfolioData";
 import { GlassTabBar, GlassTabBarItem } from "@/components/ui/glass-tab-bar";
 import {
-  FileText,
   Send,
   Home,
   Layers,
@@ -141,20 +140,6 @@ export function Header() {
               <ThemeToggle />
 
               <a
-                href={personalInfo.assets.cv}
-                download={personalInfo.assets.cvFileName}
-                className={buttonVariants({
-                  variant: "outline",
-                  size: "sm",
-                  className: "text-xs font-semibold h-8 px-2.5 gap-1.5",
-                })}
-                title="Download CV (PDF)"
-              >
-                <FileText className="w-3.5 h-3.5 text-[#0B2046] dark:text-blue-400" />
-                <span>CV</span>
-              </a>
-
-              <a
                 href="#contact"
                 onClick={(e) => {
                   e.preventDefault();
@@ -172,22 +157,9 @@ export function Header() {
             </div>
           </div>
 
-          {/* Mobile Top Controls: Theme toggle & CV download */}
+          {/* Mobile Top Controls: Theme toggle */}
           <div className="flex items-center gap-2 md:hidden">
             <ThemeToggle />
-            <a
-              href={personalInfo.assets.cv}
-              download={personalInfo.assets.cvFileName}
-              className={buttonVariants({
-                variant: "outline",
-                size: "sm",
-                className: "text-xs font-semibold h-8 px-2.5 gap-1",
-              })}
-              title="Download CV (PDF)"
-            >
-              <FileText className="w-3.5 h-3.5 text-[#0B2046] dark:text-blue-400" />
-              <span>CV</span>
-            </a>
           </div>
         </nav>
       </header>
