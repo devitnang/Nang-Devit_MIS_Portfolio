@@ -52,7 +52,7 @@ Official personal portfolio website for **Nang Devit**, presenting a clean, corp
    - **SETEC Institute**: Bachelor of Science in Management Information Systems (MIS), Senior Year 4, coursework, and capstone achievements.
 8. **Contact & Telegram Bot Integration**:
    - Contact cards with verified phone, email, LinkedIn, GitHub, and Telegram.
-   - Interactive contact form with real-time field validation, anti-spam honeypot, loading spinner, and error/success alerts.
+   - Interactive contact form with field validation, a honeypot and Turnstile anti-bot checks, rate limiting, and delivery status alerts.
    - Secure backend API route (`/api/contact`) dispatching HTML-formatted notifications to a private Telegram group channel.
 
 ---
@@ -94,7 +94,20 @@ TELEGRAM_GROUP_ID="-100xxxxxxxxxx"
 TELEGRAM_TOPIC_ID="your_topic_id"
 NEXT_PUBLIC_SITE_URL="http://localhost:3000"
 ```
-*(If Telegram keys are left blank, the contact endpoint runs in development mode and logs submissions safely to the server console).*
+
+For production, also configure `CONTACT_ALLOWED_ORIGINS`, `CONTACT_CLIENT_IP_HEADER`,
+`UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN`,
+`NEXT_PUBLIC_TURNSTILE_SITE_KEY`, and `TURNSTILE_SECRET_KEY`. The Redis REST
+credentials and Turnstile secret are server-only. The edge proxy must overwrite
+the configured client IP header with the visitor's actual IP. The contact route
+fails closed in production if the trusted IP header, Telegram delivery,
+Turnstile, or distributed rate limiting is not configured. For local development,
+the example file leaves Redis and Turnstile unset; rate limiting then uses a
+bounded in-memory counter.
+
+Contact submissions are forwarded to the configured private Telegram chat and
+are not written to a database by this site. Keep that chat private and apply its
+own retention controls.
 
 ### 4. Run the development server
 ```bash

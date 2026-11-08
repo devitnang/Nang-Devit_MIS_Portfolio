@@ -6,7 +6,6 @@ import { cn } from "@/lib/utils";
 export interface LiquidGlassProps extends React.HTMLAttributes<HTMLDivElement> {
   asChild?: boolean;
   shadow?: boolean;
-  bezel?: number;
   tint?: string;
 }
 
@@ -15,7 +14,6 @@ export const LiquidGlass = React.forwardRef<HTMLDivElement, LiquidGlassProps>(
     {
       asChild = false,
       shadow = true,
-      bezel,
       tint,
       className,
       style,

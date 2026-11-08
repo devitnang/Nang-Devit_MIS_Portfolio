@@ -33,9 +33,9 @@ export function ScrollReveal({
 
   useEffect(() => {
     // Fallback for environments where IntersectionObserver is unavailable
-    if (typeof window === "undefined" || !("IntersectionObserver" in window)) {
-      setIsVisible(true);
-      return;
+    if (typeof IntersectionObserver !== "function") {
+      const frameId = window.requestAnimationFrame(() => setIsVisible(true));
+      return () => window.cancelAnimationFrame(frameId);
     }
 
     const observer = new IntersectionObserver(

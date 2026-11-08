@@ -1,19 +1,23 @@
 "use client";
 
-import { useId, useState, useEffect } from "react";
+import { useId, useSyncExternalStore } from "react";
 import { Switch } from "@/components/ui/switch";
 import { cn } from "@/lib/utils";
 import { MoonIcon, SunIcon } from "lucide-react";
 import { useTheme } from "next-themes";
 
+const subscribeToNothing = () => () => {};
+const getMountedSnapshot = () => true;
+const getServerMountedSnapshot = () => false;
+
 export const SwitchToggleThemeDemo = () => {
   const id = useId();
   const { theme, setTheme, resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useSyncExternalStore(
+    subscribeToNothing,
+    getMountedSnapshot,
+    getServerMountedSnapshot,
+  );
 
   const isDark = mounted && (resolvedTheme === "dark" || theme === "dark");
 

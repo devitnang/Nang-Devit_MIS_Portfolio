@@ -166,6 +166,7 @@ export function ProjectsSection() {
 
         {/* Project Modal for Image Gallery & Full Details */}
         <ProjectModal
+          key={activeModalProject?.id ?? "closed"}
           project={activeModalProject}
           onClose={() => setActiveModalProject(null)}
         />

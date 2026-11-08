@@ -3,7 +3,6 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Grid2X2Plus } from "lucide-react";
 import {
   GithubIcon,
   LinkedinIcon,

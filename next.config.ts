@@ -1,5 +1,7 @@
 import type { NextConfig } from "next";
 
+const isDevelopment = process.env.NODE_ENV === "development";
+
 // Security headers applied to every response
 const securityHeaders = [
   // Prevent MIME-type sniffing
@@ -25,11 +27,13 @@ const securityHeaders = [
     key: "Content-Security-Policy",
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval'", // 'unsafe-inline'/'eval' required by Next.js
+      `script-src 'self' 'unsafe-inline' ${isDevelopment ? "'unsafe-eval' " : ""}https://challenges.cloudflare.com`, // Next.js and Turnstile
       "style-src 'self' 'unsafe-inline'",                // Tailwind inline styles
       "img-src 'self' data: blob: https:",
       "font-src 'self' data:",
-      "connect-src 'self' https://api.telegram.org",     // only outbound API we call
+      "connect-src 'self' https://api.telegram.org https://challenges.cloudflare.com",
+      "frame-src https://challenges.cloudflare.com",
+      "object-src 'none'",
       "frame-ancestors 'none'",                          // equivalent of X-Frame-Options: DENY
       "base-uri 'self'",
       "form-action 'self'",

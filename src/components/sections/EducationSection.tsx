@@ -6,7 +6,6 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { educationList } from "@/data/educationData";
 import {
-  Calendar,
   MapPin,
   Eye,
   X,

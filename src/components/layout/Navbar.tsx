@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { buttonVariants } from "@/components/ui/button";
@@ -23,14 +23,17 @@ export function Header() {
   const scrolled = useScroll(10);
   const [activeSection, setActiveSection] = useState("home");
 
-  const links = [
-    { label: "Home", href: "#home", id: "home", icon: <Home className="w-5 h-5" /> },
-    { label: "Skills", href: "#skills", id: "skills", icon: <Layers className="w-5 h-5" /> },
-    { label: "Projects", href: "#projects", id: "projects", icon: <FolderGit2 className="w-5 h-5" /> },
-    { label: "Experience", href: "#experience", id: "experience", icon: <Briefcase className="w-5 h-5" /> },
-    { label: "Education", href: "#education", id: "education", icon: <GraduationCap className="w-5 h-5" /> },
-    { label: "Contact", href: "#contact", id: "contact", icon: <Send className="w-5 h-5" /> },
-  ];
+  const links = useMemo(
+    () => [
+      { label: "Home", href: "#home", id: "home", icon: <Home className="w-5 h-5" /> },
+      { label: "Skills", href: "#skills", id: "skills", icon: <Layers className="w-5 h-5" /> },
+      { label: "Projects", href: "#projects", id: "projects", icon: <FolderGit2 className="w-5 h-5" /> },
+      { label: "Experience", href: "#experience", id: "experience", icon: <Briefcase className="w-5 h-5" /> },
+      { label: "Education", href: "#education", id: "education", icon: <GraduationCap className="w-5 h-5" /> },
+      { label: "Contact", href: "#contact", id: "contact", icon: <Send className="w-5 h-5" /> },
+    ],
+    [],
+  );
 
   useEffect(() => {
     const handleScroll = () => {

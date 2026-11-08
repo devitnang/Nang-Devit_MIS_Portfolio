@@ -11,21 +11,15 @@ import { skillCategories } from "@/data/skillsData";
 import { SkillItem } from "@/types";
 import { GithubIcon } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
-import { Parallax, ParallaxBackground } from "@/components/ui/Parallax";
+import { ParallaxBackground } from "@/components/ui/Parallax";
 import {
   Code,
   Database,
-  Terminal,
   Layers,
-  Globe,
   Smartphone,
   Palette,
   Server,
-  BarChart3,
   GitBranch,
-  Cloud,
-  Box,
-  Send,
   RotateCcw,
   Filter,
   Cpu,
