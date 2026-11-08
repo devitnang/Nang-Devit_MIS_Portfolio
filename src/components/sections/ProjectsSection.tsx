@@ -8,8 +8,7 @@ import { ProjectCard } from "@/components/ui/ProjectCard";
 import { SearchFilterToolbar, CategoryOption } from "@/components/ui/SearchFilterToolbar";
 import { projects } from "@/data/projectsData";
 import { Project } from "@/types";
-import { RotateCcw, ExternalLink } from "lucide-react";
-import { GithubIcon } from "@/components/ui/Icons";
+import { RotateCcw } from "lucide-react";
 
 export function ProjectsSection() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
@@ -149,17 +148,15 @@ export function ProjectsSection() {
           </div>
         )}
 
-        {/* More Projects on GitHub Callout */}
-        <div className="mt-10 sm:mt-12 text-center">
+        {/* More Projects on GitHub Text Link */}
+        <div className="mt-8 sm:mt-10 text-center">
           <a
             href="https://github.com/devitnang?tab=repositories"
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 text-xs sm:text-sm font-semibold hover:border-[#0B2046] dark:hover:border-blue-500 hover:text-[#0B2046] dark:hover:text-blue-400 hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-all duration-200 shadow-xs hover:shadow-sm"
+            className="text-xs sm:text-sm font-semibold text-[#0B2046] dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-300 underline underline-offset-4 transition-colors"
           >
-            <GithubIcon className="w-4 h-4 text-slate-600 dark:text-slate-300 group-hover:text-[#0B2046] dark:group-hover:text-blue-400 transition-colors" />
-            <span>More Projects on GitHub...</span>
-            <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#0B2046] dark:group-hover:text-blue-400 group-hover:translate-x-0.5 transition-transform" />
+            More Projects on GitHub...
           </a>
         </div>
 
