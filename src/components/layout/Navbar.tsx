@@ -93,7 +93,7 @@ export function Header() {
           >
             <div className="relative w-8 h-8 rounded-md bg-white dark:bg-[#0F2756] p-0.5 border border-slate-200 dark:border-slate-700 shadow-2xs group-hover:border-[#0B2046] dark:group-hover:border-blue-400 transition-colors flex items-center justify-center overflow-hidden">
               <Image
-                src="/assets/images/logo/mylogo_1.png"
+                src="/assets/images/logo/mylogo.png"
                 alt="Nang Devit Logo"
                 fill
                 className="object-contain p-0.5"

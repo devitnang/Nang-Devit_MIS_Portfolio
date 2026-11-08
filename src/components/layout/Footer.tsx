@@ -66,7 +66,7 @@ export function MinimalFooter() {
             <Link href="#home" className="flex items-center gap-2.5 w-max group">
               <div className="relative w-8 h-8 rounded-md bg-[#0B2046] dark:bg-blue-600 p-0.5 flex items-center justify-center overflow-hidden">
                 <Image
-                  src="/assets/images/logo/mylogo_1.png"
+                  src="/assets/images/logo/mylogo.png"
                   alt="Nang Devit Logo"
                   fill
                   className="object-contain p-0.5"
