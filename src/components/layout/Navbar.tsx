@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import { useScroll } from "@/components/ui/use-scroll";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { personalInfo } from "@/data/portfolioData";
+import { TelegramIcon } from "@/components/ui/Icons";
 import { GlassTabBar, GlassTabBarItem } from "@/components/ui/glass-tab-bar";
 import {
   Send,
@@ -151,7 +152,7 @@ export function Header() {
                 aria-label="Contact Nang Devit on Telegram"
                 title="Contact on Telegram (@nangdevit)"
               >
-                <Send className="w-3.5 h-3.5" />
+                <TelegramIcon className="w-3.5 h-3.5 fill-current" />
                 <span>Contact</span>
               </a>
             </div>
