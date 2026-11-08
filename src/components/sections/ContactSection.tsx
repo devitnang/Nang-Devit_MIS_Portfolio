@@ -133,13 +133,13 @@ export function ContactSection() {
         setErrors({});
       } else {
         setSubmitError(
-          data.error ||
+          data.message ||
           "Unable to transmit your message at this time. Please try again or email directly at devit.nang@gmail.com."
         );
       }
     } catch {
       setSubmitError(
-        "Network connection error. Please try again or reach out directly at devit.nang@gmail.com."
+        "Network connection error. Please try again or email devit.nang@gmail.com directly."
       );
     } finally {
       setIsSubmitting(false);
@@ -225,16 +225,22 @@ export function ContactSection() {
                   id="fullName"
                   name="fullName"
                   placeholder="e.g. Nang Devit"
+                  required
+                  maxLength={100}
+                  autoComplete="name"
                   value={formData.fullName}
                   onChange={handleChange}
                   disabled={isSubmitting}
+                  aria-required="true"
+                  aria-invalid={!!errors.fullName}
+                  aria-describedby={errors.fullName ? "fullName-error" : undefined}
                   className={`w-full px-3.5 py-2.5 text-xs sm:text-sm rounded-md bg-white dark:bg-slate-900 border text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-1 transition-colors ${errors.fullName
                     ? "border-red-500 focus:ring-red-500"
                     : "border-slate-300 dark:border-slate-700 focus:ring-[#0B2046] dark:focus:ring-blue-400"
                     }`}
                 />
                 {errors.fullName && (
-                  <p className="mt-1 text-xs text-red-600 dark:text-red-400 font-medium">
+                  <p id="fullName-error" role="alert" className="mt-1 text-xs text-red-600 dark:text-red-400 font-medium">
                     {errors.fullName}
                   </p>
                 )}
@@ -253,16 +259,22 @@ export function ContactSection() {
                   id="email"
                   name="email"
                   placeholder="e.g. name@company.com"
+                  required
+                  maxLength={254}
+                  autoComplete="email"
                   value={formData.email}
                   onChange={handleChange}
                   disabled={isSubmitting}
+                  aria-required="true"
+                  aria-invalid={!!errors.email}
+                  aria-describedby={errors.email ? "email-error" : undefined}
                   className={`w-full px-3.5 py-2.5 text-xs sm:text-sm rounded-md bg-white dark:bg-slate-900 border text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-1 transition-colors ${errors.email
                     ? "border-red-500 focus:ring-red-500"
                     : "border-slate-300 dark:border-slate-700 focus:ring-[#0B2046] dark:focus:ring-blue-400"
                     }`}
                 />
                 {errors.email && (
-                  <p className="mt-1 text-xs text-red-600 dark:text-red-400 font-medium">
+                  <p id="email-error" role="alert" className="mt-1 text-xs text-red-600 dark:text-red-400 font-medium">
                     {errors.email}
                   </p>
                 )}
@@ -282,16 +294,21 @@ export function ContactSection() {
                 id="subject"
                 name="subject"
                 placeholder="e.g. Project Inquiry / Collaboration"
+                required
+                maxLength={150}
                 value={formData.subject}
                 onChange={handleChange}
                 disabled={isSubmitting}
+                aria-required="true"
+                aria-invalid={!!errors.subject}
+                aria-describedby={errors.subject ? "subject-error" : undefined}
                 className={`w-full px-3.5 py-2.5 text-xs sm:text-sm rounded-md bg-white dark:bg-slate-900 border text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-1 transition-colors ${errors.subject
                   ? "border-red-500 focus:ring-red-500"
                   : "border-slate-300 dark:border-slate-700 focus:ring-[#0B2046] dark:focus:ring-blue-400"
                   }`}
               />
               {errors.subject && (
-                <p className="mt-1 text-xs text-red-600 dark:text-red-400 font-medium">
+                <p id="subject-error" role="alert" className="mt-1 text-xs text-red-600 dark:text-red-400 font-medium">
                   {errors.subject}
                 </p>
               )}
@@ -310,18 +327,23 @@ export function ContactSection() {
                 name="message"
                 rows={5}
                 placeholder="Please describe your project, inquiry, or discussion topic in detail..."
+                required
+                maxLength={3000}
                 value={formData.message}
                 onChange={handleChange}
                 disabled={isSubmitting}
+                aria-required="true"
+                aria-invalid={!!errors.message}
+                aria-describedby="message-hint"
                 className={`w-full px-3.5 py-2.5 text-xs sm:text-sm rounded-md bg-white dark:bg-slate-900 border text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-1 transition-colors resize-y ${errors.message
                   ? "border-red-500 focus:ring-red-500"
                   : "border-slate-300 dark:border-slate-700 focus:ring-[#0B2046] dark:focus:ring-blue-400"
                   }`}
               />
-              <div className="flex items-center justify-between mt-1 text-[11px] text-slate-500">
+              <div id="message-hint" className="flex items-center justify-between mt-1 text-[11px] text-slate-500">
                 <span>
                   {errors.message ? (
-                    <span className="text-red-600 dark:text-red-400 font-medium">
+                    <span role="alert" className="text-red-600 dark:text-red-400 font-medium">
                       {errors.message}
                     </span>
                   ) : (
