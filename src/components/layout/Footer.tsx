@@ -3,11 +3,11 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { Mail } from "lucide-react";
 import {
   GithubIcon,
   LinkedinIcon,
   TelegramIcon,
-  FacebookIcon,
 } from "@/components/ui/Icons";
 import { personalInfo } from "@/data/portfolioData";
 
@@ -50,9 +50,9 @@ export function MinimalFooter() {
       link: personalInfo.contact.telegramUrl,
     },
     {
-      name: "Facebook",
-      icon: <FacebookIcon className="size-4" />,
-      link: personalInfo.contact.facebookUrl || "https://facebook.com/devitnang",
+      name: "Email",
+      icon: <Mail className="size-4" />,
+      link: `mailto:${personalInfo.contact.email}`,
     },
   ];
 
@@ -93,8 +93,8 @@ export function MinimalFooter() {
                 <a
                   key={i}
                   className="hover:bg-accent rounded-md border border-border p-2 text-slate-700 dark:text-slate-300 hover:text-[#0B2046] dark:hover:text-white transition-colors cursor-pointer"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  target={item.link.startsWith("mailto:") ? undefined : "_blank"}
+                  rel={item.link.startsWith("mailto:") ? undefined : "noopener noreferrer"}
                   href={item.link}
                   aria-label={item.name}
                   title={item.name}
