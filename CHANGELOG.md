@@ -5,6 +5,27 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.0] - 2026-11-09
+
+### Added
+- **Dedicated Multi-Page Project Detail Architecture**:
+  - Replaced modal/popup preview windows with dedicated, shareable, dynamic project detail pages at `/projects/[slug]` (`src/app/projects/[slug]/page.tsx`).
+  - Pre-rendered static generation via `generateStaticParams()` for all verified portfolio projects.
+  - Implemented dynamic SEO metadata generation with OpenGraph cards, Twitter cards, and canonical link attributes.
+  - Added interactive breadcrumb navigation (`Home → Projects → Project Name`) and a "Back to Projects" return link.
+  - Built `ProjectGallery` (`src/components/projects/ProjectGallery.tsx`) with a high-resolution stage, thumbnail navigation strip, touch-swipe gestures, keyboard shortcuts, and a full-screen lightbox modal for image enlargement.
+  - Built `ProjectHeader` (`src/components/projects/ProjectHeader.tsx`) featuring status pills with pulsing indicators, metadata badges, GitHub/Live Demo/PDF documentation links, and tech stack chips.
+  - Built `RelatedProjects` (`src/components/projects/RelatedProjects.tsx`) recommending 2-3 relevant projects from the catalog at the bottom of each case study.
+  - Added redirect route from `/projects` to `/#projects` (`src/app/projects/page.tsx`).
+  - Updated `sitemap.ts` to dynamically include individual project detail URLs.
+
+### Changed
+- Refactored `ProjectCard` (`src/components/ui/ProjectCard.tsx`) so card clicks, titles, and "View Details" buttons route directly to `/projects/[slug]`.
+- Updated `Navbar` (`src/components/layout/Navbar.tsx`) and `Footer` (`src/components/layout/Footer.tsx`) to support smooth cross-page routing between detail pages and home page hash anchors.
+
+### Removed
+- Completely removed `ProjectModal` (`src/components/ui/ProjectModal.tsx`) and its modal state in `ProjectsSection.tsx`.
+
 ## [0.2.1] - 2026-11-09
 
 ### Fixed

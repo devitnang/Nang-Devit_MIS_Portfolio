@@ -3,11 +3,9 @@
 import React, { useState } from "react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
-import { ProjectModal } from "@/components/ui/ProjectModal";
 import { ProjectCard } from "@/components/ui/ProjectCard";
 import { SearchFilterToolbar, CategoryOption } from "@/components/ui/SearchFilterToolbar";
 import { projects } from "@/data/projectsData";
-import { Project } from "@/types";
 import { RotateCcw } from "lucide-react";
 import { ParallaxBackground } from "@/components/ui/Parallax";
 
@@ -15,7 +13,6 @@ export function ProjectsSection() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [viewMode, setViewMode] = useState<"grid" | "list">("list");
-  const [activeModalProject, setActiveModalProject] = useState<Project | null>(null);
 
   // Dynamic categories with counts
   const availableCategories = Array.from(new Set(projects.map((p) => p.category)));
@@ -117,7 +114,6 @@ export function ProjectsSection() {
                 >
                   <ProjectCard
                     project={project}
-                    onOpenModal={setActiveModalProject}
                     viewMode="grid"
                   />
                 </ScrollReveal>
@@ -133,7 +129,6 @@ export function ProjectsSection() {
                 >
                   <ProjectCard
                     project={project}
-                    onOpenModal={setActiveModalProject}
                     viewMode="list"
                   />
                 </ScrollReveal>
@@ -166,13 +161,6 @@ export function ProjectsSection() {
             More Projects on GitHub...
           </a>
         </div>
-
-        {/* Project Modal for Image Gallery & Full Details */}
-        <ProjectModal
-          key={activeModalProject?.id ?? "closed"}
-          project={activeModalProject}
-          onClose={() => setActiveModalProject(null)}
-        />
       </div>
     </section>
   );

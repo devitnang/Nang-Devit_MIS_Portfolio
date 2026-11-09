@@ -85,3 +85,4 @@ async function buildIcons() {
 }
 
 buildIcons().catch(console.error);
+

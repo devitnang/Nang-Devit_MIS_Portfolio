@@ -2,6 +2,8 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Project } from "@/types";
 import { GithubIcon } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
@@ -16,7 +18,7 @@ import {
 
 interface ProjectCardProps {
   project: Project;
-  onOpenModal: (project: Project) => void;
+  onOpenModal?: (project: Project) => void;
   viewMode?: "grid" | "list";
 }
 
@@ -25,6 +27,7 @@ export function ProjectCard({
   onOpenModal,
   viewMode = "grid",
 }: ProjectCardProps) {
+  const router = useRouter();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
   const [touchEndX, setTouchEndX] = useState<number | null>(null);
@@ -70,9 +73,17 @@ export function ProjectCard({
     setTouchEndX(null);
   };
 
+  const handleCardClick = () => {
+    if (onOpenModal) {
+      onOpenModal(project);
+    } else {
+      router.push(`/projects/${project.id}`);
+    }
+  };
+
   const renderSlider = (isList = false) => (
     <div
-      onClick={() => onOpenModal(project)}
+      onClick={handleCardClick}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
@@ -82,7 +93,7 @@ export function ProjectCard({
           ? "aspect-16/10 md:aspect-auto h-full min-h-[130px] sm:min-h-[180px] md:min-h-[220px]"
           : "aspect-16/10 h-full min-h-[130px] sm:min-h-[180px] md:min-h-[220px]"
       )}
-      title="Click to expand gallery"
+      title="View Project Details & Case Study"
     >
       {images.length > 0 ? (
         <div
@@ -210,12 +221,11 @@ export function ProjectCard({
               </div>
             </div>
 
-            <h3
-              onClick={() => onOpenModal(project)}
-              className="text-xs sm:text-base md:text-lg font-bold text-[#0B2046] dark:text-white mb-1 sm:mb-2 hover:text-blue-700 dark:hover:text-blue-400 cursor-pointer transition-colors line-clamp-1 md:line-clamp-none"
-            >
-              {project.title}
-            </h3>
+            <Link href={`/projects/${project.id}`} className="block group/title">
+              <h3 className="text-xs sm:text-base md:text-lg font-bold text-[#0B2046] dark:text-white mb-1 sm:mb-2 group-hover/title:text-blue-700 dark:group-hover/title:text-blue-400 cursor-pointer transition-colors line-clamp-1 md:line-clamp-none">
+                {project.title}
+              </h3>
+            </Link>
 
             <p className="text-[10px] sm:text-xs md:text-sm text-slate-600 dark:text-slate-300 line-clamp-2 md:line-clamp-3 leading-snug sm:leading-relaxed mb-2 sm:mb-4">
               {project.shortDescription}
@@ -239,14 +249,14 @@ export function ProjectCard({
           </div>
 
           <div className="pt-2 sm:pt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between gap-1">
-            <button
-              onClick={() => onOpenModal(project)}
+            <Link
+              href={`/projects/${project.id}`}
               className="inline-flex items-center gap-0.5 sm:gap-1 text-[11px] sm:text-xs font-bold text-[#0B2046] dark:text-blue-400 hover:underline transition-colors cursor-pointer truncate"
             >
-              <span className="hidden sm:inline">Details & Screenshots</span>
-              <span className="sm:hidden">Details</span>
+              <span className="hidden sm:inline">View Details & Case Study</span>
+              <span className="sm:hidden">View Details</span>
               <ChevronRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
-            </button>
+            </Link>
 
             <div className="flex items-center gap-1 sm:gap-2 shrink-0">
               {project.demoUrl && (
@@ -332,12 +342,11 @@ export function ProjectCard({
             </div>
           </div>
 
-          <h3
-            onClick={() => onOpenModal(project)}
-            className="text-xs sm:text-base md:text-lg font-bold text-[#0B2046] dark:text-white mb-1 sm:mb-2.5 line-clamp-1 sm:line-clamp-2 hover:text-blue-700 dark:hover:text-blue-400 cursor-pointer transition-colors"
-          >
-            {project.title}
-          </h3>
+          <Link href={`/projects/${project.id}`} className="block group/title">
+            <h3 className="text-xs sm:text-base md:text-lg font-bold text-[#0B2046] dark:text-white mb-1 sm:mb-2.5 line-clamp-1 sm:line-clamp-2 group-hover/title:text-blue-700 dark:group-hover/title:text-blue-400 cursor-pointer transition-colors">
+              {project.title}
+            </h3>
+          </Link>
 
           <p className="text-[10px] sm:text-xs md:text-sm text-slate-600 dark:text-slate-300 line-clamp-2 sm:line-clamp-3 leading-snug sm:leading-relaxed mb-2 sm:mb-4">
             {project.shortDescription}
@@ -364,14 +373,14 @@ export function ProjectCard({
 
       {/* Card Action Footer */}
       <div className="p-2.5 sm:px-6 sm:py-4 border-t border-slate-100 dark:border-slate-800/80 bg-slate-50/60 dark:bg-slate-900/40 flex items-center justify-between gap-1">
-        <button
-          onClick={() => onOpenModal(project)}
+        <Link
+          href={`/projects/${project.id}`}
           className="inline-flex items-center gap-0.5 sm:gap-1 text-[11px] sm:text-xs font-bold text-[#0B2046] dark:text-blue-400 hover:underline transition-colors cursor-pointer truncate"
         >
-          <span className="hidden sm:inline">Details & Screenshots</span>
-          <span className="sm:hidden">Details</span>
+          <span className="hidden sm:inline">View Details & Case Study</span>
+          <span className="sm:hidden">View Details</span>
           <ChevronRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
-        </button>
+        </Link>
 
         <div className="flex items-center gap-1 sm:gap-2 shrink-0">
           {project.demoUrl && (

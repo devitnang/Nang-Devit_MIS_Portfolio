@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname, useRouter } from "next/navigation";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useScroll } from "@/components/ui/use-scroll";
@@ -20,8 +21,12 @@ import {
 } from "lucide-react";
 
 export function Header() {
+  const pathname = usePathname();
+  const router = useRouter();
   const scrolled = useScroll(10);
-  const [activeSection, setActiveSection] = useState("home");
+  const [activeSection, setActiveSection] = useState(
+    pathname === "/" ? "home" : "projects"
+  );
 
   const links = useMemo(
     () => [
@@ -36,6 +41,8 @@ export function Header() {
   );
 
   useEffect(() => {
+    if (pathname !== "/") return;
+
     const handleScroll = () => {
       const sections = links.map((link) => link.id);
       const scrollPosition = window.scrollY + 140;
@@ -55,10 +62,14 @@ export function Header() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [links]);
+  }, [links, pathname]);
 
   const scrollToSection = (id: string) => {
     setActiveSection(id);
+    if (pathname !== "/") {
+      router.push(`/#${id}`);
+      return;
+    }
     const target = document.getElementById(id);
     if (target) {
       target.scrollIntoView({ behavior: "smooth" });
@@ -89,10 +100,15 @@ export function Header() {
         >
           {/* Brand Logo & Name */}
           <Link
-            href="#home"
+            href={pathname === "/" ? "#home" : "/"}
             className="flex items-center gap-2.5 group focus:outline-none"
             aria-label="Nang Devit - Home"
-            onClick={() => scrollToSection("home")}
+            onClick={(e) => {
+              if (pathname === "/") {
+                e.preventDefault();
+                scrollToSection("home");
+              }
+            }}
           >
             <div className="relative w-8 h-8 rounded-lg overflow-hidden border border-slate-200/80 dark:border-slate-700/80 shadow-2xs group-hover:border-[#0B2046] dark:group-hover:border-blue-400 transition-colors flex items-center justify-center shrink-0">
               <Image
@@ -127,7 +143,7 @@ export function Header() {
                     isActive &&
                       "text-[#0B2046] dark:text-blue-400 font-bold bg-slate-100/80 dark:bg-slate-800/80"
                   )}
-                  href={link.href}
+                  href={pathname === "/" ? link.href : `/${link.href}`}
                   onClick={(e) => {
                     e.preventDefault();
                     scrollToSection(link.id);

@@ -15,22 +15,22 @@ export function MinimalFooter() {
   const year = 2026;
 
   const navigation = [
-    { title: "Home", href: "#home" },
-    { title: "Technical Skills", href: "#skills" },
-    { title: "Featured Projects", href: "#projects" },
-    { title: "Work Experience", href: "#experience" },
-    { title: "Education", href: "#education" },
-    { title: "Contact", href: "#contact" },
+    { title: "Home", href: "/#home" },
+    { title: "Technical Skills", href: "/#skills" },
+    { title: "Featured Projects", href: "/#projects" },
+    { title: "Work Experience", href: "/#experience" },
+    { title: "Education", href: "/#education" },
+    { title: "Contact", href: "/#contact" },
   ];
 
   const resources = [
-    { title: "SETEC Institute", href: "#education" },
+    { title: "SETEC Institute", href: "/#education" },
     {
       title: "Flutter Ecommerce Doc",
       href: "/assets/projects/flutter_ecommerce/The-D3V-Ecommerce_Frontend_Documentation.pdf",
     },
     { title: "Telegram Channel", href: personalInfo.contact.telegramUrl },
-    { title: "Contact Support / Inquiries", href: "#contact" },
+    { title: "Contact Support / Inquiries", href: "/#contact" },
   ];
 
   const socialLinks = [
@@ -62,7 +62,7 @@ export function MinimalFooter() {
         <div className="bg-border absolute inset-x-0 h-px w-full" />
         <div className="grid max-w-4xl grid-cols-6 gap-6 p-6 sm:p-8">
           <div className="col-span-6 flex flex-col gap-4 md:col-span-4">
-            <Link href="#home" className="flex items-center gap-2.5 w-max group">
+            <Link href="/" className="flex items-center gap-2.5 w-max group">
               <div className="relative w-8 h-8 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 flex items-center justify-center shrink-0">
                 <Image
                   src="/assets/images/logo/mylogo.png"
