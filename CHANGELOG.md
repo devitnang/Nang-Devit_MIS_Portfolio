@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.3] - 2026-11-09
+
+### Fixed
+- **Subdomain Origin Validation for Contact Form**:
+  - Resolved `Submission Notice: This request is not allowed.` (HTTP 403) on custom subdomains like `https://mis-portfolio.nangdevit.xyz`.
+  - Automatically whitelist all `*.nangdevit.xyz` subdomains, `https://mis-portfolio.nangdevit.xyz`, and incoming host headers in [`src/lib/contact-security.ts`](file:///d:/SETEC/YEAR4_SEMESTER1/Portfolio/nangdevit_portfolio/src/lib/contact-security.ts).
+  - Updated Turnstile hostname validator to recognize all `*.nangdevit.xyz` subdomains.
+  - Added automated test in [`tests/contact-security.test.mjs`](file:///d:/SETEC/YEAR4_SEMESTER1/Portfolio/nangdevit_portfolio/tests/contact-security.test.mjs) verifying `mis-portfolio.nangdevit.xyz` contact delivery (`14/14 passing tests`).
+
+### Changed
+- **Skills Section Header Minimalist Polish**:
+  - Removed category descriptions from both grid and list views in [`src/components/sections/SkillsSection.tsx`](file:///d:/SETEC/YEAR4_SEMESTER1/Portfolio/nangdevit_portfolio/src/components/sections/SkillsSection.tsx) for a clean, distraction-free category header presentation.
+
 ## [1.0.2] - 2026-11-09
 
 ### Fixed

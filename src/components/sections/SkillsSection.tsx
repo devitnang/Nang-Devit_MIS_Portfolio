@@ -450,7 +450,7 @@ export function SkillsSection() {
                     className="py-8 first:pt-2 last:pb-2 grid grid-cols-1 lg:grid-cols-12 gap-6 items-start transition-colors"
                   >
                     {/* Category Header Column (Left) */}
-                    <div className="lg:col-span-4 space-y-1.5">
+                    <div className="lg:col-span-4">
                       <div className="flex items-center gap-2">
                         <h3 className="text-base font-bold text-[#0B2046] dark:text-white uppercase tracking-wider">
                           {cat.title}
@@ -459,9 +459,6 @@ export function SkillsSection() {
                           {cat.skills.length}
                         </span>
                       </div>
-                      <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed max-w-sm">
-                        {cat.description}
-                      </p>
                     </div>
 
                     {/* Skills List Column (Right) */}
@@ -506,9 +503,6 @@ export function SkillsSection() {
                           {cat.skills.length}
                         </span>
                       </div>
-                      <p className="text-xs text-slate-500 dark:text-slate-400 hidden sm:inline max-w-md text-right truncate">
-                        {cat.description}
-                      </p>
                     </div>
 
                     {/* Modern Enterprise Skill Card Grid (2 cards per row on mobile, 3 on large screens) */}

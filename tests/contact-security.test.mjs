@@ -329,3 +329,37 @@ test("automatically accepts Vercel origins and delivers safely on Vercel deploym
   assert.match(calls[0].url, /api\.telegram\.org/);
 });
 
+test("automatically accepts mis-portfolio.nangdevit.xyz and subdomains on production", async () => {
+  const calls = [];
+  const env = {
+    NODE_ENV: "production",
+    VERCEL: "1",
+    TELEGRAM_BOT_TOKEN: "test-bot-token",
+    TELEGRAM_GROUP_ID: "-1001234567890",
+  };
+  const handler = createContactHandler({
+    env: () => env,
+    fetch: async (input, init = {}) => {
+      calls.push({ url: String(input), init });
+      return Response.json({ ok: true, result: { message_id: 2 } });
+    },
+  });
+  const request = new Request("https://mis-portfolio.nangdevit.xyz/api/contact", {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      origin: "https://mis-portfolio.nangdevit.xyz",
+      "sec-fetch-site": "same-origin",
+      "x-forwarded-for": "103.20.15.42",
+      host: "mis-portfolio.nangdevit.xyz",
+    },
+    body: JSON.stringify(VALID_INPUT),
+  });
+  const response = await handler(request);
+  assert.equal(response.status, 200);
+  const data = await response.json();
+  assert.equal(data.success, true);
+  assert.equal(calls.length, 1);
+  assert.match(calls[0].url, /api\.telegram\.org/);
+});
+

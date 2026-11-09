@@ -105,6 +105,19 @@ function getAllowedOrigins(env: Environment, request: Request): Set<string> {
 
   origins.add("https://www.nangdevit.xyz");
   origins.add("https://nangdevit.xyz");
+  origins.add("https://mis-portfolio.nangdevit.xyz");
+
+  const reqHost = request.headers.get("x-forwarded-host") || request.headers.get("host");
+  if (reqHost) {
+    const cleanHost = reqHost.split(":")[0].toLowerCase();
+    if (
+      cleanHost === "nangdevit.xyz" ||
+      cleanHost.endsWith(".nangdevit.xyz") ||
+      cleanHost.endsWith(".vercel.app")
+    ) {
+      origins.add(`https://${cleanHost}`);
+    }
+  }
 
   if (env.VERCEL_URL) {
     const vercelOrigin = normalizeOrigin(`https://${env.VERCEL_URL}`);
@@ -139,7 +152,7 @@ function hasValidOrigin(request: Request, env: Environment): boolean {
         originUrl.protocol === "https:" &&
         (originUrl.hostname.endsWith(".vercel.app") ||
           originUrl.hostname === "nangdevit.xyz" ||
-          originUrl.hostname === "www.nangdevit.xyz")
+          originUrl.hostname.endsWith(".nangdevit.xyz"))
       ) {
         return true;
       }
@@ -280,8 +293,8 @@ async function checkRateLimit(
   return checkLocalRateLimit(ipHash, map, now);
 }
 
-class InvalidBodyError extends Error {}
-class OversizedBodyError extends Error {}
+class InvalidBodyError extends Error { }
+class OversizedBodyError extends Error { }
 
 async function readJsonBody(request: Request): Promise<unknown> {
   const contentLength = Number(request.headers.get("content-length"));
@@ -471,7 +484,7 @@ async function verifyTurnstile(
       [...allowedOrigins].some((origin) => new URL(origin).hostname === result.hostname) ||
       result.hostname.endsWith(".vercel.app") ||
       result.hostname === "nangdevit.xyz" ||
-      result.hostname === "www.nangdevit.xyz"
+      result.hostname.endsWith(".nangdevit.xyz")
     );
   } catch {
     return false;
