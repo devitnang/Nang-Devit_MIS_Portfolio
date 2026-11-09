@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.2] - 2026-11-09
+
+### Changed
+- **Project Catalog Timeline Update**:
+  - Standardized the timeline year to `2026` across all portfolio projects in [`src/data/projectsData.ts`](file:///d:/SETEC/YEAR4_SEMESTER1/Portfolio/nangdevit_portfolio/src/data/projectsData.ts).
+  - All project detail pages (`/projects/[slug]`), project cards, and related project recommendations now consistently display `2026` across all case studies.
+
 ## [0.3.1] - 2026-11-09
 
 ### Fixed
