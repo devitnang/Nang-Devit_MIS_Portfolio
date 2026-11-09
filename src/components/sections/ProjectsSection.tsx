@@ -36,12 +36,15 @@ export function ProjectsSection() {
     if (!query) return matchesCategory;
 
     const matchesTitle = project.title.toLowerCase().includes(query);
-    const matchesDesc = project.shortDescription.toLowerCase().includes(query);
+    const matchesDesc =
+      project.shortDescription.toLowerCase().includes(query) ||
+      project.fullDescription.toLowerCase().includes(query);
     const matchesTech = project.technologies.some((t) =>
       t.name.toLowerCase().includes(query)
     );
+    const matchesRole = project.role.toLowerCase().includes(query);
 
-    return matchesCategory && (matchesTitle || matchesDesc || matchesTech);
+    return matchesCategory && (matchesTitle || matchesDesc || matchesTech || matchesRole);
   });
 
   const handleReset = () => {

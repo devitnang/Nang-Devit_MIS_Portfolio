@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Project } from "@/types";
 import { GithubIcon } from "@/components/ui/Icons";
+import { cn } from "@/lib/utils";
 import {
   X,
   ChevronLeft,
@@ -15,6 +16,11 @@ import {
   FileText,
   Users,
   ExternalLink,
+  Target,
+  AlertCircle,
+  Network,
+  Database,
+  Award,
 } from "lucide-react";
 
 interface ProjectModalProps {
@@ -65,10 +71,34 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
         {/* Modal Header */}
         <div className="px-6 py-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between bg-slate-50/70 dark:bg-slate-900/60 sticky top-0 z-10">
           <div>
-            <div className="flex items-center gap-2 mb-1">
+            <div className="flex flex-wrap items-center gap-2 mb-1">
               <span className="px-2.5 py-0.5 rounded text-xs font-semibold bg-blue-100 dark:bg-blue-950/60 text-[#0B2046] dark:text-blue-300 border border-blue-200 dark:border-blue-900/40">
                 {project.category}
               </span>
+              {project.status && (
+                <span
+                  className={cn(
+                    "inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold border",
+                    project.status === "Completed"
+                      ? "bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800/60"
+                      : project.status === "In Progress"
+                      ? "bg-amber-50 dark:bg-amber-950/50 text-amber-700 dark:text-amber-300 border-amber-200 dark:border-amber-800/60"
+                      : "bg-purple-50 dark:bg-purple-950/50 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-800/60"
+                  )}
+                >
+                  <span
+                    className={cn(
+                      "w-1.5 h-1.5 rounded-full",
+                      project.status === "Completed"
+                        ? "bg-emerald-500"
+                        : project.status === "In Progress"
+                        ? "bg-amber-500"
+                        : "bg-purple-500"
+                    )}
+                  />
+                  {project.status}
+                </span>
+              )}
               <span className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1">
                 <Calendar className="w-3.5 h-3.5" />
                 {project.year}
@@ -189,12 +219,50 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
           {/* Description */}
           <div>
             <h4 className="text-sm font-bold uppercase tracking-wider text-[#0B2046] dark:text-slate-200 mb-2">
-              Project Overview & Architecture
+              Project Overview
             </h4>
             <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
               {project.fullDescription || project.shortDescription}
             </p>
           </div>
+
+          {/* Problem Statement */}
+          {project.problemStatement && (
+            <div className="p-4 rounded-lg bg-amber-50/60 dark:bg-amber-950/30 border border-amber-200/80 dark:border-amber-900/40">
+              <div className="flex items-center gap-2 mb-1.5">
+                <AlertCircle className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0" />
+                <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-amber-900 dark:text-amber-200">
+                  Problem Statement
+                </h4>
+              </div>
+              <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                {project.problemStatement}
+              </p>
+            </div>
+          )}
+
+          {/* Objectives */}
+          {project.objectives && project.objectives.length > 0 && (
+            <div>
+              <div className="flex items-center gap-2 mb-2.5">
+                <Target className="w-4 h-4 text-[#0B2046] dark:text-blue-400 shrink-0" />
+                <h4 className="text-sm font-bold uppercase tracking-wider text-[#0B2046] dark:text-slate-200">
+                  Project Objectives
+                </h4>
+              </div>
+              <ul className="space-y-2">
+                {project.objectives.map((obj, idx) => (
+                  <li
+                    key={idx}
+                    className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300"
+                  >
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
+                    <span>{obj}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           {/* Key Features */}
           {project.keyFeatures && project.keyFeatures.length > 0 && (
@@ -210,6 +278,85 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                   >
                     <CheckCircle2 className="w-4 h-4 text-[#0B2046] dark:text-blue-400 shrink-0 mt-0.5" />
                     <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {/* System Architecture */}
+          {project.systemArchitecture && (
+            <div className="p-4 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800">
+              <div className="flex items-center gap-2 mb-2">
+                <Network className="w-4 h-4 text-[#0B2046] dark:text-blue-400 shrink-0" />
+                <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#0B2046] dark:text-slate-200">
+                  System Architecture
+                </h4>
+              </div>
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                {project.systemArchitecture}
+              </p>
+            </div>
+          )}
+
+          {/* Database Design */}
+          {project.databaseDesign && (
+            <div className="p-4 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800">
+              <div className="flex items-center gap-2 mb-2">
+                <Database className="w-4 h-4 text-[#0B2046] dark:text-blue-400 shrink-0" />
+                <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#0B2046] dark:text-slate-200">
+                  Database Design & Data Model
+                </h4>
+              </div>
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                {project.databaseDesign}
+              </p>
+            </div>
+          )}
+
+          {/* Challenges & Solutions */}
+          {project.challengesAndSolutions && project.challengesAndSolutions.length > 0 && (
+            <div>
+              <h4 className="text-sm font-bold uppercase tracking-wider text-[#0B2046] dark:text-slate-200 mb-3">
+                Challenges & Solutions
+              </h4>
+              <div className="space-y-3">
+                {project.challengesAndSolutions.map((cs, idx) => (
+                  <div
+                    key={idx}
+                    className="p-3.5 rounded-lg bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 text-xs sm:text-sm space-y-1.5"
+                  >
+                    <p className="font-semibold text-slate-900 dark:text-slate-100 flex items-start gap-2">
+                      <span className="text-amber-600 dark:text-amber-400 shrink-0 font-bold">Challenge:</span>
+                      <span>{cs.challenge}</span>
+                    </p>
+                    <p className="text-slate-600 dark:text-slate-300 flex items-start gap-2 pl-4 border-l-2 border-emerald-500">
+                      <span className="text-emerald-600 dark:text-emerald-400 shrink-0 font-bold">Solution:</span>
+                      <span>{cs.solution}</span>
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Contributions & Responsibilities */}
+          {project.contributions && project.contributions.length > 0 && (
+            <div className="p-4 rounded-lg bg-blue-50/50 dark:bg-blue-950/30 border border-blue-200/80 dark:border-blue-900/40">
+              <div className="flex items-center gap-2 mb-2.5">
+                <Award className="w-4 h-4 text-[#0B2046] dark:text-blue-400 shrink-0" />
+                <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#0B2046] dark:text-blue-300">
+                  My Contributions & Responsibilities
+                </h4>
+              </div>
+              <ul className="space-y-2">
+                {project.contributions.map((c, idx) => (
+                  <li
+                    key={idx}
+                    className="flex items-start gap-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300"
+                  >
+                    <span className="text-[#0B2046] dark:text-blue-400 font-bold mt-0.5">•</span>
+                    <span>{c}</span>
                   </li>
                 ))}
               </ul>

@@ -6,8 +6,8 @@ export const experiences: Experience[] = [
     organization: "National Election Committee (NEC)",
     position: "External Coordinator (Third Member)",
     location: "Kampong Speu, Cambodia",
-    year: "2022",
-    period: "May 2022 – June 2022",
+    year: "June - 2022",
+    period: "3rd June 2022 - 5th June 2022",
     logo: "/assets/images/logo/National_Election_Committee.png",
     type: "Organizational",
     responsibilities: [

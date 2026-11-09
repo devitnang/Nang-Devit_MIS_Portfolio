@@ -37,6 +37,7 @@ export interface Project {
   title: string;
   category: "System Analysis" | "Software Development" | "Data Analytics" | "Mobile Application" | "Enterprise Systems";
   featured: boolean;
+  status?: "Completed" | "In Progress" | "Experimental";
   shortDescription: string;
   fullDescription: string;
   role: string;
@@ -52,6 +53,15 @@ export interface Project {
   teamMembers?: string[];
   year: string;
   clientOrOrg?: string;
+  problemStatement?: string;
+  objectives?: string[];
+  systemArchitecture?: string;
+  databaseDesign?: string;
+  challengesAndSolutions?: {
+    challenge: string;
+    solution: string;
+  }[];
+  contributions?: string[];
 }
 
 export interface Experience {

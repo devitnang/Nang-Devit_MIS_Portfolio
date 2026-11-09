@@ -179,9 +179,35 @@ export function ProjectCard({
                 <Calendar className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                 {project.year}
               </span>
-              <span className="font-semibold text-slate-700 dark:text-slate-300 truncate max-w-[80px] sm:max-w-none">
-                {project.role}
-              </span>
+              <div className="flex items-center gap-1.5 shrink-0">
+                {project.status && (
+                  <span
+                    className={cn(
+                      "inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full text-[9px] font-semibold border",
+                      project.status === "Completed"
+                        ? "bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800/60"
+                        : project.status === "In Progress"
+                        ? "bg-amber-50 dark:bg-amber-950/50 text-amber-700 dark:text-amber-300 border-amber-200 dark:border-amber-800/60"
+                        : "bg-purple-50 dark:bg-purple-950/50 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-800/60"
+                    )}
+                  >
+                    <span
+                      className={cn(
+                        "w-1.5 h-1.5 rounded-full",
+                        project.status === "Completed"
+                          ? "bg-emerald-500"
+                          : project.status === "In Progress"
+                          ? "bg-amber-500"
+                          : "bg-purple-500"
+                      )}
+                    />
+                    {project.status}
+                  </span>
+                )}
+                <span className="font-semibold text-slate-700 dark:text-slate-300 truncate max-w-[80px] sm:max-w-none">
+                  {project.role}
+                </span>
+              </div>
             </div>
 
             <h3
@@ -275,9 +301,35 @@ export function ProjectCard({
               <Calendar className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
               {project.year}
             </span>
-            <span className="font-semibold text-slate-700 dark:text-slate-300 truncate max-w-[80px] sm:max-w-[150px]">
-              {project.role}
-            </span>
+            <div className="flex items-center gap-1.5 shrink-0">
+              {project.status && (
+                <span
+                  className={cn(
+                    "inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full text-[9px] font-semibold border",
+                    project.status === "Completed"
+                      ? "bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800/60"
+                      : project.status === "In Progress"
+                      ? "bg-amber-50 dark:bg-amber-950/50 text-amber-700 dark:text-amber-300 border-amber-200 dark:border-amber-800/60"
+                      : "bg-purple-50 dark:bg-purple-950/50 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-800/60"
+                  )}
+                >
+                  <span
+                    className={cn(
+                      "w-1.5 h-1.5 rounded-full",
+                      project.status === "Completed"
+                        ? "bg-emerald-500"
+                        : project.status === "In Progress"
+                        ? "bg-amber-500"
+                        : "bg-purple-500"
+                    )}
+                  />
+                  {project.status}
+                </span>
+              )}
+              <span className="font-semibold text-slate-700 dark:text-slate-300 truncate max-w-[80px] sm:max-w-[120px]">
+                {project.role}
+              </span>
+            </div>
           </div>
 
           <h3
