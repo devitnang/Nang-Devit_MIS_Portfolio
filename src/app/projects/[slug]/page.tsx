@@ -1,26 +1,23 @@
 import React from "react";
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ScrollProgressBar } from "@/components/ui/ScrollProgressBar";
-import { ProjectHeader } from "@/components/projects/ProjectHeader";
 import { ProjectGallery } from "@/components/projects/ProjectGallery";
 import { RelatedProjects } from "@/components/projects/RelatedProjects";
 import { projects } from "@/data/projectsData";
+import { GithubIcon } from "@/components/ui/Icons";
 import {
-  AlertCircle,
+  ArrowLeft,
+  ChevronRight,
+  Home,
   CheckCircle2,
-  Network,
-  Database,
-  Award,
-  Users,
-  Building,
-  Layers,
-  Calendar,
-  Sparkles,
-  FileCheck2,
+  ExternalLink,
+  FileText,
 } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -91,268 +88,332 @@ export default async function ProjectDetailPage({ params }: PageProps) {
       <ScrollProgressBar />
       <Navbar />
 
-      <main className="flex-1 py-8 sm:py-12 lg:py-16">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
-          {/* 1. Project Header & Breadcrumbs */}
-          <ProjectHeader project={project} />
-
-          {/* 2. Interactive Screenshot Gallery & Fullscreen Lightbox */}
-          <ProjectGallery images={project.images} projectTitle={project.title} />
-
-          {/* 3. Project Overview & Context Card */}
-          <section aria-labelledby="project-overview-heading" className="space-y-6">
-            <div className="flex items-center gap-2 pb-2 border-b border-slate-200 dark:border-slate-800">
-              <Sparkles className="w-5 h-5 text-[#0B2046] dark:text-blue-400" />
-              <h2
-                id="project-overview-heading"
-                className="text-lg sm:text-xl font-bold uppercase tracking-wider text-[#0B2046] dark:text-white"
+      <main className="flex-1 py-6 sm:py-10 lg:py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 lg:space-y-12">
+          {/* Top Navigation: Breadcrumbs & Back to Projects Button */}
+          <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-200 dark:border-slate-800 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+            <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+              <Link
+                href="/"
+                className="inline-flex items-center gap-1 text-slate-600 dark:text-slate-400 hover:text-[#0B2046] dark:hover:text-white transition-colors"
               >
-                Project Overview & Background
-              </h2>
+                <Home className="w-3.5 h-3.5" />
+                <span>Home</span>
+              </Link>
+              <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
+              <Link
+                href="/#projects"
+                className="text-slate-600 dark:text-slate-400 hover:text-[#0B2046] dark:hover:text-white transition-colors"
+              >
+                Projects
+              </Link>
+              <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
+              <span className="font-semibold text-[#0B2046] dark:text-blue-300 truncate max-w-[200px] sm:max-w-xs md:max-w-md">
+                {project.title}
+              </span>
+            </nav>
+
+            <Link
+              href="/#projects"
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0B2046] dark:text-blue-400 hover:underline transition-all cursor-pointer"
+            >
+              <ArrowLeft className="w-3.5 h-3.5" />
+              <span>Back to Projects</span>
+            </Link>
+          </div>
+
+          {/* 2-Column Clean Layout: Image Left, Details Right */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-16 items-start">
+            {/* Left Column: Image Gallery (sticky on desktop) */}
+            <div className="lg:col-span-6 xl:col-span-6 lg:sticky lg:top-24 space-y-4">
+              <ProjectGallery images={project.images} projectTitle={project.title} />
             </div>
 
-            <p className="text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed font-sans">
-              {project.fullDescription || project.shortDescription}
-            </p>
+            {/* Right Column: Project Details & In-Line Table */}
+            <div className="lg:col-span-6 xl:col-span-6 space-y-7">
+              {/* Header: Badges & Title */}
+              <div className="space-y-3">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="px-2.5 py-0.5 rounded text-[11px] font-bold uppercase tracking-wider bg-blue-100 dark:bg-blue-950/80 text-[#0B2046] dark:text-blue-300">
+                    {project.category}
+                  </span>
 
-            {/* Quick Facts Strip */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3.5 p-4 sm:p-5 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 text-xs sm:text-sm">
-              <div className="flex items-start gap-2.5">
-                <Layers className="w-4 h-4 text-[#0B2046] dark:text-blue-400 shrink-0 mt-0.5" />
-                <div>
-                  <span className="block text-[11px] uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold">
+                  {project.status && (
+                    <span
+                      className={cn(
+                        "inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold",
+                        project.status === "Completed"
+                          ? "text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/50"
+                          : project.status === "In Progress"
+                          ? "text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/50"
+                          : "text-purple-700 dark:text-purple-300 bg-purple-50 dark:bg-purple-950/50"
+                      )}
+                    >
+                      <span
+                        className={cn(
+                          "w-1.5 h-1.5 rounded-full",
+                          project.status === "Completed"
+                            ? "bg-emerald-500"
+                            : project.status === "In Progress"
+                            ? "bg-amber-500"
+                            : "bg-purple-500"
+                        )}
+                      />
+                      {project.status}
+                    </span>
+                  )}
+
+                  <span className="text-xs text-slate-500 dark:text-slate-400">
+                    • {project.year}
+                  </span>
+                </div>
+
+                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-[#0B2046] dark:text-white leading-tight">
+                  {project.title}
+                </h1>
+
+                <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed font-sans">
+                  {project.shortDescription}
+                </p>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex flex-wrap items-center gap-2.5 pt-1">
+                {project.demoUrl && (
+                  <a
+                    href={project.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-bold bg-[#0B2046] hover:bg-[#07152E] dark:bg-blue-600 dark:hover:bg-blue-700 text-white transition-all shadow-xs cursor-pointer"
+                  >
+                    <ExternalLink className="w-3.5 h-3.5" />
+                    <span>Live Demo</span>
+                  </a>
+                )}
+
+                {project.githubUrl && (
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-semibold bg-slate-900 hover:bg-black text-white dark:bg-slate-800 dark:hover:bg-slate-700 transition-all shadow-xs cursor-pointer"
+                  >
+                    <GithubIcon className="w-3.5 h-3.5" />
+                    <span>GitHub Repo</span>
+                  </a>
+                )}
+
+                {project.documentationUrl && (
+                  <a
+                    href={project.documentationUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-semibold bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 border border-slate-300 dark:border-slate-700 transition-all shadow-xs cursor-pointer"
+                  >
+                    <FileText className="w-3.5 h-3.5 text-[#0B2046] dark:text-blue-400" />
+                    <span>Technical Doc (PDF)</span>
+                  </a>
+                )}
+              </div>
+
+              {/* Specifications Table (In-lines only, NO outer box outline) */}
+              <div className="border-t border-b border-slate-200 dark:border-slate-800 divide-y divide-slate-200 dark:divide-slate-800">
+                <div className="py-2.5 sm:py-3 flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 text-xs sm:text-sm">
+                  <span className="font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 w-32 shrink-0 text-[11px] sm:text-xs">
                     My Role
                   </span>
-                  <span className="font-bold text-slate-900 dark:text-slate-100">
+                  <span className="font-semibold text-slate-900 dark:text-slate-100 sm:text-right">
                     {project.role}
                   </span>
                 </div>
-              </div>
 
-              {project.clientOrOrg && (
-                <div className="flex items-start gap-2.5">
-                  <Building className="w-4 h-4 text-[#0B2046] dark:text-blue-400 shrink-0 mt-0.5" />
-                  <div>
-                    <span className="block text-[11px] uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold">
-                      Organization / Academic Context
+                {project.clientOrOrg && (
+                  <div className="py-2.5 sm:py-3 flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 text-xs sm:text-sm">
+                    <span className="font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 w-32 shrink-0 text-[11px] sm:text-xs">
+                      Organization
                     </span>
-                    <span className="font-bold text-slate-900 dark:text-slate-100">
+                    <span className="text-slate-800 dark:text-slate-200 sm:text-right">
                       {project.clientOrOrg}
                     </span>
+                  </div>
+                )}
+
+                <div className="py-2.5 sm:py-3 flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 text-xs sm:text-sm">
+                  <span className="font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 w-32 shrink-0 text-[11px] sm:text-xs">
+                    Timeline
+                  </span>
+                  <span className="text-slate-800 dark:text-slate-200 sm:text-right">
+                    {project.year} &bull; {project.status || "Completed"}
+                  </span>
+                </div>
+
+                <div className="py-2.5 sm:py-3 flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 text-xs sm:text-sm">
+                  <span className="font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 w-32 shrink-0 text-[11px] sm:text-xs">
+                    Tech Stack
+                  </span>
+                  <div className="flex flex-wrap gap-1 sm:justify-end">
+                    {project.technologies.map((tech, idx) => (
+                      <span
+                        key={idx}
+                        className="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300"
+                      >
+                        {tech.name}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {project.teamMembers && project.teamMembers.length > 0 && (
+                  <div className="py-2.5 sm:py-3 flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 text-xs sm:text-sm">
+                    <span className="font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 w-32 shrink-0 text-[11px] sm:text-xs">
+                      Team
+                    </span>
+                    <span className="text-slate-800 dark:text-slate-200 sm:text-right">
+                      {project.teamMembers.join(" • ")}
+                    </span>
+                  </div>
+                )}
+              </div>
+
+              {/* Project Background Narrative */}
+              {project.fullDescription && project.fullDescription !== project.shortDescription && (
+                <div className="space-y-2">
+                  <h2 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                    Project Background & Architecture Overview
+                  </h2>
+                  <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-sans">
+                    {project.fullDescription}
+                  </p>
+                </div>
+              )}
+
+              {/* Problem Statement (In-lines only) */}
+              {project.problemStatement && (
+                <div className="pt-5 border-t border-slate-200 dark:border-slate-800 space-y-1.5">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400">
+                    Problem Statement
+                  </h3>
+                  <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                    {project.problemStatement}
+                  </p>
+                </div>
+              )}
+
+              {/* Objectives (In-lines only) */}
+              {project.objectives && project.objectives.length > 0 && (
+                <div className="pt-5 border-t border-slate-200 dark:border-slate-800 space-y-2.5">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100">
+                    Project Objectives
+                  </h3>
+                  <div className="divide-y divide-slate-100 dark:divide-slate-800/80">
+                    {project.objectives.map((obj, idx) => (
+                      <div
+                        key={idx}
+                        className="py-2 flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300"
+                      >
+                        <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
+                        <span>{obj}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
               )}
 
-              <div className="flex items-start gap-2.5">
-                <Calendar className="w-4 h-4 text-[#0B2046] dark:text-blue-400 shrink-0 mt-0.5" />
-                <div>
-                  <span className="block text-[11px] uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold">
-                    Timeline
-                  </span>
-                  <span className="font-bold text-slate-900 dark:text-slate-100">
-                    {project.year} ({project.status || "Completed"})
-                  </span>
+              {/* Key Features (In-lines only, no box outline) */}
+              {project.keyFeatures && project.keyFeatures.length > 0 && (
+                <div className="pt-5 border-t border-slate-200 dark:border-slate-800 space-y-2.5">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100">
+                    Key Features & Functionalities
+                  </h3>
+                  <div className="divide-y divide-slate-100 dark:divide-slate-800/80">
+                    {project.keyFeatures.map((feature, idx) => (
+                      <div
+                        key={idx}
+                        className="py-2.5 flex items-start gap-3 text-xs sm:text-sm text-slate-700 dark:text-slate-300"
+                      >
+                        <span className="font-mono text-[11px] font-bold text-slate-400 dark:text-slate-500 shrink-0 pt-0.5">
+                          {String(idx + 1).padStart(2, "0")}
+                        </span>
+                        <span className="leading-relaxed">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
 
-              {project.teamMembers && project.teamMembers.length > 0 && (
-                <div className="flex items-start gap-2.5 sm:col-span-2 md:col-span-3 pt-2 sm:pt-3 border-t border-slate-200/80 dark:border-slate-800/80">
-                  <Users className="w-4 h-4 text-[#0B2046] dark:text-blue-400 shrink-0 mt-0.5" />
-                  <div>
-                    <span className="block text-[11px] uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold">
-                      Project Collaborators
-                    </span>
-                    <span className="font-semibold text-slate-800 dark:text-slate-200">
-                      {project.teamMembers.join(" • ")}
-                    </span>
+              {/* System Architecture & Database Design */}
+              {project.systemArchitecture && (
+                <div className="pt-5 border-t border-slate-200 dark:border-slate-800 space-y-1.5">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100">
+                    System Architecture
+                  </h3>
+                  <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-sans">
+                    {project.systemArchitecture}
+                  </p>
+                </div>
+              )}
+
+              {project.databaseDesign && (
+                <div className="pt-5 border-t border-slate-200 dark:border-slate-800 space-y-1.5">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100">
+                    Database Schema & Model
+                  </h3>
+                  <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-sans">
+                    {project.databaseDesign}
+                  </p>
+                </div>
+              )}
+
+              {/* Challenges & Solutions (In-lines only) */}
+              {project.challengesAndSolutions && project.challengesAndSolutions.length > 0 && (
+                <div className="pt-5 border-t border-slate-200 dark:border-slate-800 space-y-2.5">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100">
+                    Technical Challenges & Implemented Solutions
+                  </h3>
+                  <div className="divide-y divide-slate-200 dark:divide-slate-800">
+                    {project.challengesAndSolutions.map((cs, idx) => (
+                      <div key={idx} className="py-3 space-y-1 text-xs sm:text-sm">
+                        <div className="font-semibold text-slate-900 dark:text-slate-100 flex items-start gap-2">
+                          <span className="text-[10px] font-bold uppercase text-amber-600 dark:text-amber-400 shrink-0 tracking-wider">
+                            Challenge:
+                          </span>
+                          <span>{cs.challenge}</span>
+                        </div>
+                        <div className="text-slate-600 dark:text-slate-300 flex items-start gap-2 pl-3 border-l-2 border-emerald-500">
+                          <span className="text-[10px] font-bold uppercase text-emerald-600 dark:text-emerald-400 shrink-0 tracking-wider">
+                            Solution:
+                          </span>
+                          <span>{cs.solution}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* My Contributions (In-lines only) */}
+              {project.contributions && project.contributions.length > 0 && (
+                <div className="pt-5 border-t border-slate-200 dark:border-slate-800 space-y-2.5">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-[#0B2046] dark:text-blue-400">
+                    My Contributions & Responsibilities
+                  </h3>
+                  <div className="divide-y divide-slate-100 dark:divide-slate-800/80">
+                    {project.contributions.map((c, idx) => (
+                      <div
+                        key={idx}
+                        className="py-2 flex items-start gap-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300"
+                      >
+                        <span className="text-[#0B2046] dark:text-blue-400 font-bold mt-0.5">•</span>
+                        <span className="leading-relaxed">{c}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
               )}
             </div>
+          </div>
 
-            {/* Problem Statement Callout */}
-            {project.problemStatement && (
-              <div className="p-4 sm:p-5 rounded-xl bg-amber-50/70 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50 space-y-2">
-                <div className="flex items-center gap-2">
-                  <AlertCircle className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0" />
-                  <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-amber-900 dark:text-amber-200">
-                    Problem Statement
-                  </h3>
-                </div>
-                <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-                  {project.problemStatement}
-                </p>
-              </div>
-            )}
-
-            {/* Project Objectives */}
-            {project.objectives && project.objectives.length > 0 && (
-              <div className="space-y-3">
-                <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#0B2046] dark:text-slate-200">
-                  Project Objectives & Milestones
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 sm:gap-3">
-                  {project.objectives.map((obj, idx) => (
-                    <div
-                      key={idx}
-                      className="flex items-start gap-2.5 p-3 rounded-lg bg-slate-50 dark:bg-slate-900/40 border border-slate-200/80 dark:border-slate-800 text-xs sm:text-sm text-slate-700 dark:text-slate-300"
-                    >
-                      <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
-                      <span>{obj}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-          </section>
-
-          {/* 4. Key Features & Specifications */}
-          {project.keyFeatures && project.keyFeatures.length > 0 && (
-            <section aria-labelledby="key-features-heading" className="space-y-6">
-              <div className="flex items-center gap-2 pb-2 border-b border-slate-200 dark:border-slate-800">
-                <FileCheck2 className="w-5 h-5 text-[#0B2046] dark:text-blue-400" />
-                <h2
-                  id="key-features-heading"
-                  className="text-lg sm:text-xl font-bold uppercase tracking-wider text-[#0B2046] dark:text-white"
-                >
-                  Key Features & System Capabilities
-                </h2>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 sm:gap-4">
-                {project.keyFeatures.map((feature, idx) => (
-                  <div
-                    key={idx}
-                    className="p-4 rounded-xl bg-white dark:bg-[#0D182E] border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 shadow-2xs hover:shadow-sm transition-all flex items-start gap-3"
-                  >
-                    <span className="w-6 h-6 rounded-md bg-blue-50 dark:bg-blue-950/60 text-[#0B2046] dark:text-blue-400 border border-blue-200 dark:border-blue-900/40 flex items-center justify-center shrink-0 text-xs font-bold mt-0.5">
-                      {idx + 1}
-                    </span>
-                    <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-medium">
-                      {feature}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </section>
-          )}
-
-          {/* 5. Technical Details: Architecture, Database & Engineering */}
-          {(project.systemArchitecture ||
-            project.databaseDesign ||
-            (project.challengesAndSolutions && project.challengesAndSolutions.length > 0)) && (
-            <section aria-labelledby="technical-details-heading" className="space-y-6">
-              <div className="flex items-center gap-2 pb-2 border-b border-slate-200 dark:border-slate-800">
-                <Network className="w-5 h-5 text-[#0B2046] dark:text-blue-400" />
-                <h2
-                  id="technical-details-heading"
-                  className="text-lg sm:text-xl font-bold uppercase tracking-wider text-[#0B2046] dark:text-white"
-                >
-                  Technical Architecture & Engineering Details
-                </h2>
-              </div>
-
-              <div className="grid grid-cols-1 gap-5">
-                {/* System Architecture */}
-                {project.systemArchitecture && (
-                  <div className="p-5 sm:p-6 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 space-y-2.5">
-                    <div className="flex items-center gap-2">
-                      <Network className="w-4 h-4 text-[#0B2046] dark:text-blue-400 shrink-0" />
-                      <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#0B2046] dark:text-slate-200">
-                        System Architecture & Structural Flow
-                      </h3>
-                    </div>
-                    <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-sans">
-                      {project.systemArchitecture}
-                    </p>
-                  </div>
-                )}
-
-                {/* Database Design */}
-                {project.databaseDesign && (
-                  <div className="p-5 sm:p-6 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 space-y-2.5">
-                    <div className="flex items-center gap-2">
-                      <Database className="w-4 h-4 text-[#0B2046] dark:text-blue-400 shrink-0" />
-                      <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#0B2046] dark:text-slate-200">
-                        Database Schema & Data Model
-                      </h3>
-                    </div>
-                    <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-sans">
-                      {project.databaseDesign}
-                    </p>
-                  </div>
-                )}
-
-                {/* Challenges & Solutions */}
-                {project.challengesAndSolutions && project.challengesAndSolutions.length > 0 && (
-                  <div className="space-y-3 pt-2">
-                    <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#0B2046] dark:text-slate-200">
-                      Challenges & Engineering Solutions
-                    </h3>
-                    <div className="space-y-3">
-                      {project.challengesAndSolutions.map((cs, idx) => (
-                        <div
-                          key={idx}
-                          className="p-4 rounded-xl bg-white dark:bg-[#0D182E] border border-slate-200 dark:border-slate-800 space-y-2 text-xs sm:text-sm"
-                        >
-                          <div className="flex items-start gap-2">
-                            <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 shrink-0">
-                              Challenge
-                            </span>
-                            <span className="font-semibold text-slate-900 dark:text-slate-100">
-                              {cs.challenge}
-                            </span>
-                          </div>
-                          <div className="flex items-start gap-2 pl-3 border-l-2 border-emerald-500 dark:border-emerald-400">
-                            <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 shrink-0">
-                              Solution
-                            </span>
-                            <span className="text-slate-600 dark:text-slate-300">
-                              {cs.solution}
-                            </span>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-            </section>
-          )}
-
-          {/* 6. My Contributions & Responsibilities */}
-          {project.contributions && project.contributions.length > 0 && (
-            <section aria-labelledby="contributions-heading" className="space-y-5">
-              <div className="flex items-center gap-2 pb-2 border-b border-slate-200 dark:border-slate-800">
-                <Award className="w-5 h-5 text-[#0B2046] dark:text-blue-400" />
-                <h2
-                  id="contributions-heading"
-                  className="text-lg sm:text-xl font-bold uppercase tracking-wider text-[#0B2046] dark:text-white"
-                >
-                  My Contributions & Responsibilities
-                </h2>
-              </div>
-
-              <div className="p-5 sm:p-6 rounded-xl bg-blue-50/50 dark:bg-blue-950/30 border border-blue-200/80 dark:border-blue-900/40 space-y-3">
-                <p className="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-300">
-                  As the <span className="text-[#0B2046] dark:text-blue-300 font-bold">{project.role}</span>, I led and executed the following core technical deliverables:
-                </p>
-                <ul className="space-y-2.5">
-                  {project.contributions.map((c, idx) => (
-                    <li
-                      key={idx}
-                      className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300"
-                    >
-                      <CheckCircle2 className="w-4 h-4 text-[#0B2046] dark:text-blue-400 shrink-0 mt-0.5" />
-                      <span className="leading-relaxed">{c}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </section>
-          )}
-
-          {/* 7. Related Projects */}
+          {/* Related Projects Section at Bottom */}
           <RelatedProjects currentProjectId={project.id} allProjects={projects} />
         </div>
       </main>
@@ -361,4 +422,3 @@ export default async function ProjectDetailPage({ params }: PageProps) {
     </div>
   );
 }
-
