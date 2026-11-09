@@ -221,68 +221,6 @@ function SkillAvatar({ skill }: { skill: SkillItem }) {
 }
 
 /**
- * Real-world practical application descriptions for each skill
- */
-function getSkillDescription(name: string): string {
-  const n = name.toLowerCase();
-  if (n.includes("c#")) {
-    return "Enterprise OOP business logic, LINQ queries, Windows desktop applications, and structured .NET architecture.";
-  }
-  if (n.includes("dart")) {
-    return "Reactive stateful logic, asynchronous streams, event handling, and cross-platform widget architectures.";
-  }
-  if (n.includes("flutter")) {
-    return "Cross-platform mobile development with Provider state management, RESTful APIs, responsive layouts, and native UI flows.";
-  }
-  if (n.includes("oracle")) {
-    return "Enterprise 3NF relational schemas, PL/SQL stored packages, triggers, transaction management, and database administration.";
-  }
-  if (n.includes("sql server")) {
-    return "Relational database modeling, complex SQL queries, stored procedures, indexed views, and transactional constraints.";
-  }
-  if (n.includes("mysql")) {
-    return "Normalized tables, foreign key constraints, relational queries, and ACID-compliant persistence for academic & full-stack systems.";
-  }
-  if (n.includes("mongodb")) {
-    return "Document schema validation, JSON data structures, aggregation pipelines, and scalable NoSQL database storage.";
-  }
-  if (n.includes("git")) {
-    return "Git version control, collaborative branch workflows, pull request reviews, repository management, and continuous delivery.";
-  }
-  if (n.includes("figma")) {
-    return "User experience design, interactive wireframing, high-fidelity mobile prototypes, and design component libraries.";
-  }
-  if (n.includes("photoshop")) {
-    return "High-resolution digital graphics composition, UI asset creation, image retouching, and marketing visual materials.";
-  }
-  if (n.includes("illustrator")) {
-    return "Precision vector artwork, custom iconography, corporate logos, and scalable branding graphics.";
-  }
-  if (n.includes("premiere")) {
-    return "Multi-track audio-visual timeline editing, color grading, sequence pacing, and dynamic promotional video production.";
-  }
-  if (n.includes("after effect")) {
-    return "Keyframed motion graphics, dynamic title animations, visual effects, and UI interaction presentations.";
-  }
-  if (n.includes("capcut") || n.includes("cupcut")) {
-    return "Agile mobile video editing, short-form presentation reels, dynamic captions, and fast-turnaround video content.";
-  }
-  if (n.includes("office")) {
-    return "Comprehensive enterprise documentation (Word), structured workbook analytics (Excel), and executive presentations (PowerPoint).";
-  }
-  if (n.includes("docs")) {
-    return "Cloud-collaborative technical documentation, systems analysis specifications, and academic capstone deliverables.";
-  }
-  if (n.includes("sheets")) {
-    return "Analytical data modeling, mathematical formulations, pivot tables, and automated reporting dashboards.";
-  }
-  if (n.includes("slides")) {
-    return "Structured system architecture slide decks, coursework defenses, and executive project presentations.";
-  }
-  return "Practical technical application, system architecture, and coursework implementation at SETEC Institute.";
-}
-
-/**
  * Returns clean category sub-label
  */
 function getSkillCategoryTag(categoryTitle: string): string {
@@ -306,7 +244,6 @@ function SkillCard({
   skill: SkillItem;
   categoryTitle: string;
 }) {
-  const description = getSkillDescription(skill.name);
   const tag = getSkillCategoryTag(categoryTitle);
 
   return (
@@ -334,11 +271,6 @@ function SkillCard({
         <h4 className="text-xs sm:text-base font-bold text-[#0B2046] dark:text-white group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors line-clamp-1 sm:line-clamp-none">
           {skill.name}
         </h4>
-
-        {/* Competency Description */}
-        <p className="text-[10px] sm:text-[13px] text-slate-600 dark:text-slate-300 leading-snug sm:leading-relaxed mt-1 sm:mt-2 line-clamp-2 sm:line-clamp-3">
-          {description}
-        </p>
       </div>
 
       {/* Card Footer: Category Tag & Core Competency Badge */}
