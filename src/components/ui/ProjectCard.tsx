@@ -90,7 +90,7 @@ export function ProjectCard({
       className={cn(
         "relative w-full bg-slate-900 overflow-hidden cursor-pointer group/img select-none",
         isList
-          ? "aspect-16/10 md:aspect-auto h-full min-h-[130px] sm:min-h-[180px] md:min-h-[220px]"
+          ? "h-full min-h-[130px] sm:min-h-[180px] md:min-h-[220px]"
           : "aspect-16/10 h-full min-h-[130px] sm:min-h-[180px] md:min-h-[220px]"
       )}
       title="View Project Details & Case Study"
@@ -179,13 +179,13 @@ export function ProjectCard({
 
   if (viewMode === "list") {
     return (
-      <div className="group rounded-xl bg-white dark:bg-[#0D182E] border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 shadow-2xs hover:shadow-lg transition-all duration-200 flex flex-col md:flex-row overflow-hidden">
-        <div className="md:w-5/12 shrink-0 relative min-h-[130px] sm:min-h-[180px] md:min-h-[220px]">
+      <div className="group rounded-xl bg-white dark:bg-[#0D182E] border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 shadow-2xs hover:shadow-lg transition-all duration-200 flex flex-row overflow-hidden">
+        <div className="w-5/12 sm:w-5/12 md:w-5/12 shrink-0 relative min-h-[130px] sm:min-h-[180px] md:min-h-[220px]">
           {renderSlider(true)}
         </div>
-        <div className="p-3 sm:p-5 md:p-6 md:w-7/12 flex flex-col justify-between">
+        <div className="p-2.5 sm:p-5 md:p-6 w-7/12 sm:w-7/12 md:w-7/12 flex flex-col justify-between">
           <div>
-            <div className="flex items-center justify-between text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 mb-1.5 sm:mb-2">
+            <div className="flex items-center justify-between text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 mb-1 sm:mb-2">
               <span className="flex items-center gap-1">
                 <Calendar className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                 {project.year}
@@ -212,46 +212,46 @@ export function ProjectCard({
                             : "bg-purple-500"
                       )}
                     />
-                    {project.status}
+                    <span className="hidden sm:inline">{project.status}</span>
                   </span>
                 )}
-                <span className="font-semibold text-slate-700 dark:text-slate-300 truncate max-w-[80px] sm:max-w-none">
+                <span className="font-semibold text-slate-700 dark:text-slate-300 truncate max-w-[70px] sm:max-w-none text-[9px] sm:text-xs">
                   {project.role}
                 </span>
               </div>
             </div>
 
             <Link href={`/projects/${project.id}`} className="block group/title">
-              <h3 className="text-xs sm:text-base md:text-lg font-bold text-[#0B2046] dark:text-white mb-1 sm:mb-2 group-hover/title:text-blue-700 dark:group-hover/title:text-blue-400 cursor-pointer transition-colors line-clamp-1 md:line-clamp-none">
+              <h3 className="text-xs sm:text-base md:text-lg font-bold text-[#0B2046] dark:text-white mb-1 sm:mb-2 group-hover/title:text-blue-700 dark:group-hover/title:text-blue-400 cursor-pointer transition-colors line-clamp-1 sm:line-clamp-2 md:line-clamp-none">
                 {project.title}
               </h3>
             </Link>
 
-            <p className="text-[10px] sm:text-xs md:text-sm text-slate-600 dark:text-slate-300 line-clamp-2 md:line-clamp-3 leading-snug sm:leading-relaxed mb-2 sm:mb-4">
+            <p className="text-[10px] sm:text-xs md:text-sm text-slate-600 dark:text-slate-300 line-clamp-2 md:line-clamp-3 leading-snug sm:leading-relaxed mb-1.5 sm:mb-3">
               {project.shortDescription}
             </p>
 
-            <div className="flex flex-wrap gap-1 sm:gap-1.5 mb-2.5 sm:mb-4">
+            <div className="flex flex-wrap gap-1 sm:gap-1.5 mb-2 sm:mb-4">
               {project.technologies.slice(0, 3).map((tech, idx) => (
                 <span
                   key={idx}
-                  className="px-1.5 sm:px-2 py-0.5 rounded text-[9px] sm:text-[11px] font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700"
+                  className="px-1.5 sm:px-2 py-0.5 rounded text-[8px] sm:text-[11px] font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700"
                 >
                   {tech.name}
                 </span>
               ))}
               {project.technologies.length > 3 && (
-                <span className="px-1.5 py-0.5 rounded text-[9px] sm:text-[11px] font-medium bg-slate-50 dark:bg-slate-900 text-slate-500 border border-slate-200 dark:border-slate-800">
+                <span className="px-1.5 py-0.5 rounded text-[8px] sm:text-[11px] font-medium bg-slate-50 dark:bg-slate-900 text-slate-500 border border-slate-200 dark:border-slate-800">
                   +{project.technologies.length - 3}
                 </span>
               )}
             </div>
           </div>
 
-          <div className="pt-2 sm:pt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between gap-1">
+          <div className="pt-1.5 sm:pt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between gap-1">
             <Link
               href={`/projects/${project.id}`}
-              className="inline-flex items-center gap-0.5 sm:gap-1 text-[11px] sm:text-xs font-bold text-[#0B2046] dark:text-blue-400 hover:underline transition-colors cursor-pointer truncate"
+              className="inline-flex items-center gap-0.5 sm:gap-1 text-[10px] sm:text-xs font-bold text-[#0B2046] dark:text-blue-400 hover:underline transition-colors cursor-pointer truncate"
             >
               <span className="hidden sm:inline">View Details & Case Study</span>
               <span className="sm:hidden">View Details</span>

@@ -102,7 +102,7 @@ export function ProjectsSection() {
           )}
         </div>
 
-        {/* Projects View (Grid or List - 2 cards in a row on mobile) */}
+        {/* Projects View (Grid: 2 cards in a row on mobile; List: full-width horizontal cards across mobile, tablet, and laptop) */}
         {filteredProjects.length > 0 ? (
           viewMode === "grid" ? (
             <div className="grid grid-cols-2 gap-3 sm:gap-6 md:gap-8 max-w-5xl mx-auto">
@@ -120,7 +120,7 @@ export function ProjectsSection() {
               ))}
             </div>
           ) : (
-            <div className="grid grid-cols-2 md:flex md:flex-col gap-3 sm:gap-5 md:gap-6 max-w-5xl mx-auto">
+            <div className="flex flex-col gap-3.5 sm:gap-5 md:gap-6 max-w-5xl mx-auto">
               {filteredProjects.map((project, idx) => (
                 <ScrollReveal
                   key={project.id}
