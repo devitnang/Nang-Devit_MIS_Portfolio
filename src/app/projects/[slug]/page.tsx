@@ -23,6 +23,9 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
+// Next.js 16 Route Segment Config: allow blocking route for dynamic project slug segment
+export const instant = false;
+
 export function generateStaticParams() {
   return projects.map((project) => ({
     slug: project.id,

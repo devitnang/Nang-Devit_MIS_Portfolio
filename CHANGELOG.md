@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.1] - 2026-11-09
+
+### Fixed
+- **Next.js 16 Instant Navigation Route Configuration**:
+  - Resolved `instant-shell-url-data` validation error in Next.js 16.4.5 Turbopack for `/projects/[slug]` (`src/app/projects/[slug]/page.tsx`).
+  - Added route segment configuration `export const instant = false;` to explicitly permit blocking dynamic slug resolution during prefetching and prerendering with `cacheComponents: true` and `partialPrefetching: true`.
+  - Maintained full static optimization across all 18 routes (18/18 static pages rendered in 1.1s).
+
 ## [0.3.0] - 2026-11-09
 
 ### Added
