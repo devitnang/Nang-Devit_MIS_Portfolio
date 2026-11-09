@@ -100,16 +100,16 @@ export function EducationSection() {
                   </div>
                 </div>
 
-                {/* Eye Icon Action Button (Top-right aligned on mobile, centered on desktop) */}
+                {/* Eye Icon Action Button (Icon only, no outer container box) */}
                 <div className="absolute top-6 right-0 sm:static sm:top-auto sm:right-auto flex items-center shrink-0">
                   <button
                     type="button"
                     onClick={() => setSelectedImage(courseImg)}
-                    className="p-2 sm:p-2.5 rounded-xl border border-slate-200/90 dark:border-slate-800 bg-slate-50 hover:bg-slate-100 dark:bg-slate-900/90 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-[#0B2046] dark:hover:text-blue-400 transition-all duration-200 shadow-2xs hover:shadow-xs cursor-pointer flex items-center justify-center group focus-visible:ring-2 focus-visible:ring-[#0B2046] dark:focus-visible:ring-blue-400 active:scale-95"
+                    className="p-1 sm:p-1.5 text-[#0B2046] dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-300 transition-all duration-200 cursor-pointer flex items-center justify-center group focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0B2046] dark:focus-visible:ring-blue-400 rounded active:scale-95"
                     title="Preview Course Curriculum"
                     aria-label="Preview Course Curriculum"
                   >
-                    <Eye className="w-4 h-4 sm:w-5 sm:h-5 text-[#0B2046] dark:text-blue-400 group-hover:scale-110 transition-transform" />
+                    <Eye className="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:scale-115" />
                   </button>
                 </div>
               </ScrollReveal>
