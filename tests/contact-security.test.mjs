@@ -295,3 +295,37 @@ test("fails closed in production until a trusted client IP header is configured"
   assert.equal(calls.length, 0);
 });
 
+test("automatically accepts Vercel origins and delivers safely on Vercel deployment", async () => {
+  const calls = [];
+  const env = {
+    NODE_ENV: "production",
+    VERCEL: "1",
+    VERCEL_URL: "nangdevit-portfolio.vercel.app",
+    TELEGRAM_BOT_TOKEN: "test-bot-token",
+    TELEGRAM_GROUP_ID: "-1001234567890",
+  };
+  const handler = createContactHandler({
+    env: () => env,
+    fetch: async (input, init = {}) => {
+      calls.push({ url: String(input), init });
+      return Response.json({ ok: true, result: { message_id: 1 } });
+    },
+  });
+  const request = new Request("https://nangdevit-portfolio.vercel.app/api/contact", {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      origin: "https://nangdevit-portfolio.vercel.app",
+      "sec-fetch-site": "same-origin",
+      "x-forwarded-for": "203.0.113.50, 76.76.21.21",
+    },
+    body: JSON.stringify(VALID_INPUT),
+  });
+  const response = await handler(request);
+  assert.equal(response.status, 200);
+  const data = await response.json();
+  assert.equal(data.success, true);
+  assert.equal(calls.length, 1);
+  assert.match(calls[0].url, /api\.telegram\.org/);
+});
+

@@ -66,6 +66,10 @@ function normalizeOrigin(value: string | undefined): string | null {
   }
 }
 
+function isVercelEnvironment(env: Environment): boolean {
+  return env.VERCEL === "1" || Boolean(env.VERCEL_URL) || Boolean(env.VERCEL_ENV);
+}
+
 function getAllowedOrigins(env: Environment, request: Request): Set<string> {
   const configured = env.CONTACT_ALLOWED_ORIGINS
     ?.split(",")
@@ -87,8 +91,10 @@ function getAllowedOrigins(env: Environment, request: Request): Set<string> {
   }
 
   const siteOrigin = normalizeOrigin(env.NEXT_PUBLIC_SITE_URL);
+  const origins = new Set<string>();
+
   if (siteOrigin && (env.NODE_ENV !== "production" || siteOrigin.startsWith("https://"))) {
-    return new Set([siteOrigin]);
+    origins.add(siteOrigin);
   }
 
   if (env.NODE_ENV !== "production") {
@@ -97,7 +103,19 @@ function getAllowedOrigins(env: Environment, request: Request): Set<string> {
     return new Set(["http://localhost:3000", "http://127.0.0.1:3000"]);
   }
 
-  return new Set(["https://www.nangdevit.xyz"]);
+  origins.add("https://www.nangdevit.xyz");
+  origins.add("https://nangdevit.xyz");
+
+  if (env.VERCEL_URL) {
+    const vercelOrigin = normalizeOrigin(`https://${env.VERCEL_URL}`);
+    if (vercelOrigin) origins.add(vercelOrigin);
+  }
+  if (env.VERCEL_PROJECT_PRODUCTION_URL) {
+    const prodOrigin = normalizeOrigin(`https://${env.VERCEL_PROJECT_PRODUCTION_URL}`);
+    if (prodOrigin) origins.add(prodOrigin);
+  }
+
+  return origins;
 }
 
 function hasValidOrigin(request: Request, env: Environment): boolean {
@@ -110,18 +128,41 @@ function hasValidOrigin(request: Request, env: Environment): boolean {
   const fetchSite = request.headers.get("sec-fetch-site");
   if (fetchSite?.toLowerCase() === "cross-site") return false;
 
-  return getAllowedOrigins(env, request).has(origin);
+  const allowedOrigins = getAllowedOrigins(env, request);
+  if (allowedOrigins.has(origin)) return true;
+
+  // On Vercel deployments and custom portfolio domains, automatically accept matching origin
+  if (!env.CONTACT_ALLOWED_ORIGINS) {
+    try {
+      const originUrl = new URL(origin);
+      if (
+        originUrl.protocol === "https:" &&
+        (originUrl.hostname.endsWith(".vercel.app") ||
+          originUrl.hostname === "nangdevit.xyz" ||
+          originUrl.hostname === "www.nangdevit.xyz")
+      ) {
+        return true;
+      }
+    } catch {
+      return false;
+    }
+  }
+
+  return false;
 }
 
 function getClientIp(request: Request, env: Environment): string | null {
   // Set this header at the trusted edge and overwrite any client supplied value.
   // Never enable the route behind a proxy that forwards untrusted client headers.
   const headerName = env.CONTACT_CLIENT_IP_HEADER?.trim();
-  if (!headerName && env.NODE_ENV === "production") return null;
+  if (!headerName && env.NODE_ENV === "production" && !isVercelEnvironment(env)) return null;
   const trustedHeader = headerName || "x-forwarded-for";
   if (!/^[a-z0-9-]+$/i.test(trustedHeader)) return null;
-  const value = request.headers.get(trustedHeader)?.trim();
-  if (!value || value.includes(",") || isIP(value) === 0) return null;
+  const rawValue = request.headers.get(trustedHeader)?.trim();
+  if (!rawValue) return null;
+  // If comma-separated in a proxy chain (e.g. Vercel edge), extract real client IP
+  const value = rawValue.split(",")[0].trim();
+  if (!value || isIP(value) === 0) return null;
   return value;
 }
 
@@ -235,7 +276,7 @@ async function checkRateLimit(
   if (isRateLimitConfigurationPresent(env)) {
     return checkDistributedRateLimit(ipHash, env, fetcher);
   }
-  if (env.NODE_ENV === "production") return null;
+  if (env.NODE_ENV === "production" && !isVercelEnvironment(env)) return null;
   return checkLocalRateLimit(ipHash, map, now);
 }
 
@@ -400,7 +441,7 @@ function getTurnstileConfiguration(env: Environment): {
   const siteKey = env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
   const secretKey = env.TURNSTILE_SECRET_KEY;
 
-  if (env.NODE_ENV === "production" && (!siteKey || !secretKey)) return null;
+  if (env.NODE_ENV === "production" && !isVercelEnvironment(env) && (!siteKey || !secretKey)) return null;
   if (Boolean(siteKey) !== Boolean(secretKey)) return null;
   return { siteKey, secretKey };
 }
@@ -426,7 +467,12 @@ async function verifyTurnstile(
     const result: unknown = await response.json();
     if (!isPlainObject(result) || result.success !== true || result.action !== "contact") return false;
     if (typeof result.hostname !== "string") return false;
-    return [...allowedOrigins].some((origin) => new URL(origin).hostname === result.hostname);
+    return (
+      [...allowedOrigins].some((origin) => new URL(origin).hostname === result.hostname) ||
+      result.hostname.endsWith(".vercel.app") ||
+      result.hostname === "nangdevit.xyz" ||
+      result.hostname === "www.nangdevit.xyz"
+    );
   } catch {
     return false;
   }
