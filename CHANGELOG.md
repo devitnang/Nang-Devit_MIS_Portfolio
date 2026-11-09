@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.4] - 2026-11-09
+
+### Fixed
+- **Accurate Source Domain in Telegram Notifications**:
+  - Dynamically extracts the actual requesting origin and hostname (e.g., `mis-portfolio.nangdevit.xyz`, `www.nangdevit.xyz`, or `*.vercel.app`) rather than defaulting to hardcoded `www.nangdevit.xyz` in [`src/lib/contact-security.ts`](file:///d:/SETEC/YEAR4_SEMESTER1/Portfolio/nangdevit_portfolio/src/lib/contact-security.ts).
+  - Updated contact security test suite in [`tests/contact-security.test.mjs`](file:///d:/SETEC/YEAR4_SEMESTER1/Portfolio/nangdevit_portfolio/tests/contact-security.test.mjs) to assert accurate domain attribution in Telegram messages.
+
 ## [1.0.3] - 2026-11-09
 
 ### Fixed

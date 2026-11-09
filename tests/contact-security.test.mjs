@@ -327,6 +327,8 @@ test("automatically accepts Vercel origins and delivers safely on Vercel deploym
   assert.equal(data.success, true);
   assert.equal(calls.length, 1);
   assert.match(calls[0].url, /api\.telegram\.org/);
+  const telegram = JSON.parse(calls[0].init.body);
+  assert.match(telegram.text, /🌐 <b>Source:<\/b> <a href="https:\/\/nangdevit-portfolio\.vercel\.app">nangdevit-portfolio\.vercel\.app<\/a>/);
 });
 
 test("automatically accepts mis-portfolio.nangdevit.xyz and subdomains on production", async () => {
@@ -361,5 +363,7 @@ test("automatically accepts mis-portfolio.nangdevit.xyz and subdomains on produc
   assert.equal(data.success, true);
   assert.equal(calls.length, 1);
   assert.match(calls[0].url, /api\.telegram\.org/);
+  const telegram = JSON.parse(calls[0].init.body);
+  assert.match(telegram.text, /🌐 <b>Source:<\/b> <a href="https:\/\/mis-portfolio\.nangdevit\.xyz">mis-portfolio\.nangdevit\.xyz<\/a>/);
 });
 

@@ -604,6 +604,31 @@ export function createContactHandler(dependencies: ContactHandlerDependencies = 
       dateStyle: "full",
       timeStyle: "medium",
     });
+
+    const requestOrigin =
+      normalizeOrigin(request.headers.get("origin") ?? "") ||
+      normalizeOrigin(request.headers.get("referer") ?? "");
+
+    let sourceUrl = [...allowedOrigins][0] || "https://www.nangdevit.xyz";
+    let sourceHost = "www.nangdevit.xyz";
+
+    if (requestOrigin) {
+      try {
+        const parsed = new URL(requestOrigin);
+        sourceUrl = parsed.origin;
+        sourceHost = parsed.hostname;
+      } catch {
+        // Fallback to default
+      }
+    } else {
+      const host = request.headers.get("x-forwarded-host") || request.headers.get("host");
+      if (host) {
+        const cleanHost = host.split(":")[0].toLowerCase();
+        sourceUrl = `https://${cleanHost}`;
+        sourceHost = cleanHost;
+      }
+    }
+
     const telegramMessage = [
       "🏛️ <b>Portfolio Website — New Contact Message</b>",
       "━━━━━━━━━━━━━━━━━━━━━━━━━",
@@ -615,7 +640,7 @@ export function createContactHandler(dependencies: ContactHandlerDependencies = 
       safeMessage,
       "━━━━━━━━━━━━━━━━━━━━━━━━━",
       `🕒 <b>Submitted At:</b> ${submissionDate} (Cambodia Time)`,
-      `🌐 <b>Source:</b> <a href="${[...allowedOrigins][0]}">${new URL([...allowedOrigins][0]).hostname}</a>`,
+      `🌐 <b>Source:</b> <a href="${sourceUrl}">${sourceHost}</a>`,
     ].join("\n");
 
     const telegramEndpoint = `https://api.telegram.org/bot${botToken}/sendMessage`;
