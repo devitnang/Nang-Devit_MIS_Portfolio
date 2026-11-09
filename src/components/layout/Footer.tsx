@@ -143,16 +143,19 @@ export function MinimalFooter() {
         </div>
 
         <div className="bg-border absolute inset-x-0 h-px w-full" />
-        <div className="flex max-w-4xl flex-col justify-between gap-2 pt-4 pb-24 md:pb-6 px-4">
-          <p className="text-muted-foreground text-center font-normal text-xs">
-            &copy; {year}{" "}
+        <div className="flex max-w-4xl flex-col items-center justify-between gap-2 pt-4 pb-24 md:pb-6 px-4">
+          <p className="text-muted-foreground text-center font-normal text-xs flex flex-wrap items-center justify-center gap-1.5">
+            <span>&copy; {year}</span>
             <Link
               href="https://www.nangdevit.xyz"
               className="font-semibold text-[#0B2046] dark:text-blue-400 hover:underline"
             >
               Nang Devit
             </Link>
-            . All rights reserved. Built with Next.js &amp; Tailwind CSS.
+            <span>&bull; All rights reserved.</span>
+            <span className="inline-flex items-center font-mono text-[10px] font-semibold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+              v1.0.0
+            </span>
           </p>
         </div>
       </div>

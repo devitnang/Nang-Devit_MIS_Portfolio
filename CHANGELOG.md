@@ -5,6 +5,39 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.0] - 2026-11-09
+
+### Milestone Official Release
+Official production release of Nang Devit's Personal Portfolio Website ([`https://www.nangdevit.xyz`](https://www.nangdevit.xyz)), specializing in Management Information Systems (MIS), Systems Analysis, Data Analytics, and Full-Stack Engineering.
+
+#### Key Highlights & Capabilities
+- **Homepage & Visual Identity**:
+  - Parallax ambient background layers with reduced-motion accessibility.
+  - Interactive hero section with credential verification badge, CV download, and direct Telegram outreach CTA.
+  - Clean theme switching supporting dark and light modes.
+  - Authentic high-resolution squircle D3V branding identity and cross-device browser tab favicons.
+
+- **Dedicated Multi-Page Project Detail Architecture**:
+  - Replaced modal overlays with dedicated, shareable, dynamic case study pages at `/projects/[slug]`.
+  - Clean two-column design: interactive screenshot gallery with full-screen lightbox on the left, and minimal inline-table technical specifications on the right.
+  - Dynamic SEO metadata generation with OpenGraph, Twitter cards, and canonical links.
+  - Instant navigation compatibility with Next.js 16 partial prefetching and static generation (`generateStaticParams`).
+  - Interactive breadcrumb navigation (`Home → Projects → Project Name`) and related project recommendations.
+
+- **Featured Projects Showcase**:
+  - Dual viewing modes: Grid View (2-column mobile layout) and responsive List View (horizontal image-left, details-right layout across mobile, tablet, and desktop).
+  - Categorized real-world projects grounded in SETEC Institute academic coursework and independent software engineering (Flutter, Dart, C#, SQL Server, Oracle, Docker, Linux, REST APIs).
+  - Standardized project timeline to `2026` across all portfolio projects.
+
+- **Skills & Technologies Inventory**:
+  - Streamlined, focused skill cards displaying authentic software tile icons, proficiency badges, category labels, and core stack indicators.
+  - Dynamic search and category filtering toolbar.
+
+- **Enterprise-Grade Contact System & Security**:
+  - High-security contact form integrated with direct Telegram channel notification delivery.
+  - Comprehensive 12-point security architecture: CSRF protection, origin validation, payload sanitization, anti-bot honeypot, Cloudflare Turnstile CAPTCHA verification, distributed Redis rate limiting with SHA-256 IP hashing, and HTML entity escaping.
+  - 100% automated test suite passing all 12 security suites (`npm run test:security`).
+
 ## [0.3.5] - 2026-11-09
 
 ### Removed
