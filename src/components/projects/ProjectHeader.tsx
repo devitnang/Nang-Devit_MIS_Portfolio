@@ -170,3 +170,4 @@ export function ProjectHeader({ project }: ProjectHeaderProps) {
     </header>
   );
 }
+
