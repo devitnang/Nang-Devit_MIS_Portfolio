@@ -94,11 +94,14 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/assets/images/logo/mylogo.png", type: "image/png" },
-      { url: "/favicon.ico" },
+      { url: "/assets/images/logo/favicon-32x32.png?v=3", sizes: "32x32", type: "image/png" },
+      { url: "/assets/images/logo/favicon-16x16.png?v=3", sizes: "16x16", type: "image/png" },
+      { url: "/favicon.ico?v=3", sizes: "any" },
     ],
-    shortcut: "/assets/images/logo/mylogo.png",
-    apple: "/assets/images/logo/mylogo.png",
+    shortcut: "/assets/images/logo/favicon-32x32.png?v=3",
+    apple: [
+      { url: "/assets/images/logo/apple-touch-icon.png?v=3", sizes: "180x180", type: "image/png" },
+    ],
   },
 };
 
@@ -142,6 +145,10 @@ export default function RootLayout({
       className={`${openSans.variable} ${inter.variable}`}
     >
       <head>
+        <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/logo/favicon-32x32.png?v=3" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/logo/favicon-16x16.png?v=3" />
+        <link rel="shortcut icon" href="/assets/images/logo/favicon-32x32.png?v=3" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/logo/apple-touch-icon.png?v=3" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

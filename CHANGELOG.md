@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.1] - 2026-11-09
+
+### Fixed
+- **Browser Tab Favicon Replacement**:
+  - Replaced the default Next.js black "N" icon in the browser tab with the authentic, high-resolution D3V squircle brand logo (`public/assets/images/logo/mylogo.png`).
+  - Generated crisp multi-resolution assets: `favicon-32x32.png`, `favicon-16x16.png`, and `apple-touch-icon.png` (180x180).
+  - Built compliant multi-layer ICO containers containing 16x16, 32x32, and 48x48 sharpened icon frames for both `src/app/favicon.ico` and `public/favicon.ico`.
+  - Added cache-busting query strings (`?v=3`) and explicit `<link rel="icon">` tags in `<head>` and `layout.tsx` metadata to ensure modern browsers immediately invalidate their cached favicon database.
+  - Purged `.next` build cache to eliminate legacy `favicon.*.ico` references.
+
 ## [0.2.0] - 2026-11-09
 
 ### Added

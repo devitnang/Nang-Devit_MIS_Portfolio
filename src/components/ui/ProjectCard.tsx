@@ -187,8 +187,8 @@ export function ProjectCard({
                       project.status === "Completed"
                         ? "bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800/60"
                         : project.status === "In Progress"
-                        ? "bg-amber-50 dark:bg-amber-950/50 text-amber-700 dark:text-amber-300 border-amber-200 dark:border-amber-800/60"
-                        : "bg-purple-50 dark:bg-purple-950/50 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-800/60"
+                          ? "bg-amber-50 dark:bg-amber-950/50 text-amber-700 dark:text-amber-300 border-amber-200 dark:border-amber-800/60"
+                          : "bg-purple-50 dark:bg-purple-950/50 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-800/60"
                     )}
                   >
                     <span
@@ -197,8 +197,8 @@ export function ProjectCard({
                         project.status === "Completed"
                           ? "bg-emerald-500"
                           : project.status === "In Progress"
-                          ? "bg-amber-500"
-                          : "bg-purple-500"
+                            ? "bg-amber-500"
+                            : "bg-purple-500"
                       )}
                     />
                     {project.status}
@@ -309,8 +309,8 @@ export function ProjectCard({
                     project.status === "Completed"
                       ? "bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800/60"
                       : project.status === "In Progress"
-                      ? "bg-amber-50 dark:bg-amber-950/50 text-amber-700 dark:text-amber-300 border-amber-200 dark:border-amber-800/60"
-                      : "bg-purple-50 dark:bg-purple-950/50 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-800/60"
+                        ? "bg-amber-50 dark:bg-amber-950/50 text-amber-700 dark:text-amber-300 border-amber-200 dark:border-amber-800/60"
+                        : "bg-purple-50 dark:bg-purple-950/50 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-800/60"
                   )}
                 >
                   <span
@@ -319,8 +319,8 @@ export function ProjectCard({
                       project.status === "Completed"
                         ? "bg-emerald-500"
                         : project.status === "In Progress"
-                        ? "bg-amber-500"
-                        : "bg-purple-500"
+                          ? "bg-amber-500"
+                          : "bg-purple-500"
                     )}
                   />
                   {project.status}

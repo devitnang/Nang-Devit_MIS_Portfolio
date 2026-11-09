@@ -1,0 +1,1 @@
+ Build docker image from this laravel + hosting to public through nginx and upload docker image to docker hub

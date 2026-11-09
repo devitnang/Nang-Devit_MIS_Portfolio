@@ -1,0 +1,1 @@
+Use docker compose to running wordpress,mysql and phpmyadmin and configure hosting wordpress and phpmyadmin to public
