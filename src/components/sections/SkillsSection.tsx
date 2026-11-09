@@ -396,7 +396,6 @@ export function SkillsSection() {
           <SectionHeading
             badge="Technical Competencies"
             title="Skills & Technologies"
-            subtitle="A verified inventory of programming languages, frameworks, enterprise database management systems, developer tools, design software, and productivity suites."
           />
         </ScrollReveal>
 

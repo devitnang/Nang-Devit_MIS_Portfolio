@@ -62,7 +62,6 @@ export function ProjectsSection() {
           <SectionHeading
             badge="Portfolio Showcase"
             title="Featured Projects"
-            subtitle="A curated portfolio of systems analysis specifications, relational database engineering, modern web applications, and cross-platform mobile apps developed with clean architectures."
           />
         </ScrollReveal>
 

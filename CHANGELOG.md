@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.5] - 2026-11-09
+
+### Removed
+- **Section Heading Subtitles**:
+  - Removed the subtitle description from the **Featured Projects** section heading ([`src/components/sections/ProjectsSection.tsx`](file:///d:/SETEC/YEAR4_SEMESTER1/Portfolio/nangdevit_portfolio/src/components/sections/ProjectsSection.tsx)).
+  - Removed the subtitle description from the **Skills & Technologies** section heading ([`src/components/sections/SkillsSection.tsx`](file:///d:/SETEC/YEAR4_SEMESTER1/Portfolio/nangdevit_portfolio/src/components/sections/SkillsSection.tsx)).
+
 ## [0.3.4] - 2026-11-09
 
 ### Changed
